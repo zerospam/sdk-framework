@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Request\Arguments;
 
-
 use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
 interface IArgument extends PrimalValued
@@ -19,5 +18,4 @@ interface IArgument extends PrimalValued
      * @return string
      */
     public function getKey() : string;
-
 }

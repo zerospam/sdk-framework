@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Utils\Contracts;
 
-
 interface Arrayable
 {
 

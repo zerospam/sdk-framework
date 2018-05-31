@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Utils\Contracts;
 
-
 interface PrimalValued
 {
 
@@ -18,5 +17,4 @@ interface PrimalValued
      * @return int|float|string|double
      */
     function toPrimitive();
-
 }

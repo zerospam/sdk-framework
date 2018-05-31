@@ -10,7 +10,6 @@ namespace ZEROSPAM\Framework\SDK\Request\Type;
 
 use MabeEnum\Enum;
 
-
 /**
  * Class RequestType
  *

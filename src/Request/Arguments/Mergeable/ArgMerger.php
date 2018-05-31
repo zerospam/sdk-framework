@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable;
 
-
 use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
 class ArgMerger implements PrimalValued

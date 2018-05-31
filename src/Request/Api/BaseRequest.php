@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Request\Api;
 
-
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\UriInterface;
 use ZEROSPAM\Framework\SDK\Request\Arguments\IArgument;

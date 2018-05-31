@@ -8,8 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Utils;
 
-
-
 final class Str
 {
 

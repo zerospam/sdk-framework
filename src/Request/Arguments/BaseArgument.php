@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Request\Arguments;
 
-
 use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
 abstract class BaseArgument implements IArgument
@@ -58,7 +57,7 @@ abstract class BaseArgument implements IArgument
             return (int)$value;
         }
 
-        if(is_float($value)) {
+        if (is_float($value)) {
             return str_replace(',', '.', $value);
         }
 

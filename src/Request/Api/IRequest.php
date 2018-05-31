@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Request\Api;
 
-
 use Psr\Http\Message\UriInterface;
 use ZEROSPAM\Framework\SDK\Request\Arguments\IArgument;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\ArgMerger;
@@ -121,5 +120,4 @@ interface IRequest extends Arrayable
      * @return RequestType
      */
     public function requestType();
-
 }

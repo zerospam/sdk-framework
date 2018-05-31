@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Response;
 
-
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
@@ -106,7 +105,6 @@ abstract class BaseResponse implements IResponse
 
         //Same as before but specific for dates
         if (isset($this->dates) && in_array($field, $this->dates)) {
-
             if (isset($this->objReplacementCache[$field])) {
                 return $this->objReplacementCache[$field];
             }
