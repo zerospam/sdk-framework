@@ -161,7 +161,7 @@ abstract class BaseRequest implements IRequest
      * @return array
      * @throws \ReflectionException
      */
-    public function requestOptions()
+    public function requestOptions() : array
     {
         $query = [];
         /**
@@ -210,7 +210,7 @@ abstract class BaseRequest implements IRequest
      *
      * @return int
      */
-    public function tries()
+    public function tries() : int
     {
         return $this->tries;
     }
@@ -220,7 +220,7 @@ abstract class BaseRequest implements IRequest
      *
      * @return int
      */
-    public function incrementTries()
+    public function incrementTries() : int
     {
         return ++$this->tries;
     }

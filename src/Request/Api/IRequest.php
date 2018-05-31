@@ -72,7 +72,7 @@ interface IRequest extends Arrayable
      *
      * @return UriInterface
      */
-    public function toUri();
+    public function toUri() : UriInterface;
 
     /**
      * Getter for response
@@ -91,7 +91,7 @@ interface IRequest extends Arrayable
      *
      * @return array
      */
-    public function requestOptions();
+    public function requestOptions() :array;
 
     /**
      * Get the argument that can be merged with each other
@@ -105,19 +105,19 @@ interface IRequest extends Arrayable
      *
      * @return int
      */
-    public function tries();
+    public function tries(): int;
 
     /**
      * Increment the number of tries and returns it
      *
      * @return int
      */
-    public function incrementTries();
+    public function incrementTries() :int;
 
     /**
      * Request type to use for the request
      *
      * @return RequestType
      */
-    public function requestType();
+    public function requestType() : RequestType;
 }
