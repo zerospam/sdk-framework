@@ -14,7 +14,7 @@ use ZEROSPAM\Framework\SDK\Request\Arguments\IArgument;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\ArgMerger;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\IMergeableArgument;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
-use ZEROSPAM\Framework\SDK\Response\IResponse;
+use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil;
 
 abstract class BaseRequest implements IRequest
@@ -32,7 +32,7 @@ abstract class BaseRequest implements IRequest
 
 
     /**
-     * @var IResponse
+     * @var \ZEROSPAM\Framework\SDK\Response\Api\IResponse
      */
     private $response;
 
@@ -190,7 +190,7 @@ abstract class BaseRequest implements IRequest
     /**
      * Getter for response
      *
-     * @return IResponse
+     * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
      */
     public function getResponse(): IResponse
     {
@@ -198,7 +198,7 @@ abstract class BaseRequest implements IRequest
     }
 
     /**
-     * @param  IResponse $response
+     * @param  \ZEROSPAM\Framework\SDK\Response\Api\IResponse $response
      */
     public function setResponse(IResponse $response): void
     {

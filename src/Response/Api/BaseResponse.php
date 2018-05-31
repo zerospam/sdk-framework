@@ -6,9 +6,10 @@
  * Time: 4:08 PM
  */
 
-namespace ZEROSPAM\Framework\SDK\Response;
+namespace ZEROSPAM\Framework\SDK\Response\Api;
 
 use Carbon\Carbon;
+use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 abstract class BaseResponse implements IResponse

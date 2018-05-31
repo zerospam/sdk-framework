@@ -12,7 +12,7 @@ use Psr\Http\Message\UriInterface;
 use ZEROSPAM\Framework\SDK\Request\Arguments\IArgument;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\ArgMerger;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
-use ZEROSPAM\Framework\SDK\Response\IResponse;
+use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\Arrayable;
 
 interface IRequest extends Arrayable
@@ -38,7 +38,7 @@ interface IRequest extends Arrayable
      *
      * @param array $jsonResponse
      *
-     * @return IResponse
+     * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
      */
     public function processResponse(array $jsonResponse): IResponse;
 
@@ -77,12 +77,12 @@ interface IRequest extends Arrayable
     /**
      * Getter for response
      *
-     * @return IResponse
+     * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
      */
     public function getResponse(): IResponse;
 
     /**
-     * @param IResponse $response
+     * @param \ZEROSPAM\Framework\SDK\Response\Api\IResponse $response
      */
     public function setResponse(IResponse $response): void;
 

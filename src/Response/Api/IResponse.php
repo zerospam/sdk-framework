@@ -6,7 +6,7 @@
  * Time: 4:35 PM
  */
 
-namespace ZEROSPAM\Framework\SDK\Response;
+namespace ZEROSPAM\Framework\SDK\Response\Api;
 
 interface IResponse
 {
