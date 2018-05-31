@@ -1,0 +1,38 @@
+{
+  "name": "zerospam/sdk-framework",
+  "description": "Framework to build SDK",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Antoine Aflalo",
+      "email": "antoine.aflalo@zerospam.ca",
+      "homepage": "https://www.zerospam.ca"
+    }
+  ],
+  "keywords": [
+    "sdk",
+    "framework"
+  ],
+  "require": {
+    "php": ">= 7.1",
+    "nesbot/carbon": "^1.29",
+    "guzzlehttp/guzzle": "^6.3",
+    "marc-mabe/php-enum": "^3.0"
+  },
+  "require-dev": {
+    "php": ">= 7.1",
+    "mockery/mockery": "^1.1",
+    "squizlabs/php_codesniffer": "^3.2",
+    "phpunit/phpunit": "^7.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "ZEROSPAM\\Framework\\SDK\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ZEROSPAM\\Framework\\SDK\\Test\\": "tests/src/"
+    }
+  }
+}
