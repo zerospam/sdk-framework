@@ -71,13 +71,17 @@ class OAuthClient
      * Register the given middleware
      *
      * @param \ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware $middleware
+     *
+     * @return $this
      */
-    public function registerMiddleware(IMiddleware $middleware): void
+    public function registerMiddleware(IMiddleware $middleware): self
     {
         $middleware->setClient($this);
         foreach ($middleware::statusCode() as $statusCode) {
             $this->middlewares[$statusCode][] = $middleware;
         }
+
+        return $this;
     }
 
     /**
@@ -86,8 +90,10 @@ class OAuthClient
      * In fact, all middleware having the same class
      *
      * @param \ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware $middleware
+     *
+     * @return OAuthClient
      */
-    public function unregisterMiddleware(IMiddleware $middleware): void
+    public function unregisterMiddleware(IMiddleware $middleware): self
     {
         $middlewareClass = get_class($middleware);
         foreach ($middleware::statusCode() as $statusCode) {
@@ -107,6 +113,8 @@ class OAuthClient
                 $this->middlewares[$statusCode] = $result;
             }
         }
+
+        return $this;
     }
 
     /**
