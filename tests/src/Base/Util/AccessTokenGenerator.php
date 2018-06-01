@@ -41,6 +41,6 @@ final class AccessTokenGenerator
 }
 JSON;
 
-        return new AccessToken(json_decode($json));
+        return new AccessToken(json_decode($json, true));
     }
 }

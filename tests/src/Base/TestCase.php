@@ -11,11 +11,8 @@ namespace ZEROSPAM\Framework\SDK\Test\Base;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Response;
 use Mockery as m;
-use ZEROSPAM\Framework\SDK\Client\OAuthClient;
-use ZEROSPAM\Framework\SDK\Config\OAuthConfiguration;
 use ZEROSPAM\Framework\SDK\Test\Base\Config\TestClient;
 use ZEROSPAM\Framework\SDK\Test\Base\Container\Transaction;
-use ZEROSPAM\Framework\SDK\Test\Base\Util\AccessTokenGenerator;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
@@ -35,18 +32,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         return new TestClient($handler);
     }
 
-
-    /**
-     * Get client for tests
-     *
-     * @param OAuthConfiguration $configuration
-     *
-     * @return OAuthClient
-     */
-    protected function getOAuthTestClient(OAuthConfiguration $configuration): OAuthClient
-    {
-        return new OAuthClient($configuration, AccessTokenGenerator::generateAccessToken());
-    }
 
     /**
      * The last transaction done (first if only one done)
