@@ -70,4 +70,14 @@ class BindableRequestTest extends TestCase
         $bindableRequest = new BindableMultiTestRequest();
         $bindableRequest->setNiceId([]);
     }
+
+    /**
+     * @test
+     * @expectedException \InvalidArgumentException
+     */
+    public function bindable_failure_override()
+    {
+        $bindableRequest = new BindableMultiTestRequest();
+        $bindableRequest->setNiceId(1)->setNiceId(5);
+    }
 }

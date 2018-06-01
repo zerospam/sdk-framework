@@ -31,9 +31,16 @@ class BindableTestRequest extends BindableRequest
     }
 
 
+    /**
+     * CAN'T OVERRIDE
+     *
+     * @param $id
+     *
+     * @return $this
+     */
     public function setNiceId($id)
     {
-        $this->addBinding('niceId', $id);
+        $this->addBinding('niceId', $id, false);
 
         return $this;
     }
