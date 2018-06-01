@@ -11,6 +11,7 @@ namespace ZEROSPAM\Framework\SDK\Test\Tests\Request;
 use ZEROSPAM\Framework\SDK\Test\Base\Request\BindableMultiTestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\Request\BindableTestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Framework\SDK\Test\Tests\Utils\Obj\BasicEnum;
 
 class BindableRequestTest extends TestCase
 {
@@ -24,6 +25,17 @@ class BindableRequestTest extends TestCase
         $bindableRequest->setNiceId(4)->setTestId(5);
 
         $this->assertEquals('test/5/nice/4', $bindableRequest->routeUrl());
+    }
+
+    /**
+     * @test
+     */
+    public function bindable_replace_bindings_enum()
+    {
+        $bindableRequest = new BindableTestRequest();
+        $bindableRequest->setNiceId(4)->setTestEnum(BasicEnum::TEST());
+
+        $this->assertEquals('test/test/nice/4', $bindableRequest->routeUrl());
     }
 
     /**

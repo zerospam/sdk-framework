@@ -11,6 +11,7 @@ namespace ZEROSPAM\Framework\SDK\Test\Base\Request;
 use ZEROSPAM\Framework\SDK\Request\Api\BindableRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
+use ZEROSPAM\Framework\SDK\Test\Tests\Utils\Obj\BasicEnum;
 
 class BindableTestRequest extends BindableRequest
 {
@@ -48,6 +49,13 @@ class BindableTestRequest extends BindableRequest
     public function setTestId($id)
     {
         $this->addBinding('testId', $id);
+
+        return $this;
+    }
+
+    public function setTestEnum(BasicEnum $enum)
+    {
+        $this->addBinding('testId', $enum);
 
         return $this;
     }
