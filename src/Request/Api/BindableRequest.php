@@ -84,5 +84,5 @@ abstract class BindableRequest extends BaseRequest
      *
      * @return string
      */
-    abstract function baseRoute();
+    abstract function baseRoute(): string;
 }

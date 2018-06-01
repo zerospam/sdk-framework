@@ -40,4 +40,16 @@ class ClientTest extends TestCase
         $this->assertInstanceOf(Carbon::class, $response->test_date);
         $this->assertEquals($now, $response->test_date);
     }
+
+    public function testResponseDateBindingNull(): void
+    {
+        $client = $this->preSuccess([]);
+
+        $request = new TestRequest();
+        $client->getOAuthTestClient()
+               ->processRequest($request);
+
+        $response = $request->getResponse();
+        $this->assertNull($response->test_date);
+    }
 }
