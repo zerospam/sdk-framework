@@ -13,6 +13,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
+use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Client\OAuthClient;
 use ZEROSPAM\Framework\SDK\Config\IOAuthConfiguration;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\Config\MockOAuthConfiguration;
@@ -63,9 +64,9 @@ class TestClient
      * Get client for tests
      *
      *
-     * @return OAuthClient
+     * @return IOAuthClient
      */
-    public function getOAuthTestClient(): OAuthClient
+    public function getOAuthTestClient(): IOAuthClient
     {
         return new OAuthClient($this->getMockConfiguration(), AccessTokenGenerator::generateAccessToken(), $this->buildClient());
     }

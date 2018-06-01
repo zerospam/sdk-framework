@@ -9,9 +9,12 @@
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Middleware;
 
 use GuzzleHttp\Psr7\Response;
+use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Framework\SDK\Test\Base\Util\AccessTokenGenerator;
 
 class AuthMiddlewareTest extends TestCase
 {
@@ -20,26 +23,29 @@ class AuthMiddlewareTest extends TestCase
         $testClient = $this->prepareQueue(
             [
                 new Response(401),
-                new Response(
-                    200,
-                    [],
-                    json_encode(
-                        [
-                            'test' => 'superTest',
-                        ]
-                    )
-                ),
             ]
         );
 
 
         $OAuthClient = $testClient->getOAuthTestClient();
-        $token       = $OAuthClient->getToken();
-        $OAuthClient
-            ->registerMiddleware(new AuthenticationMiddleware())
-            ->processRequest(new TestRequest());
+        $middleware  = new AuthenticationMiddleware();
 
-        $this->assertNotEquals((string)$OAuthClient->getToken(), (string)$token);
+
+        $OAuthClient
+            ->registerMiddleware($middleware);
+        $mockClient = \Mockery::mock(IOAuthClient::class)
+                              ->shouldReceive('refreshToken')
+                              ->once()
+                              ->andReturn(AccessTokenGenerator::generateAccessToken())
+                              ->getMock()
+                              ->shouldReceive('processRequest')
+                              ->once()
+                              ->andReturn(new TestResponse(['test' => 'data']))
+                              ->getMock();
+
+        $middleware->setClient($mockClient);
+
+        $this->assertInstanceOf(TestResponse::class, $OAuthClient->processRequest(new TestRequest()));
     }
 
     /**

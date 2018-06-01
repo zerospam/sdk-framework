@@ -13,6 +13,12 @@ use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 
+/**
+ * Class TestRequest
+ *
+ * @method TestResponse getResponse()
+ * @package ZEROSPAM\Framework\SDK\Test\Base\Data
+ */
 class TestRequest extends BaseRequest
 {
 
