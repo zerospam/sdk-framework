@@ -152,8 +152,10 @@ class OAuthClient
             $response   = $this->guzzleClient->send($httpRequest);
             $parsedData = JSONParsing::responseToJson($response);
 
-            foreach ($this->middlewares[$response->getStatusCode()] as $middleware) {
-                $parsedData = $middleware->handle($request, $response, $parsedData);
+            if (isset($this->middlewares[$response->getStatusCode()])) {
+                foreach ($this->middlewares[$response->getStatusCode()] as $middleware) {
+                    $parsedData = $middleware->handle($request, $response, $parsedData);
+                }
             }
         } catch (BadResponseException $e) {
             /**
@@ -161,6 +163,7 @@ class OAuthClient
              */
             $response = $e->getResponse();
             $this->processThrottleData($response);
+
             if (!isset($this->middlewares[$response->getStatusCode()])) {
                 throw new SDKException($e->getMessage(), $e->getCode(), $e);
             }
