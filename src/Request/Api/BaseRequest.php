@@ -224,4 +224,12 @@ abstract class BaseRequest implements IRequest
     {
         return ++$this->tries;
     }
+
+    /**
+     * @return ArgMerger[]
+     */
+    public function getMergeableArguments(): array
+    {
+        return $this->mergeableArguments;
+    }
 }
