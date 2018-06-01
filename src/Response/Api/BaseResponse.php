@@ -10,6 +10,7 @@ namespace ZEROSPAM\Framework\SDK\Response\Api;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
+use ZEROSPAM\Framework\SDK\Response\RateLimit\RateLimitData;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 abstract class BaseResponse implements IResponse
@@ -23,6 +24,11 @@ abstract class BaseResponse implements IResponse
      * @var array
      */
     protected $data;
+
+    /**
+     * @var RateLimitData
+     */
+    protected $rateLimit;
 
     /**
      * Dates to be transTyped from string to Carbon
@@ -43,23 +49,33 @@ abstract class BaseResponse implements IResponse
     }
 
     /**
-     * Id in the response
-     *
-     * @return int
-     */
-    public function id(): int
-    {
-        return $this->data['id'];
-    }
-
-    /**
      * Data contained in the response
      *
      * @return array
      */
     public function data(): array
     {
-        return $this->data['response'];
+        return $this->data;
+    }
+
+    /**
+     * @return RateLimitData
+     */
+    public function getRateLimit(): RateLimitData
+    {
+        return $this->rateLimit;
+    }
+
+    /**
+     * @param RateLimitData $rateLimit
+     *
+     * @return $this
+     */
+    public function setRateLimit(RateLimitData $rateLimit): BaseResponse
+    {
+        $this->rateLimit = $rateLimit;
+
+        return $this;
     }
 
 
@@ -98,10 +114,12 @@ abstract class BaseResponse implements IResponse
                 return $this->objReplacementCache[$field];
             }
 
-            return $this->objReplacementCache[$field] = call_user_func([
-                $this,
-                $key,
-            ]);
+            return $this->objReplacementCache[$field] = call_user_func(
+                [
+                    $this,
+                    $key,
+                ]
+            );
         }
 
         //Same as before but specific for dates
@@ -110,16 +128,12 @@ abstract class BaseResponse implements IResponse
                 return $this->objReplacementCache[$field];
             }
 
-            if (!isset($this->data['response'])) {
-                return null;
-            }
-
-            if (is_null($this->data['response'][$field])) {
+            if (!isset($this->data[$field])) {
                 return null;
             }
 
             if (!$dateTime
-                = Carbon::parse($this->data['response'][$field])
+                = Carbon::parse($this->data[$field])
             ) {
                 throw new \InvalidArgumentException('Date cannot be parsed');
             }
@@ -127,8 +141,8 @@ abstract class BaseResponse implements IResponse
             return $this->objReplacementCache[$field] = $dateTime;
         }
 
-        if (isset($this->data['response'][$field])) {
-            return $this->data['response'][$field];
+        if (isset($this->data[$field])) {
+            return $this->data[$field];
         }
 
         if (isset($this->data[$field])) {
@@ -143,8 +157,7 @@ abstract class BaseResponse implements IResponse
     {
         $key = 'get' . Str::studly($name) . 'Attribute';
 
-        return isset($this->data['response'][$name])
-               || isset($this->data[$name])
+        return isset($this->data[$name])
                || method_exists($this, $key)
                || (isset($this->dates) && in_array($name, $this->dates));
     }
