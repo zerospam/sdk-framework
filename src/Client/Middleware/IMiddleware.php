@@ -1,0 +1,48 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: aaflalo
+ * Date: 18-06-01
+ * Time: 10:59
+ */
+
+namespace ZEROSPAM\Framework\SDK\Client\Middleware;
+
+use Psr\Http\Message\ResponseInterface;
+use ZEROSPAM\Framework\SDK\Client\OAuthClient;
+use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
+
+interface IMiddleware
+{
+
+    /**
+     * Set the OAuth Client
+     *
+     * @param OAuthClient $client
+     *
+     * @return $this
+     */
+    public function setClient(OAuthClient $client): IMiddleware;
+
+    /**
+     * Which status error code does this middleware manage
+     *
+     * @return array
+     */
+    public static function statusCode(): array;
+
+
+    /**
+     * Handle the request/response
+     *
+     * Return an array with the response data
+     *
+     * @param IRequest          $request
+     * @param ResponseInterface $httpResponse
+     *
+     * @param array             $parsedData
+     *
+     * @return array
+     */
+    public function handle(IRequest $request, ResponseInterface $httpResponse, array $parsedData): array;
+}
