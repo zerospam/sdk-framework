@@ -8,6 +8,7 @@
 
 namespace ZEROSPAM\Framework\SDK\Request\Api;
 
+use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 abstract class BindableRequest extends BaseRequest
@@ -40,6 +41,10 @@ abstract class BindableRequest extends BaseRequest
         //addBinding(orgId, 5)
         if (isset($this->routeBindings[$key]) && !$override) {
             throw new \InvalidArgumentException("You can't override the key: $key");
+        }
+
+        if ($value instanceof PrimalValued) {
+            $value = $value->toPrimitive();
         }
 
         if (is_object($value) || is_array($value)) {
