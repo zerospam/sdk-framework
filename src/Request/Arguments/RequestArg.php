@@ -10,7 +10,7 @@ namespace ZEROSPAM\Framework\SDK\Request\Arguments;
 
 use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
-abstract class BaseArgument implements IArgument
+class RequestArg implements IArgument
 {
     /**
      * @var string
