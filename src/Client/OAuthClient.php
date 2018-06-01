@@ -24,7 +24,7 @@ use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Response\RateLimit\RateLimitData;
 use ZEROSPAM\Framework\SDK\Utils\JSON\JSONParsing;
 
-class OAuthClient
+class OAuthClient implements IOAuthClient
 {
     /**
      * @var IOAuthConfiguration
@@ -72,9 +72,9 @@ class OAuthClient
      *
      * @param \ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware $middleware
      *
-     * @return $this
+     * @return IOAuthClient
      */
-    public function registerMiddleware(IMiddleware $middleware): self
+    public function registerMiddleware(IMiddleware $middleware): IOAuthClient
     {
         $middleware->setClient($this);
         foreach ($middleware::statusCode() as $statusCode) {
@@ -91,9 +91,9 @@ class OAuthClient
      *
      * @param \ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware $middleware
      *
-     * @return OAuthClient
+     * @return IOAuthClient
      */
-    public function unregisterMiddleware(IMiddleware $middleware): self
+    public function unregisterMiddleware(IMiddleware $middleware): IOAuthClient
     {
         $middlewareClass = get_class($middleware);
         foreach ($middleware::statusCode() as $statusCode) {

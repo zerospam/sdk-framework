@@ -8,24 +8,24 @@
 
 namespace ZEROSPAM\Framework\SDK\Client\Middleware;
 
-use ZEROSPAM\Framework\SDK\Client\OAuthClient;
+use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 
 trait MiddlewareClient
 {
 
     /**
-     * @var OAuthClient
+     * @var IOAuthClient
      */
     private $client;
 
     /**
      * Set the OAuth Client
      *
-     * @param OAuthClient $client
+     * @param IOAuthClient $client
      *
      * @return $this
      */
-    public function setClient(OAuthClient $client): IMiddleware
+    public function setClient(IOAuthClient $client): IMiddleware
     {
         $this->client = $client;
 
