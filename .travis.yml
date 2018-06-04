@@ -6,20 +6,24 @@ cache:
   directories:
     - $HOME/.composer/cache/files
 
-php:
-  - 7.1
-  - 7.2
-
 stages:
+  - precache
   - test
   - name: documentation
     if: branch = master
 
 jobs:
   include:
+    - stage: precache
+      script: true
+      php: 7.2
+
     - stage: test
       script:
         - ./vendor/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml
+      php:
+        - 7.1
+        - 7.2
       after_success:
         - php vendor/bin/php-coveralls -v
 
@@ -40,6 +44,5 @@ jobs:
           branch: master
 
 before_script:
-  - travis_retry composer self-update
   - travis_retry composer install --prefer-dist
   - travis_retry phpenv rehash
