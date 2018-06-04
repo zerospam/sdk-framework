@@ -16,11 +16,9 @@ use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\Arrayable;
 
 /**
- * Interface IRequest
+ * Interface IRequest.
  *
  * Request sent to the API server.
- *
- * @package ZEROSPAM\Framework\SDK\Request\Api
  */
 interface IRequest extends Arrayable
 {

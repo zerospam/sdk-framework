@@ -11,11 +11,9 @@ namespace ZEROSPAM\Framework\SDK\Request\Arguments;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
 /**
- * Class RequestArg
+ * Class RequestArg.
  *
  * Basic query argument
- *
- * @package ZEROSPAM\Framework\SDK\Request\Arguments
  */
 class RequestArg implements IArgument
 {
@@ -40,7 +38,7 @@ class RequestArg implements IArgument
         if (!is_string($key)) {
             throw new \InvalidArgumentException('The key need to be a string');
         }
-        $this->key   = $key;
+        $this->key = $key;
         $this->value = $value;
     }
 
@@ -62,7 +60,7 @@ class RequestArg implements IArgument
         }
 
         if (is_bool($value)) {
-            return (int)$value;
+            return (int) $value;
         }
 
         if (is_float($value)) {

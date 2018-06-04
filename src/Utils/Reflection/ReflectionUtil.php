@@ -14,11 +14,9 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 /**
- * Class ReflectionUtil
+ * Class ReflectionUtil.
  *
  * Helper for gathering all the properties of an object
- *
- * @package ZEROSPAM\Framework\SDK\Utils\Reflection
  */
 final class ReflectionUtil
 {

@@ -18,11 +18,9 @@ use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil;
 
 /**
- * Class BaseRequest
+ * Class BaseRequest.
  *
  * Represent a base request that will be sent to the API Server
- *
- * @package ZEROSPAM\Framework\SDK\Request\Api
  */
 abstract class BaseRequest implements IRequest
 {
@@ -169,7 +167,7 @@ abstract class BaseRequest implements IRequest
     public function requestOptions(): array
     {
         $query = [];
-        /**
+        /*
          * @var IArgument
          */
         foreach ($this->arguments as $key => $value) {
@@ -180,10 +178,10 @@ abstract class BaseRequest implements IRequest
             $query[$key] = $value->toPrimitive();
         }
 
-        $options                       = [
+        $options = [
             RequestOptions::QUERY => $query,
         ];
-        $requestContent                = $this->toArray();
+        $requestContent = $this->toArray();
         $options[RequestOptions::JSON] = $requestContent;
 
         return $options;

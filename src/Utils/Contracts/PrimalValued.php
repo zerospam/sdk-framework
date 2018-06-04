@@ -9,11 +9,9 @@
 namespace ZEROSPAM\Framework\SDK\Utils\Contracts;
 
 /**
- * Interface PrimalValued
+ * Interface PrimalValued.
  *
  * Can be reduced to primitive value
- *
- * @package ZEROSPAM\Framework\SDK\Utils\Contracts
  */
 interface PrimalValued
 {

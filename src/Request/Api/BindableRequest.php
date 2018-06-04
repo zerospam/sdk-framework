@@ -12,11 +12,9 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 /**
- * Class BindableRequest
+ * Class BindableRequest.
  *
  * To be used when you need bindings in your api route url.
- *
- * @package ZEROSPAM\Framework\SDK\Request\Api
  */
 abstract class BindableRequest extends BaseRequest
 {
@@ -27,7 +25,7 @@ abstract class BindableRequest extends BaseRequest
 
     protected function blacklistedProperties()
     {
-        $blacklist   = parent::blacklistedProperties();
+        $blacklist = parent::blacklistedProperties();
         $blacklist[] = 'routeBindings';
 
         return $blacklist;
@@ -74,7 +72,7 @@ abstract class BindableRequest extends BaseRequest
     {
         $bindingsPatterns = array_map(
             function ($item) {
-                return ':' . $item;
+                return ':'.$item;
             },
             array_keys($this->routeBindings)
         );
