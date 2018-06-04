@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-05-31
- * Time: 16:26
+ * Time: 16:26.
  */
 
 namespace ZEROSPAM\Framework\SDK\Request\Api;
@@ -13,8 +13,6 @@ use ZEROSPAM\Framework\SDK\Utils\Str;
 
 abstract class BindableRequest extends BaseRequest
 {
-
-
     /**
      * @var array
      */
@@ -22,15 +20,14 @@ abstract class BindableRequest extends BaseRequest
 
     protected function blacklistedProperties()
     {
-        $blacklist   = parent::blacklistedProperties();
+        $blacklist = parent::blacklistedProperties();
         $blacklist[] = 'routeBindings';
 
         return $blacklist;
     }
 
-
     /**
-     * Set a new binding
+     * Set a new binding.
      *
      * @param      $key
      * @param      $value
@@ -55,7 +52,7 @@ abstract class BindableRequest extends BaseRequest
     }
 
     /**
-     * Is the binding set
+     * Is the binding set.
      *
      * @param $key
      *
@@ -70,7 +67,7 @@ abstract class BindableRequest extends BaseRequest
     {
         $bindingsPatterns = array_map(
             function ($item) {
-                return ':' . $item;
+                return ':'.$item;
             },
             array_keys($this->routeBindings)
         );
@@ -83,11 +80,10 @@ abstract class BindableRequest extends BaseRequest
         return $url;
     }
 
-
     /**
-     * Base route without binding
+     * Base route without binding.
      *
      * @return string
      */
-    abstract function baseRoute(): string;
+    abstract public function baseRoute(): string;
 }

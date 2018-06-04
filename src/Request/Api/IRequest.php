@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 30/05/18
- * Time: 4:49 PM
+ * Time: 4:49 PM.
  */
 
 namespace ZEROSPAM\Framework\SDK\Request\Api;
@@ -17,24 +17,22 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\Arrayable;
 
 interface IRequest extends Arrayable
 {
-
     /**
-     * The url of the route
+     * The url of the route.
      *
      * @return string
      */
     public function routeUrl(): string;
 
-
     /**
-     * Type of request
+     * Type of request.
      *
      * @return RequestType
      */
     public function httpType(): RequestType;
 
     /**
-     * Process the data that is in the response
+     * Process the data that is in the response.
      *
      * @param array $jsonResponse
      *
@@ -43,39 +41,39 @@ interface IRequest extends Arrayable
     public function processResponse(array $jsonResponse): IResponse;
 
     /**
-     * Add a request argument
+     * Add a request argument.
      *
      * @param IArgument $arg
      *
      * @return $this
      */
-    public function addArgument(IArgument $arg): IRequest;
+    public function addArgument(IArgument $arg): self;
 
     /**
-     * Remove a request argument
+     * Remove a request argument.
      *
      * @param IArgument $arg
      *
      * @return $this
      */
-    public function removeArgument(IArgument $arg): IRequest;
+    public function removeArgument(IArgument $arg): self;
 
     /**
-     * Get all the request arguments
+     * Get all the request arguments.
      *
      * @return IArgument[]
      */
     public function getArguments(): array;
 
     /**
-     * Return the URI of the request
+     * Return the URI of the request.
      *
      * @return UriInterface
      */
     public function toUri() : UriInterface;
 
     /**
-     * Getter for response
+     * Getter for response.
      *
      * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
      */
@@ -87,35 +85,35 @@ interface IRequest extends Arrayable
     public function setResponse(IResponse $response): void;
 
     /**
-     * Options for this request to be used by the client
+     * Options for this request to be used by the client.
      *
      * @return array
      */
     public function requestOptions() :array;
 
     /**
-     * Get the argument that can be merged with each other
+     * Get the argument that can be merged with each other.
      *
      * @return ArgMerger[]
      */
     public function getMergeableArguments(): array;
 
     /**
-     * Number of tries of the request
+     * Number of tries of the request.
      *
      * @return int
      */
     public function tries(): int;
 
     /**
-     * Increment the number of tries and returns it
+     * Increment the number of tries and returns it.
      *
      * @return int
      */
     public function incrementTries() :int;
 
     /**
-     * Request type to use for the request
+     * Request type to use for the request.
      *
      * @return RequestType
      */

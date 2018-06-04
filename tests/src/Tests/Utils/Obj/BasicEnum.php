@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 15:25
+ * Time: 15:25.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Utils\Obj;
@@ -13,10 +13,9 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\Impl\PrimalValuedEnumTrait;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
 /**
- * Class BasicEnum
+ * Class BasicEnum.
  *
  * @method static BasicEnum TEST()
- * @package ProvulusTest\Obj
  */
 class BasicEnum extends Enum implements PrimalValued
 {

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 30/05/18
- * Time: 4:40 PM
+ * Time: 4:40 PM.
  */
 
 namespace ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable;
@@ -12,14 +12,13 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
 class ArgMerger implements PrimalValued
 {
-
     /**
      * @var IMergeableArgument[]
      */
     private $args = [];
 
     /**
-     * Add the argument
+     * Add the argument.
      *
      * @param IMergeableArgument $argument
      *
@@ -33,7 +32,7 @@ class ArgMerger implements PrimalValued
     }
 
     /**
-     * Remove the argument
+     * Remove the argument.
      *
      * @param IMergeableArgument $argument
      *
@@ -46,13 +45,12 @@ class ArgMerger implements PrimalValued
         return $this;
     }
 
-
     /**
-     * Return a primitive value for this object
+     * Return a primitive value for this object.
      *
-     * @return int|float|string|double
+     * @return int|float|string|float
      */
-    function toPrimitive()
+    public function toPrimitive()
     {
         if (empty($this->args)) {
             throw new \InvalidArgumentException("Args shouldn't be empty");
@@ -64,7 +62,7 @@ class ArgMerger implements PrimalValued
     }
 
     /**
-     * Is there arguments to be merged for request parameter
+     * Is there arguments to be merged for request parameter.
      *
      * @return bool
      */

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-05-31
- * Time: 16:47
+ * Time: 16:47.
  */
 
 namespace ZEROSPAM\Framework\SDK\Response\RateLimit;
@@ -11,17 +11,14 @@ namespace ZEROSPAM\Framework\SDK\Response\RateLimit;
 use Carbon\Carbon;
 
 /**
- * Class RateLimitData
+ * Class RateLimitData.
  *
  * Represent the number of request allowed in a minute
  * How many are still alowed and in the case there is too many done,
  * when  can the next one be done
- *
- * @package ProvulusSDK\Client
  */
 class RateLimitData implements IRateLimitData
 {
-
     /**
      * @var int
      */
@@ -38,7 +35,7 @@ class RateLimitData implements IRateLimitData
     private $endOfThrottle;
 
     /**
-     * Getter for maxPerMinute
+     * Getter for maxPerMinute.
      *
      * @return int
      */
@@ -60,7 +57,7 @@ class RateLimitData implements IRateLimitData
     }
 
     /**
-     * Getter for currentUsage
+     * Getter for currentUsage.
      *
      * @return int
      */
@@ -82,7 +79,7 @@ class RateLimitData implements IRateLimitData
     }
 
     /**
-     * Getter for endOfThrottle
+     * Getter for endOfThrottle.
      *
      * @return Carbon
      */

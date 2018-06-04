@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 14:54
+ * Time: 14:54.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Base\Data\Provider;
@@ -17,7 +17,6 @@ use ZEROSPAM\Framework\SDK\Test\Base\Util\AccessTokenGenerator;
 
 class TestProvider extends AbstractProvider
 {
-
     /**
      * Returns the base URL for authorizing a client.
      *
@@ -46,7 +45,7 @@ class TestProvider extends AbstractProvider
 
     public function getAuthorizationHeaders($token = null)
     {
-        return ['Authorization' => 'Bearer ' . $token];
+        return ['Authorization' => 'Bearer '.$token];
     }
 
     protected function getDefaultHeaders()
@@ -65,7 +64,6 @@ class TestProvider extends AbstractProvider
     {
         return 'https://api.example.com/owner';
     }
-
 
     public function getAccessToken($grant, array $options = [])
     {
@@ -88,29 +86,28 @@ class TestProvider extends AbstractProvider
     /**
      * Checks a provider response for errors.
      *
-     * @throws IdentityProviderException
      *
-     * @param  ResponseInterface $response
-     * @param  array|string      $data Parsed response data
+     * @param ResponseInterface $response
+     * @param array|string      $data     Parsed response data
+     *
+     * @throws IdentityProviderException
      *
      * @return void
      */
     protected function checkResponse(ResponseInterface $response, $data)
     {
-
     }
 
     /**
      * Generates a resource owner object from a successful resource owner
      * details request.
      *
-     * @param  array       $response
-     * @param  AccessToken $token
+     * @param array       $response
+     * @param AccessToken $token
      *
      * @return ResourceOwnerInterface
      */
     protected function createResourceOwner(array $response, AccessToken $token)
     {
-        return null;
     }
 }

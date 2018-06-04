@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 15:40
+ * Time: 15:40.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Request;
@@ -15,7 +15,6 @@ use ZEROSPAM\Framework\SDK\Test\Tests\Utils\Obj\BasicEnum;
 
 class BindableRequestTest extends TestCase
 {
-
     /**
      * @test
      */
