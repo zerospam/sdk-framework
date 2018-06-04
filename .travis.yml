@@ -3,8 +3,9 @@ language: php
 sudo: true
 
 php:
- - 7.1
  - 7.2
+ - 7.1
+
 
 cache:
   directories:
@@ -20,7 +21,7 @@ jobs:
   include:
     - stage: precache
       script: skip
-      php: 7.2
+      after_sucess: skip
 
     - stage: documentation
       install: true
@@ -29,6 +30,7 @@ jobs:
         - sudo apt-get install graphviz
       script:
         - php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"
+      after_sucess: skip
       deploy: &pages
         provider: pages
         skip-cleanup: true
