@@ -15,10 +15,10 @@ before_script:
 
 script:
   - ./vendor/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml
+  - if [[ $TRAVIS_BRANCH == 'master' ]]; then php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"; fi
 
 after_script:
   - php vendor/bin/php-coveralls -v
-  - if [[ $TRAVIS_BRANCH == 'master' ]]; then ./vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"; fi
 
 deploy:
   provider: pages
