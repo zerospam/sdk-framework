@@ -15,6 +15,7 @@ use GuzzleHttp\Exception\RequestException;
 use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 use ZEROSPAM\Framework\SDK\Client\Exception\SDKException;
+use ZEROSPAM\Framework\SDK\Client\Exception\TooManyRetriesException;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
 use ZEROSPAM\Framework\SDK\Config\IOAuthConfiguration;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
@@ -190,7 +191,7 @@ class OAuthClient implements IOAuthClient
                 return $this->processRequest($request);
             }
 
-            throw new SDKException($e->getMessage(), $e->getCode(), $e);
+            throw new TooManyRetriesException($e->getMessage(), $e->getCode(), $e);
         } catch (\GuzzleHttp\Exception\GuzzleException $e) {
             throw new SDKException($e->getMessage(), $e->getCode(), $e);
         }
