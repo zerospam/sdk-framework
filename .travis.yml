@@ -2,7 +2,9 @@ language: php
 
 sudo: true
 
-cache: composer
+cache:
+  directories:
+    - $HOME/.composer/cache/files
 
 php:
   - 7.1
@@ -18,11 +20,13 @@ jobs:
     - stage: test
       script:
         - ./vendor/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml
-      after_script:
+      after_success:
         - php vendor/bin/php-coveralls -v
 
     - stage: documentation
-      before_script:
+      install: true
+      before_install:
+        - sudo apt-get update
         - sudo apt-get install graphviz
       script:
         - php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"
