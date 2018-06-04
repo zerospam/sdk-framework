@@ -24,6 +24,13 @@ use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Response\RateLimit\RateLimitData;
 use ZEROSPAM\Framework\SDK\Utils\JSON\JSONParsing;
 
+/**
+ * Class OAuthClient
+ *
+ * Client for OAuth server interaction
+ *
+ * @package ZEROSPAM\Framework\SDK\Client
+ */
 class OAuthClient implements IOAuthClient
 {
     /**
@@ -54,14 +61,14 @@ class OAuthClient implements IOAuthClient
      *
      * @param IOAuthConfiguration  $configuration
      * @param AccessToken          $token
-     * @param ClientInterface|null $guzzleClient  Only set if you want to override the default client
+     * @param ClientInterface|null $guzzleClient Only set if you want to override the default client
      */
     public function __construct(IOAuthConfiguration $configuration, AccessToken $token, ClientInterface $guzzleClient = null)
     {
         $this->configuration = $configuration;
-        $this->rateLimit = new RateLimitData();
-        $this->token = $token;
-        $this->guzzleClient = $guzzleClient;
+        $this->rateLimit     = new RateLimitData();
+        $this->token         = $token;
+        $this->guzzleClient  = $guzzleClient;
         if ($this->guzzleClient == null) {
             $this->guzzleClient = new Client(['base_uri' => $this->configuration->getEndPoint()]);
         }
@@ -154,7 +161,7 @@ class OAuthClient implements IOAuthClient
         );
 
         try {
-            $response = $this->guzzleClient->send($httpRequest);
+            $response   = $this->guzzleClient->send($httpRequest);
             $parsedData = JSONParsing::responseToJson($response);
 
             if (isset($this->middlewares[$response->getStatusCode()])) {

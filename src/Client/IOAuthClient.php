@@ -13,6 +13,13 @@ use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 
+/**
+ * Interface IOAuthClient
+ *
+ * Client to make request to a server that use OAuth2 authentication
+ *
+ * @package ZEROSPAM\Framework\SDK\Client
+ */
 interface IOAuthClient
 {
     /**

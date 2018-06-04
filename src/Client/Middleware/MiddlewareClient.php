@@ -10,6 +10,13 @@ namespace ZEROSPAM\Framework\SDK\Client\Middleware;
 
 use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 
+/**
+ * Trait MiddlewareClient
+ *
+ * Helper to set the client
+ *
+ * @package ZEROSPAM\Framework\SDK\Client\Middleware
+ */
 trait MiddlewareClient
 {
     /**

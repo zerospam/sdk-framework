@@ -13,6 +13,16 @@ use League\OAuth2\Client\Grant\RefreshToken;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
 
+/**
+ * Class OAuthConfiguration
+ *
+ * Helper for an OAuthConfiguration.
+ *
+ * You need to implement the providerClass by pointing it to your wanted OAuthProvider
+ *
+ * @see     AbstractProvider
+ * @package ZEROSPAM\Framework\SDK\Config
+ */
 abstract class OAuthConfiguration implements IOAuthConfiguration
 {
     /**

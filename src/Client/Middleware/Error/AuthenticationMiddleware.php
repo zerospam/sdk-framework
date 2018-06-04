@@ -14,6 +14,13 @@ use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
 use ZEROSPAM\Framework\SDK\Client\Middleware\MiddlewareClient;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 
+/**
+ * Class AuthenticationMiddleware
+ *
+ * Catch a Authentication failure and try to refresh the access_token
+ *
+ * @package ZEROSPAM\Framework\SDK\Client\Middleware\Error
+ */
 class AuthenticationMiddleware implements IMiddleware
 {
     use MiddlewareClient;

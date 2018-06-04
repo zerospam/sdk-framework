@@ -12,6 +12,13 @@ use Psr\Http\Message\ResponseInterface;
 use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 
+/**
+ * Interface IMiddleware
+ *
+ * Intercept the response given by the API in the case of a match with the set status code.
+ *
+ * @package ZEROSPAM\Framework\SDK\Client\Middleware
+ */
 interface IMiddleware
 {
     /**
@@ -21,7 +28,7 @@ interface IMiddleware
      *
      * @return $this
      */
-    public function setClient(IOAuthClient $client): self;
+    public function setClient(IOAuthClient $client): IMiddleware;
 
     /**
      * Which status error code does this middleware manage.

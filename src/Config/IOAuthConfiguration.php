@@ -10,7 +10,16 @@ namespace ZEROSPAM\Framework\SDK\Config;
 
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
+use ZEROSPAM\Framework\SDK\Client\OAuthClient;
 
+/**
+ * Interface IOAuthConfiguration
+ *
+ * Configuration for an OAuthClient
+ *
+ * @see     OAuthClient
+ * @package ZEROSPAM\Framework\SDK\Config
+ */
 interface IOAuthConfiguration
 {
     /**
