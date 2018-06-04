@@ -56,6 +56,19 @@ class ClientTest extends TestCase
         $this->assertEquals($now, $response->test_date);
     }
 
+    public function testResponseAddedField(): void
+    {
+        $client = $this->preSuccess(['added' => 'field']);
+
+        $request = new TestRequest();
+        $client->getOAuthTestClient()
+               ->processRequest($request);
+
+        $response = $request->getResponse();
+        $this->assertThat(isset($response->added), $this->isTrue());
+        $this->assertEquals('field', $response->get('added'));
+    }
+
     public function testResponseDateBindingNull(): void
     {
         $client = $this->preSuccess([]);

@@ -9,7 +9,6 @@
 namespace ZEROSPAM\Framework\SDK\Response\Api;
 
 use Carbon\Carbon;
-use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Response\RateLimit\RateLimitData;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
@@ -139,10 +138,6 @@ abstract class BaseResponse implements IResponse
             }
 
             return $this->objReplacementCache[$field] = $dateTime;
-        }
-
-        if (isset($this->data[$field])) {
-            return $this->data[$field];
         }
 
         if (isset($this->data[$field])) {
