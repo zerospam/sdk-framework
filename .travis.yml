@@ -9,6 +9,7 @@ php:
   - 7.2
 
 stages:
+  - precache
   - test
   - name: documentation
     if: branch = master
@@ -16,11 +17,16 @@ stages:
 jobs:
   include:
     - stage: test
-      script: ./vendor/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml
-      script: php vendor/bin/php-coveralls -v
+      script:
+        - ./vendor/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml
+      after_script:
+        - php vendor/bin/php-coveralls -v
+
     - stage: documentation
-      script: sudo apt-get install graphviz
-      script: php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"
+      before_script:
+        - sudo apt-get install graphviz
+      script:
+        - php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"
       deploy: &pages
         provider: pages
         skip-cleanup: true
@@ -30,7 +36,3 @@ jobs:
         on:
           branch: master
 
-before_script:
-  - travis_retry composer self-update
-  - travis_retry composer install --prefer-dist
-  - travis_retry phpenv rehash
