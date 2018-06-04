@@ -12,17 +12,12 @@ cache:
     - $HOME/.composer/cache/files
 
 stages:
-  - precache
   - test
   - name: documentation
     if: branch = master
 
 jobs:
   include:
-    - stage: precache
-      script: skip
-      after_sucess: skip
-
     - stage: documentation
       install: true
       before_install:
