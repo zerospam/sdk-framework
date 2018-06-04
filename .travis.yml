@@ -8,6 +8,15 @@ php:
   - 7.1
   - 7.2
 
+stages:
+  - name: documentation
+    if: branch = master
+
+jobs:
+  include:
+    - stage: documentation
+      script: php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"
+
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install -n --prefer-dist
@@ -15,7 +24,6 @@ before_script:
 
 script:
   - ./vendor/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml
-  - if [[ $TRAVIS_BRANCH == 'master' ]]; then php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"; fi
 
 after_script:
   - php vendor/bin/php-coveralls -v
