@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 09:50
+ * Time: 09:50.
  */
 
 namespace ZEROSPAM\Framework\SDK\Config;
@@ -14,14 +14,14 @@ use League\OAuth2\Client\Token\AccessToken;
 interface IOAuthConfiguration
 {
     /**
-     * Get the redirect URL
+     * Get the redirect URL.
      *
      * @return string
      */
     public function getRedirectUrl(): string;
 
     /**
-     * Get access token for given code
+     * Get access token for given code.
      *
      * @param string $code
      *
@@ -30,7 +30,7 @@ interface IOAuthConfiguration
     public function getAccessToken(string $code): AccessToken;
 
     /**
-     * Give a new access token refreshed
+     * Give a new access token refreshed.
      *
      * @param AccessToken $token
      *
@@ -39,7 +39,7 @@ interface IOAuthConfiguration
     public function refreshAccessToken(AccessToken $token): AccessToken;
 
     /**
-     * Use the refresh token to get a new access token
+     * Use the refresh token to get a new access token.
      *
      * @param string $refreshToken
      *
@@ -48,14 +48,14 @@ interface IOAuthConfiguration
     public function refreshToken(string $refreshToken): AccessToken;
 
     /**
-     * Get a OAuthProvider
+     * Get a OAuthProvider.
      *
      * @return AbstractProvider
      */
     public function getProvider(): AbstractProvider;
 
     /**
-     * End point for Requests
+     * End point for Requests.
      *
      * @return string
      */

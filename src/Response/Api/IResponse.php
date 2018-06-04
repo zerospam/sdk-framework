@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 30/05/18
- * Time: 4:35 PM
+ * Time: 4:35 PM.
  */
 
 namespace ZEROSPAM\Framework\SDK\Response\Api;
@@ -11,14 +11,14 @@ namespace ZEROSPAM\Framework\SDK\Response\Api;
 interface IResponse
 {
     /**
-     * Data contained in the response
+     * Data contained in the response.
      *
      * @return array
      */
     public function data(): array;
 
     /**
-     * Get a specific field
+     * Get a specific field.
      *
      * @param string $field
      *
@@ -27,7 +27,7 @@ interface IResponse
     public function get($field);
 
     /**
-     * Return value in response array of the response
+     * Return value in response array of the response.
      *
      * @param $key
      *

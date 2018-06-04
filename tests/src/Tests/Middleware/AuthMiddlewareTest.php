@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 15:00
+ * Time: 15:00.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Middleware;
@@ -26,10 +26,8 @@ class AuthMiddlewareTest extends TestCase
             ]
         );
 
-
         $OAuthClient = $testClient->getOAuthTestClient();
-        $middleware  = new AuthenticationMiddleware();
-
+        $middleware = new AuthenticationMiddleware();
 
         $OAuthClient
             ->registerMiddleware($middleware);
@@ -61,7 +59,6 @@ class AuthMiddlewareTest extends TestCase
                 new Response(401),
             ]
         );
-
 
         $OAuthClient = $testClient->getOAuthTestClient();
         $OAuthClient

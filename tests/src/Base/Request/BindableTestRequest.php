@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 15:38
+ * Time: 15:38.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Base\Request;
@@ -15,8 +15,6 @@ use ZEROSPAM\Framework\SDK\Test\Tests\Utils\Obj\BasicEnum;
 
 class BindableTestRequest extends BindableRequest
 {
-
-
     private $test;
 
     /**
@@ -31,9 +29,8 @@ class BindableTestRequest extends BindableRequest
         return $this;
     }
 
-
     /**
-     * CAN'T OVERRIDE
+     * CAN'T OVERRIDE.
      *
      * @param $id
      *
@@ -61,17 +58,17 @@ class BindableTestRequest extends BindableRequest
     }
 
     /**
-     * Base route without binding
+     * Base route without binding.
      *
      * @return string
      */
-    function baseRoute(): string
+    public function baseRoute(): string
     {
         return 'test/:testId/nice/:niceId';
     }
 
     /**
-     * Type of request
+     * Type of request.
      *
      * @return RequestType
      */
@@ -81,7 +78,7 @@ class BindableTestRequest extends BindableRequest
     }
 
     /**
-     * Process the data that is in the response
+     * Process the data that is in the response.
      *
      * @param array $jsonResponse
      *

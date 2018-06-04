@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 30/05/18
- * Time: 4:35 PM
+ * Time: 4:35 PM.
  */
 
 namespace ZEROSPAM\Framework\SDK\Request\Api;
@@ -19,7 +19,6 @@ use ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil;
 
 abstract class BaseRequest implements IRequest
 {
-
     /**
      * @var IArgument[]
      */
@@ -29,7 +28,6 @@ abstract class BaseRequest implements IRequest
      * @var ArgMerger[]
      */
     private $mergeableArguments = [];
-
 
     /**
      * @var \ZEROSPAM\Framework\SDK\Response\Api\IResponse
@@ -45,7 +43,7 @@ abstract class BaseRequest implements IRequest
     private $requestTypeOverride;
 
     /**
-     * Add a request argument
+     * Add a request argument.
      *
      * @param IArgument $arg
      *
@@ -69,7 +67,7 @@ abstract class BaseRequest implements IRequest
     }
 
     /**
-     * Remove a request argument
+     * Remove a request argument.
      *
      * @param IArgument $arg
      *
@@ -94,7 +92,7 @@ abstract class BaseRequest implements IRequest
     }
 
     /**
-     * Get all the request arguments
+     * Get all the request arguments.
      *
      * @return IArgument[]
      */
@@ -103,12 +101,12 @@ abstract class BaseRequest implements IRequest
         return $this->arguments;
     }
 
-
     /**
-     * Get the data used for the route
+     * Get the data used for the route.
+     *
+     * @throws \ReflectionException
      *
      * @return array
-     * @throws \ReflectionException
      */
     public function toArray(): array
     {
@@ -116,7 +114,7 @@ abstract class BaseRequest implements IRequest
     }
 
     /**
-     * List of properties to not serialize
+     * List of properties to not serialize.
      *
      * @return array
      */
@@ -135,7 +133,7 @@ abstract class BaseRequest implements IRequest
     }
 
     /**
-     * Return the URI of the request
+     * Return the URI of the request.
      *
      * @return UriInterface
      */
@@ -145,7 +143,7 @@ abstract class BaseRequest implements IRequest
     }
 
     /**
-     * Request type to use for the request
+     * Request type to use for the request.
      *
      * @return RequestType
      */
@@ -154,18 +152,18 @@ abstract class BaseRequest implements IRequest
         return $this->requestTypeOverride ?: $this->httpType();
     }
 
-
     /**
-     * Options for this request to be used by the client
+     * Options for this request to be used by the client.
+     *
+     * @throws \ReflectionException
      *
      * @return array
-     * @throws \ReflectionException
      */
     public function requestOptions() : array
     {
         $query = [];
         /**
-         * @var $value IArgument
+         * @var IArgument
          */
         foreach ($this->arguments as $key => $value) {
             $query[$key] = $value->toPrimitive();
@@ -175,20 +173,17 @@ abstract class BaseRequest implements IRequest
             $query[$key] = $value->toPrimitive();
         }
 
-
-        $options                       = [
+        $options = [
             RequestOptions::QUERY => $query,
         ];
-        $requestContent                = $this->toArray();
+        $requestContent = $this->toArray();
         $options[RequestOptions::JSON] = $requestContent;
-
 
         return $options;
     }
 
-
     /**
-     * Getter for response
+     * Getter for response.
      *
      * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
      */
@@ -198,7 +193,7 @@ abstract class BaseRequest implements IRequest
     }
 
     /**
-     * @param  \ZEROSPAM\Framework\SDK\Response\Api\IResponse $response
+     * @param \ZEROSPAM\Framework\SDK\Response\Api\IResponse $response
      */
     public function setResponse(IResponse $response): void
     {
@@ -206,7 +201,7 @@ abstract class BaseRequest implements IRequest
     }
 
     /**
-     * Number of tries of the request
+     * Number of tries of the request.
      *
      * @return int
      */
@@ -216,7 +211,7 @@ abstract class BaseRequest implements IRequest
     }
 
     /**
-     * Increment the number of tries and returns it
+     * Increment the number of tries and returns it.
      *
      * @return int
      */

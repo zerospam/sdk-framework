@@ -3,27 +3,24 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 14:18
+ * Time: 14:18.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Base\Data;
-
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 
 /**
- * Class TestRequest
+ * Class TestRequest.
  *
  * @method TestResponse getResponse()
- * @package ZEROSPAM\Framework\SDK\Test\Base\Data
  */
 class TestRequest extends BaseRequest
 {
-
     /**
-     * The url of the route
+     * The url of the route.
      *
      * @return string
      */
@@ -33,7 +30,7 @@ class TestRequest extends BaseRequest
     }
 
     /**
-     * Type of request
+     * Type of request.
      *
      * @return RequestType
      */
@@ -43,7 +40,7 @@ class TestRequest extends BaseRequest
     }
 
     /**
-     * Process the data that is in the response
+     * Process the data that is in the response.
      *
      * @param array $jsonResponse
      *

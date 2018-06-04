@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 30/05/18
- * Time: 4:25 PM
+ * Time: 4:25 PM.
  */
 
 namespace ZEROSPAM\Framework\SDK\Request\Arguments;
@@ -15,7 +15,8 @@ class RequestArg implements IArgument
     /**
      * @var string
      */
-    private $key, $value;
+    private $key;
+    private $value;
 
     /**
      * RequestArg constructor.
@@ -31,12 +32,12 @@ class RequestArg implements IArgument
         if (!is_string($key)) {
             throw new \InvalidArgumentException('The key need to be a string');
         }
-        $this->key   = $key;
+        $this->key = $key;
         $this->value = $value;
     }
 
     /**
-     * Key for the argument
+     * Key for the argument.
      *
      * @return string
      */
@@ -45,8 +46,7 @@ class RequestArg implements IArgument
         return $this->key;
     }
 
-
-    function toPrimitive()
+    public function toPrimitive()
     {
         $value = $this->value;
         if ($value instanceof PrimalValued) {
@@ -54,7 +54,7 @@ class RequestArg implements IArgument
         }
 
         if (is_bool($value)) {
-            return (int)$value;
+            return (int) $value;
         }
 
         if (is_float($value)) {

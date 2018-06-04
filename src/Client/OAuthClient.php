@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 09:42
+ * Time: 09:42.
  */
 
 namespace ZEROSPAM\Framework\SDK\Client;
@@ -54,21 +54,21 @@ class OAuthClient implements IOAuthClient
      *
      * @param IOAuthConfiguration  $configuration
      * @param AccessToken          $token
-     * @param ClientInterface|null $guzzleClient Only set if you want to override the default client
+     * @param ClientInterface|null $guzzleClient  Only set if you want to override the default client
      */
     public function __construct(IOAuthConfiguration $configuration, AccessToken $token, ClientInterface $guzzleClient = null)
     {
         $this->configuration = $configuration;
-        $this->rateLimit     = new RateLimitData();
-        $this->token         = $token;
-        $this->guzzleClient  = $guzzleClient;
+        $this->rateLimit = new RateLimitData();
+        $this->token = $token;
+        $this->guzzleClient = $guzzleClient;
         if ($this->guzzleClient == null) {
             $this->guzzleClient = new Client(['base_uri' => $this->configuration->getEndPoint()]);
         }
     }
 
     /**
-     * Register the given middleware
+     * Register the given middleware.
      *
      * @param \ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware $middleware
      *
@@ -118,7 +118,7 @@ class OAuthClient implements IOAuthClient
     }
 
     /**
-     * Refresh token
+     * Refresh token.
      */
     public function refreshToken(): AccessToken
     {
@@ -126,7 +126,7 @@ class OAuthClient implements IOAuthClient
     }
 
     /**
-     * Currently used access token
+     * Currently used access token.
      *
      * @return AccessToken
      */
@@ -135,9 +135,8 @@ class OAuthClient implements IOAuthClient
         return $this->token;
     }
 
-
     /**
-     * Process the given request and return an array containing the results
+     * Process the given request and return an array containing the results.
      *
      * @param IRequest $request
      *
@@ -147,7 +146,6 @@ class OAuthClient implements IOAuthClient
     {
         $request->incrementTries();
 
-
         $httpRequest = $this->configuration->getProvider()->getAuthenticatedRequest(
             $request->requestType()->getValue(),
             $request->toUri(),
@@ -155,9 +153,8 @@ class OAuthClient implements IOAuthClient
             $request->requestOptions()
         );
 
-
         try {
-            $response   = $this->guzzleClient->send($httpRequest);
+            $response = $this->guzzleClient->send($httpRequest);
             $parsedData = JSONParsing::responseToJson($response);
 
             if (isset($this->middlewares[$response->getStatusCode()])) {
@@ -167,7 +164,7 @@ class OAuthClient implements IOAuthClient
             }
         } catch (BadResponseException $e) {
             /**
-             * Check status code
+             * Check status code.
              */
             $response = $e->getResponse();
             $this->processThrottleData($response);
@@ -185,13 +182,14 @@ class OAuthClient implements IOAuthClient
                 && $request->tries() < 3) {
                 return $this->processRequest($request);
             }
+
             throw new SDKException($e->getMessage(), $e->getCode(), $e);
         } catch (\GuzzleHttp\Exception\GuzzleException $e) {
             throw new SDKException($e->getMessage(), $e->getCode(), $e);
         }
 
         /**
-         * @var $data BaseResponse
+         * @var BaseResponse
          */
         $data = $request->processResponse($parsedData);
 
@@ -203,9 +201,8 @@ class OAuthClient implements IOAuthClient
         return $data;
     }
 
-
     /**
-     * Process the rate limit
+     * Process the rate limit.
      *
      * @param ResponseInterface $response
      */

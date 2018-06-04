@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 15:55
+ * Time: 15:55.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Argument;
@@ -15,13 +15,12 @@ use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 
 class MergeableArgumentTest extends TestCase
 {
-
     /**
      * @test
      */
     public function add_argument_merge()
     {
-        $key     = (new TestMergeableArg('t'))->getKey();
+        $key = (new TestMergeableArg('t'))->getKey();
         $request = new TestRequest();
         $request->addArgument(new TestMergeableArg('test'))
                 ->addArgument(new TestMergeableArg('superTest'));
@@ -36,7 +35,7 @@ class MergeableArgumentTest extends TestCase
      */
     public function remove_argument_merge()
     {
-        $key     = (new TestMergeableArg('t'))->getKey();
+        $key = (new TestMergeableArg('t'))->getKey();
         $request = new TestRequest();
         $request->addArgument(new TestMergeableArg('test'))
                 ->addArgument(new TestMergeableArg('superTest'))

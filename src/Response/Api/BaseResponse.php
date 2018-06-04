@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 30/05/18
- * Time: 4:08 PM
+ * Time: 4:08 PM.
  */
 
 namespace ZEROSPAM\Framework\SDK\Response\Api;
@@ -14,7 +14,6 @@ use ZEROSPAM\Framework\SDK\Utils\Str;
 
 abstract class BaseResponse implements IResponse
 {
-
     /**
      * @var object[]
      */
@@ -30,12 +29,11 @@ abstract class BaseResponse implements IResponse
     protected $rateLimit;
 
     /**
-     * Dates to be transTyped from string to Carbon
+     * Dates to be transTyped from string to Carbon.
      *
      * @var string[]
      */
     protected $dates = [];
-
 
     /**
      * UserCreationResponse constructor.
@@ -48,7 +46,7 @@ abstract class BaseResponse implements IResponse
     }
 
     /**
-     * Data contained in the response
+     * Data contained in the response.
      *
      * @return array
      */
@@ -70,16 +68,15 @@ abstract class BaseResponse implements IResponse
      *
      * @return $this
      */
-    public function setRateLimit(RateLimitData $rateLimit): BaseResponse
+    public function setRateLimit(RateLimitData $rateLimit): self
     {
         $this->rateLimit = $rateLimit;
 
         return $this;
     }
 
-
     /**
-     * Return value in response array of the response
+     * Return value in response array of the response.
      *
      * @param $key
      *
@@ -95,7 +92,7 @@ abstract class BaseResponse implements IResponse
     }
 
     /**
-     * Get a specific field
+     * Get a specific field.
      *
      * @param string $field
      *
@@ -103,8 +100,7 @@ abstract class BaseResponse implements IResponse
      */
     public function get($field)
     {
-
-        $key = 'get' . Str::studly($field) . 'Attribute';
+        $key = 'get'.Str::studly($field).'Attribute';
 
         //check if attribute transformer exists
         //Run it if exists and cache the result
@@ -128,7 +124,7 @@ abstract class BaseResponse implements IResponse
             }
 
             if (!isset($this->data[$field])) {
-                return null;
+                return;
             }
 
             if (!$dateTime
@@ -143,22 +139,18 @@ abstract class BaseResponse implements IResponse
         if (isset($this->data[$field])) {
             return $this->data[$field];
         }
-
-        return null;
     }
 
-
-    function __isset($name)
+    public function __isset($name)
     {
-        $key = 'get' . Str::studly($name) . 'Attribute';
+        $key = 'get'.Str::studly($name).'Attribute';
 
         return isset($this->data[$name])
                || method_exists($this, $key)
                || (isset($this->dates) && in_array($name, $this->dates));
     }
 
-
-    function __get($name)
+    public function __get($name)
     {
         return $this->get($name);
     }

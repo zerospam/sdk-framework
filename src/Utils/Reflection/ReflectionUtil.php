@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 30/05/18
- * Time: 4:52 PM
+ * Time: 4:52 PM.
  */
 
 namespace ZEROSPAM\Framework\SDK\Utils\Reflection;
@@ -20,16 +20,16 @@ final class ReflectionUtil
     }
 
     /**
-     * Take an object and return an array using all it's properties
+     * Take an object and return an array using all it's properties.
      *
      * Don't set the null one
      *
      * @param       $object    *
-     *
      * @param array $blackList array containing name of properties to not serialize
      *
-     * @return array
      * @throws \ReflectionException
+     *
+     * @return array
      */
     public static function objToSnakeArray($object, $blackList = [])
     {
@@ -45,7 +45,6 @@ final class ReflectionUtil
             ) use (
                 $object
             ) {
-
                 $property->setAccessible(true);
 
                 $value = $property->getValue($object);
@@ -64,7 +63,8 @@ final class ReflectionUtil
     }
 
     /**
-     * Transform the value
+     * Transform the value.
+     *
      * @param mixed $value
      *
      * @return array|float|int|null|string
@@ -96,13 +96,14 @@ final class ReflectionUtil
     }
 
     /**
-     * Get all the properties not blacklisted
+     * Get all the properties not blacklisted.
      *
      * @param       $class
      * @param array $blacklist
      *
-     * @return array|\ReflectionProperty[]
      * @throws \ReflectionException
+     *
+     * @return array|\ReflectionProperty[]
      */
     public static function getAllProperties($class, $blacklist = [])
     {

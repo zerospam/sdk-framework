@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 13:53
+ * Time: 13:53.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Base\Container;
@@ -14,7 +14,6 @@ use Psr\Http\Message\ResponseInterface;
 
 class Transaction
 {
-
     /**
      * @var RequestInterface
      */
@@ -48,15 +47,14 @@ class Transaction
         ResponseInterface $response = null,
         GuzzleException $error = null
     ) {
-
-        $this->request  = $request;
+        $this->request = $request;
         $this->response = $response;
-        $this->options  = $options;
-        $this->error    = $error;
+        $this->options = $options;
+        $this->error = $error;
     }
 
     /**
-     * Getter for request
+     * Getter for request.
      *
      * @return RequestInterface
      */
@@ -66,7 +64,7 @@ class Transaction
     }
 
     /**
-     * Getter for response
+     * Getter for response.
      *
      * @return ResponseInterface|null
      */
@@ -76,7 +74,7 @@ class Transaction
     }
 
     /**
-     * Getter for options
+     * Getter for options.
      *
      * @return array
      */
@@ -86,7 +84,7 @@ class Transaction
     }
 
     /**
-     * If an exception got triggered
+     * If an exception got triggered.
      *
      * @return GuzzleException|null
      */
