@@ -13,12 +13,11 @@ use League\OAuth2\Client\Token\AccessToken;
 use ZEROSPAM\Framework\SDK\Client\OAuthClient;
 
 /**
- * Interface IOAuthConfiguration
+ * Interface IOAuthConfiguration.
  *
  * Configuration for an OAuthClient
  *
  * @see     OAuthClient
- * @package ZEROSPAM\Framework\SDK\Config
  */
 interface IOAuthConfiguration
 {

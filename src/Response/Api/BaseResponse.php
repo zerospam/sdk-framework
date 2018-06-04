@@ -13,12 +13,10 @@ use ZEROSPAM\Framework\SDK\Response\RateLimit\RateLimitData;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 /**
- * Class BaseResponse
+ * Class BaseResponse.
  *
  * Reponse given by the client when processing a request.
  * Take care of providing generator for bindings
- *
- * @package ZEROSPAM\Framework\SDK\Response\Api
  */
 abstract class BaseResponse implements IResponse
 {
@@ -108,7 +106,7 @@ abstract class BaseResponse implements IResponse
      */
     public function get($field)
     {
-        $key = 'get' . Str::studly($field) . 'Attribute';
+        $key = 'get'.Str::studly($field).'Attribute';
 
         //check if attribute transformer exists
         //Run it if exists and cache the result
@@ -151,7 +149,7 @@ abstract class BaseResponse implements IResponse
 
     public function __isset($name)
     {
-        $key = 'get' . Str::studly($name) . 'Attribute';
+        $key = 'get'.Str::studly($name).'Attribute';
 
         return isset($this->data[$name])
                || method_exists($this, $key)

@@ -11,11 +11,9 @@ namespace ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable;
 use ZEROSPAM\Framework\SDK\Request\Arguments\IArgument;
 
 /**
- * Interface IMergeableArgument
+ * Interface IMergeableArgument.
  *
  * Argument that can be used multiple time in the same query.
- *
- * @package ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable
  */
 interface IMergeableArgument extends IArgument
 {

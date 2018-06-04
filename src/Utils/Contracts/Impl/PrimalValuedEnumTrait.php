@@ -11,12 +11,11 @@ namespace ZEROSPAM\Framework\SDK\Utils\Contracts\Impl;
 use MabeEnum\Enum;
 
 /**
- * Trait PrimalValuedEnumTrait
+ * Trait PrimalValuedEnumTrait.
  *
  * Used with Mabe/Enum package
  *
  * @see     Enum
- * @package ZEROSPAM\Framework\SDK\Utils\Contracts\Impl
  */
 trait PrimalValuedEnumTrait
 {

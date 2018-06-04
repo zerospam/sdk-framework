@@ -11,12 +11,11 @@ namespace ZEROSPAM\Framework\SDK\Client\Exception;
 use ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware;
 
 /**
- * Class TooManyRetriesException
+ * Class TooManyRetriesException.
  *
  * When the same request has been retried multiple time without success
  *
  * @see     AuthenticationMiddleware
- * @package ZEROSPAM\Framework\SDK\Client\Exception
  */
 class TooManyRetriesException extends SDKException
 {
