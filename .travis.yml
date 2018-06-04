@@ -11,11 +11,13 @@ php:
 stages:
   - name: documentation
     if: branch = master
+  - test
 
 jobs:
   include:
-    - script: ./vendor/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml
-    - script: php vendor/bin/php-coveralls -v
+    - stage: test
+      script: ./vendor/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml
+      script: php vendor/bin/php-coveralls -v
     - stage: documentation
       script: sudo apt-get install graphviz
       script: php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"
