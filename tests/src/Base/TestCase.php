@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 13:51
+ * Time: 13:51.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Base;
@@ -25,6 +25,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param MockHandler $handler
      *
      * @see http://docs.guzzlephp.org/en/latest/testing.html
+     *
      * @return TestClient
      */
     protected function getTestClient(MockHandler $handler): TestClient
@@ -32,9 +33,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
         return new TestClient($handler);
     }
 
-
     /**
-     * The last transaction done (first if only one done)
+     * The last transaction done (first if only one done).
      *
      * @param TestClient $conf
      *
@@ -57,7 +57,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * All the transaction in order
+     * All the transaction in order.
      *
      * @param TestClient $conf
      *
@@ -79,11 +79,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Run to set a success
+     * Run to set a success.
      *
-     * @param  string|string[] $responseBody
-     *
-     * @param int              $statusCode
+     * @param string|string[] $responseBody
+     * @param int             $statusCode
      *
      * @return TestClient
      */
@@ -105,14 +104,14 @@ class TestCase extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Validate that the request did contain the wanted arguments
+     * Validate that the request did contain the wanted arguments.
      *
      * @param TestClient      $config
      * @param string|string[] $requestBody
      */
     protected function validateRequest(TestClient $config, $requestBody): void
     {
-        $trans  = $this->lastTransaction($config);
+        $trans = $this->lastTransaction($config);
         $decode = \GuzzleHttp\json_decode($trans->request()->getBody()->getContents(), true);
         if (is_array($requestBody)) {
             $sent = $requestBody;
@@ -124,11 +123,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Prepare for a failure
+     * Prepare for a failure.
      *
-     * @param  string|string[] $responseBody
-     *
-     * @param int              $statusCode Set the status code of the response
+     * @param string|string[] $responseBody
+     * @param int             $statusCode   Set the status code of the response
      *
      * @return TestClient
      */
@@ -154,12 +152,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Used to queue an exception
+     * Used to queue an exception.
      *
      * @param array $queue
      *
      * @return TestClient
-     *
      */
     protected function prepareQueue(array $queue): TestClient
     {
@@ -171,7 +168,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Validate that the request URI contains the following strings
+     * Validate that the request URI contains the following strings.
      *
      * @param TestClient $config
      * @param string[]   $contains
@@ -180,14 +177,14 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         $trans = $this->lastTransaction($config);
 
-        $url = (string)$trans->request()->getUri();
+        $url = (string) $trans->request()->getUri();
         foreach ($contains as $contain) {
-            $this->assertContains((string)$contain, $url, 'Url need to contain: ' . $contain);
+            $this->assertContains((string) $contain, $url, 'Url need to contain: '.$contain);
         }
     }
 
     /**
-     * Make sure url contains at least specified parts in contains
+     * Make sure url contains at least specified parts in contains.
      *
      * @param TestClient    $config
      * @param array|\string $elements
@@ -196,7 +193,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         $trans = $this->lastTransaction($config);
 
-        $url = urldecode((string)$trans->request()->getUri());
+        $url = urldecode((string) $trans->request()->getUri());
 
         if (is_string($elements)) {
             $this->assertContains($elements, $url);
@@ -207,7 +204,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $urlElements = explode('/', $url);
 
         foreach ($elements as $element) {
-            $this->assertContains((string)$element, $urlElements, 'Url need to contain: ' . $element);
+            $this->assertContains((string) $element, $urlElements, 'Url need to contain: '.$element);
         }
     }
 }

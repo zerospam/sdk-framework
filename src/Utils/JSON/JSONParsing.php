@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 11:11
+ * Time: 11:11.
  */
 
 namespace ZEROSPAM\Framework\SDK\Utils\JSON;
@@ -17,7 +17,7 @@ final class JSONParsing
     }
 
     /**
-     * Parse the content of a response
+     * Parse the content of a response.
      *
      * @param ResponseInterface $response
      *

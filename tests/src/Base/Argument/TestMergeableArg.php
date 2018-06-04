@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 15:56
+ * Time: 15:56.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Base\Argument;
@@ -12,8 +12,6 @@ use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\IMergeableArgument;
 
 class TestMergeableArg implements IMergeableArgument
 {
-
-
     /**
      * @var string
      */
@@ -29,9 +27,8 @@ class TestMergeableArg implements IMergeableArgument
         $this->obj = $obj;
     }
 
-
     /**
-     * Key for the argument
+     * Key for the argument.
      *
      * @return string
      */
@@ -41,7 +38,7 @@ class TestMergeableArg implements IMergeableArgument
     }
 
     /**
-     * Character used to glue the same args together
+     * Character used to glue the same args together.
      *
      * @return string
      */
@@ -51,11 +48,11 @@ class TestMergeableArg implements IMergeableArgument
     }
 
     /**
-     * Return a primitive value for this object
+     * Return a primitive value for this object.
      *
-     * @return int|float|string|double
+     * @return int|float|string|float
      */
-    function toPrimitive()
+    public function toPrimitive()
     {
         return $this->obj;
     }

@@ -3,15 +3,13 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 30/05/18
- * Time: 4:10 PM
+ * Time: 4:10 PM.
  */
 
 namespace ZEROSPAM\Framework\SDK\Utils;
 
 final class Str
 {
-
-
     /**
      * The cache of snake-cased words.
      *
@@ -33,11 +31,10 @@ final class Str
     {
     }
 
-
     /**
      * Convert the given string to lower-case.
      *
-     * @param  string $value
+     * @param string $value
      *
      * @return string
      */
@@ -46,11 +43,10 @@ final class Str
         return mb_strtolower($value, 'UTF-8');
     }
 
-
     /**
      * Convert the given string to upper-case.
      *
-     * @param  string $value
+     * @param string $value
      *
      * @return string
      */
@@ -62,8 +58,8 @@ final class Str
     /**
      * Convert a string to snake case.
      *
-     * @param  string $value
-     * @param  string $delimiter
+     * @param string $value
+     * @param string $delimiter
      *
      * @return string
      */
@@ -78,17 +74,16 @@ final class Str
         if (!ctype_lower($value)) {
             $value = preg_replace('/\s+/u', '', $value);
 
-            $value = static::lower(preg_replace('/(.)(?=[A-Z])/u', '$1' . $delimiter, $value));
+            $value = static::lower(preg_replace('/(.)(?=[A-Z])/u', '$1'.$delimiter, $value));
         }
 
         return static::$snakeCache[$key][$delimiter] = $value;
     }
 
-
     /**
      * Convert a value to camel case.
      *
-     * @param  string $value
+     * @param string $value
      *
      * @return string
      */
@@ -101,11 +96,10 @@ final class Str
         return static::$camelCache[$value] = lcfirst(static::studly($value));
     }
 
-
     /**
      * Convert a value to studly caps case.
      *
-     * @param  string $value
+     * @param string $value
      *
      * @return string
      */
@@ -122,15 +116,15 @@ final class Str
     /**
      * Determine if a given string starts with a given substring.
      *
-     * @param  string       $haystack
-     * @param  string|array $needles
+     * @param string       $haystack
+     * @param string|array $needles
      *
      * @return bool
      */
     public static function startsWith($haystack, $needles)
     {
-        foreach ((array)$needles as $needle) {
-            if ($needle != '' && substr($haystack, 0, strlen($needle)) === (string)$needle) {
+        foreach ((array) $needles as $needle) {
+            if ($needle != '' && substr($haystack, 0, strlen($needle)) === (string) $needle) {
                 return true;
             }
         }
@@ -141,15 +135,15 @@ final class Str
     /**
      * Determine if a given string ends with a given substring.
      *
-     * @param  string       $haystack
-     * @param  string|array $needles
+     * @param string       $haystack
+     * @param string|array $needles
      *
      * @return bool
      */
     public static function endsWith($haystack, $needles)
     {
-        foreach ((array)$needles as $needle) {
-            if (substr($haystack, -strlen($needle)) === (string)$needle) {
+        foreach ((array) $needles as $needle) {
+            if (substr($haystack, -strlen($needle)) === (string) $needle) {
                 return true;
             }
         }
@@ -160,14 +154,14 @@ final class Str
     /**
      * Determine if a given string contains a given substring.
      *
-     * @param  string       $haystack
-     * @param  string|array $needles
+     * @param string       $haystack
+     * @param string|array $needles
      *
      * @return bool
      */
     public static function contains($haystack, $needles)
     {
-        foreach ((array)$needles as $needle) {
+        foreach ((array) $needles as $needle) {
             if ($needle != '' && mb_strpos($haystack, $needle) !== false) {
                 return true;
             }
@@ -179,8 +173,8 @@ final class Str
     /**
      * Determine if a given string contains all given substring.
      *
-     * @param  string $haystack
-     * @param  array  $needles
+     * @param string $haystack
+     * @param array  $needles
      *
      * @return bool
      */
@@ -196,7 +190,7 @@ final class Str
     }
 
     /**
-     * Replace the first occurrence of needle in the haystack
+     * Replace the first occurrence of needle in the haystack.
      *
      * @param string $haystack
      * @param string $needle
@@ -210,7 +204,6 @@ final class Str
         if ($pos === false) {
             return $haystack;
         }
-
 
         return substr_replace($haystack, $replace, $pos, strlen($needle));
     }

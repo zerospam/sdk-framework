@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 14:23
+ * Time: 14:23.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Argument;
@@ -14,7 +14,6 @@ use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
 
 class RequestArgTest extends TestCase
 {
-
     /**
      * @test
      * @expectedException \InvalidArgumentException
@@ -43,7 +42,6 @@ class RequestArgTest extends TestCase
         $this->assertSame(1, $test->toPrimitive());
     }
 
-
     /**
      * @test
      */
@@ -60,7 +58,7 @@ class RequestArgTest extends TestCase
     public function add_remove_args()
     {
         $request = new TestRequest();
-        $arg     = new RequestArg('test', 'test');
+        $arg = new RequestArg('test', 'test');
         $request->addArgument($arg)
                 ->removeArgument($arg);
 

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 14:17
+ * Time: 14:17.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Tests;
@@ -16,7 +16,6 @@ use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 
 class ClientTest extends TestCase
 {
-
     /**
      * @expectedException \ZEROSPAM\Framework\SDK\Client\Exception\SDKException
      */
@@ -44,7 +43,7 @@ class ClientTest extends TestCase
 
     public function testResponseDateBinding(): void
     {
-        $now    = Carbon::now()->startOfMinute();
+        $now = Carbon::now()->startOfMinute();
         $client = $this->preSuccess(['test_date' => $now->toIso8601String()]);
 
         $request = new TestRequest();
@@ -82,8 +81,6 @@ class ClientTest extends TestCase
         $response = $request->getResponse();
         $this->assertEquals('data', $response->getRawValue('test'));
     }
-
-
 
     public function testResponseAddedField(): void
     {
@@ -128,7 +125,7 @@ class ClientTest extends TestCase
         $client->getOAuthTestClient()
                ->processRequest($request);
 
-        $response  = $request->getResponse();
+        $response = $request->getResponse();
         $rateLimit = $response->getRateLimit();
         $this->assertEquals(10, $rateLimit->getRemaining());
         $this->assertEquals(60, $rateLimit->getMaxPerMinute());
@@ -137,7 +134,7 @@ class ClientTest extends TestCase
     public function testRateLimitingBlocked(): void
     {
         $resetTime = Carbon::now()->addHour()->startOfMinute();
-        $client    = $this->prepareQueue(
+        $client = $this->prepareQueue(
             [
                 new Response(
                     200,
@@ -154,7 +151,7 @@ class ClientTest extends TestCase
         $client->getOAuthTestClient()
                ->processRequest($request);
 
-        $response  = $request->getResponse();
+        $response = $request->getResponse();
         $rateLimit = $response->getRateLimit();
         $this->assertEquals(0, $rateLimit->getRemaining());
         $this->assertEquals(60, $rateLimit->getMaxPerMinute());

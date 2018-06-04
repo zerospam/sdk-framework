@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 09:43
+ * Time: 09:43.
  */
 
 namespace ZEROSPAM\Framework\SDK\Config;
@@ -15,7 +15,6 @@ use League\OAuth2\Client\Token\AccessToken;
 
 abstract class OAuthConfiguration implements IOAuthConfiguration
 {
-
     /**
      * @var string
      */
@@ -45,22 +44,21 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
      */
     public function __construct(string $clientId, string $clientSecret, string $redirectUrl, string $endPoint)
     {
-        $this->clientId     = $clientId;
+        $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
-        $this->redirectUrl  = $redirectUrl;
-        $this->endPoint     = $endPoint;
+        $this->redirectUrl = $redirectUrl;
+        $this->endPoint = $endPoint;
     }
 
     /**
-     * Class to use for the provider
+     * Class to use for the provider.
      *
      * @return string
      */
     abstract protected function providerClass(): string;
 
-
     /**
-     * Get a OAuthProvider
+     * Get a OAuthProvider.
      *
      * @return AbstractProvider
      */
@@ -76,7 +74,7 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
     }
 
     /**
-     * Get the redirect URL
+     * Get the redirect URL.
      *
      * @return string
      */
@@ -86,7 +84,7 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
     }
 
     /**
-     * End point for Requests
+     * End point for Requests.
      *
      * @return string
      */
@@ -95,9 +93,8 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
         return $this->endPoint;
     }
 
-
     /**
-     * Get access token for given code
+     * Get access token for given code.
      *
      * @param string $code
      *
@@ -114,7 +111,7 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
     }
 
     /**
-     * Give a new access token refreshed
+     * Give a new access token refreshed.
      *
      * @param AccessToken $token
      *
@@ -126,7 +123,7 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
     }
 
     /**
-     * Use the refresh token to get a new access token
+     * Use the refresh token to get a new access token.
      *
      * @param string $refreshToken
      *

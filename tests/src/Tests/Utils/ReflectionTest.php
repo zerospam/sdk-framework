@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 15:24
+ * Time: 15:24.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Utils;
-
 
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Framework\SDK\Test\Tests\Utils\Obj\BasicEnum;
@@ -18,7 +17,6 @@ use ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil;
 
 class ReflectionTest extends TestCase
 {
-
     /**
      * @test
      */
@@ -42,9 +40,8 @@ class ReflectionTest extends TestCase
      */
     public function reflection_class_to_array_with_array_enum()
     {
-        $test  = new BasicObjArrayEnum([BasicEnum::TEST()]);
+        $test = new BasicObjArrayEnum([BasicEnum::TEST()]);
         $array = ReflectionUtil::objToSnakeArray($test);
         $this->assertArraySubset(['enum_array' => ['test']], $array);
     }
-
 }

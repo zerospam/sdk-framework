@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 15:13
+ * Time: 15:13.
  */
 
 namespace ZEROSPAM\Framework\SDK\Client;
@@ -16,13 +16,13 @@ use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 interface IOAuthClient
 {
     /**
-     * Register the given middleware
+     * Register the given middleware.
      *
      * @param \ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware $middleware
      *
      * @return $this
      */
-    public function registerMiddleware(IMiddleware $middleware): IOAuthClient;
+    public function registerMiddleware(IMiddleware $middleware): self;
 
     /**
      * Unregister the middleware.
@@ -33,22 +33,22 @@ interface IOAuthClient
      *
      * @return IOAuthClient
      */
-    public function unregisterMiddleware(IMiddleware $middleware): IOAuthClient;
+    public function unregisterMiddleware(IMiddleware $middleware): self;
 
     /**
-     * Refresh token
+     * Refresh token.
      */
     public function refreshToken(): AccessToken;
 
     /**
-     * Currently used access token
+     * Currently used access token.
      *
      * @return AccessToken
      */
     public function getToken(): AccessToken;
 
     /**
-     * Process the given request and return an array containing the results
+     * Process the given request and return an array containing the results.
      *
      * @param IRequest $request
      *

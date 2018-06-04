@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 10:41
+ * Time: 10:41.
  */
 
 namespace ZEROSPAM\Framework\SDK\Client\Middleware\Error;
@@ -21,7 +21,7 @@ class AuthenticationMiddleware implements IMiddleware
     const MAX_TRIES = 3;
 
     /**
-     * Which status error code does this middleware manage
+     * Which status error code does this middleware manage.
      *
      * @return array
      */

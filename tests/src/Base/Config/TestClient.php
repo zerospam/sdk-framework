@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 13:53
+ * Time: 13:53.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Base\Config;
@@ -21,8 +21,6 @@ use ZEROSPAM\Framework\SDK\Test\Base\Util\AccessTokenGenerator;
 
 class TestClient
 {
-
-
     /**
      * @var MockHandler
      */
@@ -44,9 +42,8 @@ class TestClient
         $this->mockHandler->push(Middleware::history($this->container));
     }
 
-
     /**
-     * Build the client for this configuration
+     * Build the client for this configuration.
      *
      * @return ClientInterface
      */
@@ -61,7 +58,7 @@ class TestClient
     }
 
     /**
-     * Get client for tests
+     * Get client for tests.
      *
      *
      * @return IOAuthClient
@@ -72,7 +69,7 @@ class TestClient
     }
 
     /**
-     * Mock configuration
+     * Mock configuration.
      *
      * @return IOAuthConfiguration
      */
@@ -82,7 +79,7 @@ class TestClient
     }
 
     /**
-     * Containing the request and response done
+     * Containing the request and response done.
      *
      * @see http://docs.guzzlephp.org/en/latest/testing.html#history-middleware
      *

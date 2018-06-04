@@ -3,18 +3,16 @@
  * Created by PhpStorm.
  * User: aaflalo
  * Date: 18-06-01
- * Time: 15:30
+ * Time: 15:30.
  */
 
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Utils;
-
 
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 class StrTest extends TestCase
 {
-
     /**
      * @test
      */
@@ -87,7 +85,6 @@ class StrTest extends TestCase
         $this->assertFalse(Str::startsWith('superTest', 'Test'));
     }
 
-
     /**
      * @test
      */
@@ -103,7 +100,6 @@ class StrTest extends TestCase
     {
         $this->assertFalse(Str::endsWith('superTest', 'super'));
     }
-
 
     /**
      * @test
@@ -137,7 +133,6 @@ class StrTest extends TestCase
         $this->assertFalse(Str::containsAll('superTest', ['Test', 'nope']));
     }
 
-
     /**
      * @test
      */
@@ -153,5 +148,4 @@ class StrTest extends TestCase
     {
         $this->assertSame('super_nope', Str::replaceFirst('super_nope', 'test', 'test'));
     }
-
 }
