@@ -56,6 +56,35 @@ class ClientTest extends TestCase
         $this->assertEquals($now, $response->test_date);
     }
 
+    public function testResponseAttributeBypassBinding(): void
+    {
+        $client = $this->preSuccess(['test' => 'data']);
+
+        $request = new TestRequest();
+        $client->getOAuthTestClient()
+               ->processRequest($request);
+
+        $response = $request->getResponse();
+        $this->assertEquals('data', $response->getRawValue('test'));
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testResponseAttributeBypassBindingUnavailable(): void
+    {
+        $client = $this->preSuccess([]);
+
+        $request = new TestRequest();
+        $client->getOAuthTestClient()
+               ->processRequest($request);
+
+        $response = $request->getResponse();
+        $this->assertEquals('data', $response->getRawValue('test'));
+    }
+
+
+
     public function testResponseAddedField(): void
     {
         $client = $this->preSuccess(['added' => 'field']);

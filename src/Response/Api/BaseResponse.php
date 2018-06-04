@@ -85,7 +85,7 @@ abstract class BaseResponse implements IResponse
      *
      * @return mixed
      */
-    protected function getValue($key)
+    public function getRawValue($key)
     {
         if (!array_key_exists($key, $this->data())) {
             throw new \InvalidArgumentException(sprintf('key [%s] is not present in response array.', $key));

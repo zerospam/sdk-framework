@@ -25,4 +25,13 @@ interface IResponse
      * @return mixed|null
      */
     public function get($field);
+
+    /**
+     * Return value in response array of the response
+     *
+     * @param $key
+     *
+     * @return mixed
+     */
+    public function getRawValue($key);
 }
