@@ -8,6 +8,13 @@
 
 namespace ZEROSPAM\Framework\SDK\Utils\Contracts;
 
+/**
+ * Interface Arrayable
+ *
+ * Can be transform into an array
+ *
+ * @package ZEROSPAM\Framework\SDK\Utils\Contracts
+ */
 interface Arrayable
 {
     /**

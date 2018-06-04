@@ -10,6 +10,13 @@ namespace ZEROSPAM\Framework\SDK\Utils\JSON;
 
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * Class JSONParsing
+ *
+ * Parse a request JSON
+ *
+ * @package ZEROSPAM\Framework\SDK\Utils\JSON
+ */
 final class JSONParsing
 {
     private function __construct()

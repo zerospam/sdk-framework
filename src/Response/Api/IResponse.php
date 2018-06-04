@@ -8,6 +8,13 @@
 
 namespace ZEROSPAM\Framework\SDK\Response\Api;
 
+/**
+ * Interface IResponse
+ *
+ * Parsed Response of the server
+ *
+ * @package ZEROSPAM\Framework\SDK\Response\Api
+ */
 interface IResponse
 {
     /**
