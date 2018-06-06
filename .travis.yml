@@ -24,7 +24,7 @@ jobs:
         - sudo apt-get update
         - sudo apt-get install graphviz
       script: php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"
-      after_success: skip
+      after_success: true
       deploy:
         provider: pages
         skip-cleanup: true
