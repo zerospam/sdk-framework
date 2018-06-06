@@ -13,20 +13,23 @@ cache:
 
 stages:
   - test
-  - name: documentation
-    if: branch = master
   - name: deploy
     if: branch = master
 
 jobs:
   include:
-    - stage: documentation
+    - stage: deploy
       install: true
       before_install:
         - sudo apt-get update
         - sudo apt-get install graphviz
       script:
         - php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"
+      script:
+        - nvm install 10 && nvm use 10
+        - npm install
+        - npm run semantic-release
+
       after_success: skip
       deploy: &pages
         provider: pages
@@ -37,13 +40,6 @@ jobs:
         on:
           branch: master
 
-    - stage: deploy
-      before_script: skip
-      after_success: skip
-      script:
-        - nvm install 10 && nvm use 10
-        - npm install
-        - npm run semantic-release
 
 before_script:
   - travis_retry composer install --prefer-dist
