@@ -24,20 +24,22 @@ jobs:
         - sudo apt-get update
         - sudo apt-get install graphviz
       script: php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"
-      - script:
-        - nvm install 10 && nvm use 10
-        - npm install
-        - npm run semantic-release
-
       after_success: skip
       deploy: &pages
-        provider: pages
-        skip-cleanup: true
-        github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-        keep-history: true
-        local-dir: build/docs
-        on:
-          branch: master
+            provider: pages
+            skip-cleanup: true
+            github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+            keep-history: true
+            local-dir: build/docs
+            on:
+              branch: master
+    - script:
+      - nvm install 10 && nvm use 10
+      - npm install
+      - npm run semantic-release
+      after_success: skip
+      before_script: skip
+
 
 
 before_script:
