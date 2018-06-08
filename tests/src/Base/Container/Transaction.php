@@ -12,6 +12,13 @@ use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * Class Transaction
+ *
+ * History of mockup transaction
+ *
+ * @package ZEROSPAM\Framework\SDK\Test\Base\Container
+ */
 class Transaction
 {
     /**
@@ -47,10 +54,10 @@ class Transaction
         ResponseInterface $response = null,
         GuzzleException $error = null
     ) {
-        $this->request = $request;
+        $this->request  = $request;
         $this->response = $response;
-        $this->options = $options;
-        $this->error = $error;
+        $this->options  = $options;
+        $this->error    = $error;
     }
 
     /**

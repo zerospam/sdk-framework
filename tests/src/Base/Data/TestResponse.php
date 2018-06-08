@@ -14,6 +14,8 @@ use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 /**
  * Class TestResponse.
  *
+ * Test Response
+ *
  * @property-read \stdClass $test
  * @property-read Carbon    $test_date
  */

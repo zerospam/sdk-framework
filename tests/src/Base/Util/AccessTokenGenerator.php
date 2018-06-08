@@ -11,6 +11,13 @@ namespace ZEROSPAM\Framework\SDK\Test\Base\Util;
 use Carbon\Carbon;
 use League\OAuth2\Client\Token\AccessToken;
 
+/**
+ * Class AccessTokenGenerator
+ *
+ * Generate new access token
+ *
+ * @package ZEROSPAM\Framework\SDK\Test\Base\Util
+ */
 final class AccessTokenGenerator
 {
     private function __construct()
@@ -24,10 +31,10 @@ final class AccessTokenGenerator
      */
     public static function generateAccessToken(): AccessToken
     {
-        $accessToken = uniqid();
+        $accessToken  = uniqid();
         $refreshToken = uniqid();
-        $expire = Carbon::now()->addDay(14)->timestamp;
-        $now = Carbon::now()->timestamp;
+        $expire       = Carbon::now()->addDay(14)->timestamp;
+        $now          = Carbon::now()->timestamp;
         $json
                       = <<<JSON
 {

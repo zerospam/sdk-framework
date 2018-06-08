@@ -15,6 +15,13 @@ use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 use ZEROSPAM\Framework\SDK\Test\Base\Util\AccessTokenGenerator;
 
+/**
+ * Class TestProvider
+ *
+ * Basic provider returning new token each time
+ *
+ * @package ZEROSPAM\Framework\SDK\Test\Base\Data\Provider
+ */
 class TestProvider extends AbstractProvider
 {
     /**
@@ -45,7 +52,7 @@ class TestProvider extends AbstractProvider
 
     public function getAuthorizationHeaders($token = null)
     {
-        return ['Authorization' => 'Bearer '.$token];
+        return ['Authorization' => 'Bearer ' . $token];
     }
 
     protected function getDefaultHeaders()
@@ -88,7 +95,7 @@ class TestProvider extends AbstractProvider
      *
      *
      * @param ResponseInterface $response
-     * @param array|string      $data     Parsed response data
+     * @param array|string      $data Parsed response data
      *
      * @throws IdentityProviderException
      *

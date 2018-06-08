@@ -11,6 +11,13 @@ namespace ZEROSPAM\Framework\SDK\Test\Base\Data\Config;
 use ZEROSPAM\Framework\SDK\Config\OAuthConfiguration;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\Provider\TestProvider;
 
+/**
+ * Class MockOAuthConfiguration
+ *
+ * Fake configuration with a TestProvider
+ *
+ * @package ZEROSPAM\Framework\SDK\Test\Base\Data\Config
+ */
 class MockOAuthConfiguration extends OAuthConfiguration
 {
     /**

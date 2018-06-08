@@ -23,7 +23,7 @@ jobs:
       before_install:
         - sudo apt-get update
         - sudo apt-get install graphviz
-      script: php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"
+      script: php vendor/bin/phpdoc -q -d ./src -d ./tests/src/Base -t ./build/docs --template="responsive-twig"
       after_success: true
       deploy:
         provider: pages

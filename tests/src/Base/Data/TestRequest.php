@@ -15,6 +15,7 @@ use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 /**
  * Class TestRequest.
  *
+ * Test request
  * @method TestResponse getResponse()
  */
 class TestRequest extends BaseRequest

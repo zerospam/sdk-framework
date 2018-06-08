@@ -19,6 +19,13 @@ use ZEROSPAM\Framework\SDK\Config\IOAuthConfiguration;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\Config\MockOAuthConfiguration;
 use ZEROSPAM\Framework\SDK\Test\Base\Util\AccessTokenGenerator;
 
+/**
+ * Class TestClient
+ *
+ * Used to configure the real OAuthClient
+ *
+ * @package ZEROSPAM\Framework\SDK\Test\Base\Config
+ */
 class TestClient
 {
     /**

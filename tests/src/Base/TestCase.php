@@ -14,6 +14,13 @@ use Mockery as m;
 use ZEROSPAM\Framework\SDK\Test\Base\Config\TestClient;
 use ZEROSPAM\Framework\SDK\Test\Base\Container\Transaction;
 
+/**
+ * Base for making the different tests
+ *
+ * Help you with a TestClient and preparing different kind of request
+ *
+ * @package ZEROSPAM\Framework\SDK\Test\Base
+ */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
     public function tearDown()

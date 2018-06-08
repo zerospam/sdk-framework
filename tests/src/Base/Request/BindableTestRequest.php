@@ -13,6 +13,13 @@ use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Test\Tests\Utils\Obj\BasicEnum;
 
+/**
+ * Class BindableTestRequest
+ *
+ * Test Request to test Binding URL
+ *
+ * @package ZEROSPAM\Framework\SDK\Test\Base\Request
+ */
 class BindableTestRequest extends BindableRequest
 {
     private $test;

@@ -10,6 +10,13 @@ namespace ZEROSPAM\Framework\SDK\Test\Base\Argument;
 
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\IMergeableArgument;
 
+/**
+ * Class TestMergeableArg
+ *
+ * Fake Mergeable argument for testing
+ *
+ * @package ZEROSPAM\Framework\SDK\Test\Base\Argument
+ */
 class TestMergeableArg implements IMergeableArgument
 {
     /**
