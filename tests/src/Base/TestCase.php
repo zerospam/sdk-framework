@@ -111,7 +111,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function validateRequest(TestClient $config, $requestBody): void
     {
-        $trans = $this->lastTransaction($config);
+        $trans  = $this->lastTransaction($config);
         $decode = \GuzzleHttp\json_decode($trans->request()->getBody()->getContents(), true);
         if (is_array($requestBody)) {
             $sent = $requestBody;
@@ -126,7 +126,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * Prepare for a failure.
      *
      * @param string|string[] $responseBody
-     * @param int             $statusCode   Set the status code of the response
+     * @param int             $statusCode Set the status code of the response
      *
      * @return TestClient
      */
@@ -177,9 +177,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         $trans = $this->lastTransaction($config);
 
-        $url = (string) $trans->request()->getUri();
+        $url = (string)$trans->request()->getUri();
         foreach ($contains as $contain) {
-            $this->assertContains((string) $contain, $url, 'Url need to contain: '.$contain);
+            $this->assertContains((string)$contain, $url, 'Url need to contain: ' . $contain);
         }
     }
 
@@ -193,7 +193,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         $trans = $this->lastTransaction($config);
 
-        $url = urldecode((string) $trans->request()->getUri());
+        $url = urldecode((string)$trans->request()->getUri());
 
         if (is_string($elements)) {
             $this->assertContains($elements, $url);
@@ -204,7 +204,32 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $urlElements = explode('/', $url);
 
         foreach ($elements as $element) {
-            $this->assertContains((string) $element, $urlElements, 'Url need to contain: '.$element);
+            $this->assertContains((string)$element, $urlElements, 'Url need to contain: ' . $element);
+        }
+    }
+
+    /**
+     * Validate the query arguments
+     *
+     * @param TestClient      $client
+     * @param    string|array $elements
+     */
+    protected function validateQuery(TestClient $client, $elements): void
+    {
+        $trans = $this->lastTransaction($client);
+        $query = $trans->request()->getUri()->getQuery();
+
+        if (is_string($elements)) {
+            $this->assertContains($elements, $query);
+
+            return;
+        }
+
+
+        $urlElements = explode('&', $query);
+
+        foreach ($elements as $element) {
+            $this->assertContains((string)$element, $urlElements, 'Url need to contain: ' . $element);
         }
     }
 }
