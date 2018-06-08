@@ -1,3 +1,22 @@
+# [2.0.0](https://github.com/zerospam/sdk-framework/compare/v1.0.0...v2.0.0) (2018-06-08)
+
+
+### Bug Fixes
+
+* **client:** Force client to generate request ([949926e](https://github.com/zerospam/sdk-framework/commit/949926e))
+* **test:** Fix the wrong key used ([093f135](https://github.com/zerospam/sdk-framework/commit/093f135))
+
+
+### Features
+
+* **args:** Adds stackable arguments ([5c519fe](https://github.com/zerospam/sdk-framework/commit/5c519fe))
+* **argument:** Change how glue is defined ([bab9395](https://github.com/zerospam/sdk-framework/commit/bab9395))
+
+
+### BREAKING CHANGES
+
+* **argument:** IMergeableArgument::glue() is now static.
+
 # 1.0.0 (2018-06-06)
 
 
