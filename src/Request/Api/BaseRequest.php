@@ -60,7 +60,7 @@ abstract class BaseRequest implements IRequest
     {
         if ($arg instanceof IMergeableArgument) {
             if (!isset($this->mergeableArguments[$arg->getKey()])) {
-                $this->mergeableArguments[$arg->getKey()] = new ArgMerger();
+                $this->mergeableArguments[$arg->getKey()] = new ArgMerger($arg::glue());
             }
 
             $this->mergeableArguments[$arg->getKey()]->addArgument($arg);

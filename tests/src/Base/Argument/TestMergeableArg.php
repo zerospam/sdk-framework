@@ -42,7 +42,7 @@ class TestMergeableArg implements IMergeableArgument
      *
      * @return string
      */
-    public function glue()
+    public static function glue()
     {
         return ';';
     }

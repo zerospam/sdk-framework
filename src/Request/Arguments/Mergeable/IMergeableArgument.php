@@ -24,5 +24,5 @@ interface IMergeableArgument extends IArgument
      *
      * @return string
      */
-    public function glue();
+    public static function glue();
 }

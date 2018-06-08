@@ -12,10 +12,27 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
 class ArgMerger implements PrimalValued
 {
+
+    /**
+     * @var string
+     */
+    private $glue;
+
+
     /**
      * @var IMergeableArgument[]
      */
     private $args = [];
+
+    /**
+     * ArgMerger constructor.
+     *
+     * @param string $glue
+     */
+    public function __construct(string $glue)
+    {
+        $this->glue = $glue;
+    }
 
     /**
      * Add the argument.
@@ -58,7 +75,7 @@ class ArgMerger implements PrimalValued
 
         $values = array_keys($this->args);
 
-        return implode($this->args[$values[0]]->glue(), $values);
+        return implode($this->glue, $values);
     }
 
     /**
