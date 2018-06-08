@@ -23,14 +23,17 @@ jobs:
       before_install:
         - sudo apt-get update
         - sudo apt-get install graphviz
-      script: php vendor/bin/phpdoc -q -d ./src -d ./tests/src/Base -t ./build/docs --template="responsive-twig"
+      script:
+       - wget http://phpdox.de/releases/phpdox.phar && chmod +x phpdox.phar && mv phpdox.phar /usr/local/bin/phpdox
+       - php vendor/bin/phploc src tests/src/Base --log-xml build/phploc.xml
+       - phpdox
+
       after_success: true
       deploy:
         provider: pages
         skip-cleanup: true
         github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-        keep-history: true
-        local-dir: build/docs
+        local-dir: build/docs/html
         on:
           branch: master
     - script:
