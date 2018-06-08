@@ -69,6 +69,6 @@ class MergeableArgumentTest extends TestCase
                 ->addArgument(new TestMergeableArg('superTest'));
         $client->getOAuthTestClient()
                ->processRequest($request);
-        $this->validateQuery($client, 'test;superTest');
+        $this->validateQuery($client, 'mergeArg=test;superTest');
     }
 }
