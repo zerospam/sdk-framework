@@ -12,6 +12,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\RequestOptions;
 use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 use ZEROSPAM\Framework\SDK\Client\Exception\SDKException;
@@ -154,15 +155,17 @@ class OAuthClient implements IOAuthClient
     {
         $request->incrementTries();
 
-        $httpRequest = $this->configuration->getProvider()->getAuthenticatedRequest(
-            $request->requestType()->getValue(),
-            $request->toUri(),
-            $this->token,
-            $request->requestOptions()
-        );
+        $headers = $this->configuration->getProvider()->getHeaders($this->token);
+
+        $options = $request->requestOptions();
+        if (isset($options[RequestOptions::HEADERS])) {
+            $options[RequestOptions::HEADERS] = array_merge($options[RequestOptions::HEADERS], $headers);
+        } else {
+            $options[RequestOptions::HEADERS] = $headers;
+        }
 
         try {
-            $response   = $this->guzzleClient->send($httpRequest);
+            $response   = $this->guzzleClient->request($request->httpType()->getValue(), $request->toUri(), $options);
             $parsedData = JSONParsing::responseToJson($response);
 
             if (isset($this->middlewares[$response->getStatusCode()])) {
