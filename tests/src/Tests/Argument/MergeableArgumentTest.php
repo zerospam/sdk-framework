@@ -56,4 +56,19 @@ class MergeableArgumentTest extends TestCase
         $request = new TestRequest();
         $request->removeArgument(new TestMergeableArg('superTest'));
     }
+
+    /**
+     *
+     */
+    public function testMergeableInUrl(): void
+    {
+        $client = $this->preSuccess(['test' => 'data']);
+
+        $request = new TestRequest();
+        $request->addArgument(new TestMergeableArg('test'))
+                ->addArgument(new TestMergeableArg('superTest'));
+        $client->getOAuthTestClient()
+               ->processRequest($request);
+        $this->validateQuery($client, 'test;superTest');
+    }
 }

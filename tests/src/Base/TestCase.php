@@ -204,32 +204,26 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $urlElements = explode('/', $url);
 
         foreach ($elements as $element) {
-            $this->assertContains((string)$element, $urlElements, 'Url need to contain: ' . $element);
+            $this->assertContains((string)$element, $urlElements, 'Url needs to contain: ' . $element);
         }
     }
 
     /**
      * Validate the query arguments
      *
-     * @param TestClient      $client
-     * @param    string|array $elements
+     * @param TestClient $client
+     * @param string     ...$elements
      */
-    protected function validateQuery(TestClient $client, $elements): void
+    protected function validateQuery(TestClient $client, string...$elements): void
     {
         $trans = $this->lastTransaction($client);
-        $query = $trans->request()->getUri()->getQuery();
-
-        if (is_string($elements)) {
-            $this->assertContains($elements, $query);
-
-            return;
-        }
+        $query = urldecode($trans->request()->getUri()->getQuery());
 
 
         $urlElements = explode('&', $query);
 
         foreach ($elements as $element) {
-            $this->assertContains((string)$element, $urlElements, 'Url need to contain: ' . $element);
+            $this->assertContains((string)$element, $urlElements, 'Query needs to contain: ' . $element);
         }
     }
 }

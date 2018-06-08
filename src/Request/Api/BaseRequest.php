@@ -13,6 +13,7 @@ use Psr\Http\Message\UriInterface;
 use ZEROSPAM\Framework\SDK\Request\Arguments\IArgument;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\ArgMerger;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\IMergeableArgument;
+use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\IStackableArgument;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil;
@@ -35,6 +36,11 @@ abstract class BaseRequest implements IRequest
      * @var ArgMerger[]
      */
     private $mergeableArguments = [];
+
+    /**
+     * @var IStackableArgument[][]
+     */
+    private $stackableArguments = [];
 
     /**
      * @var \ZEROSPAM\Framework\SDK\Response\Api\IResponse
@@ -66,6 +72,10 @@ abstract class BaseRequest implements IRequest
             $this->mergeableArguments[$arg->getKey()]->addArgument($arg);
 
             return $this;
+        } elseif ($arg instanceof IStackableArgument) {
+            $this->stackableArguments[$arg->getKey()][] = $arg->toPrimitive();
+
+            return $this;
         }
 
         $this->arguments[$arg->getKey()] = $arg;
@@ -91,6 +101,18 @@ abstract class BaseRequest implements IRequest
             if ($this->mergeableArguments[$arg->getKey()]->isEmpty()) {
                 unset($this->mergeableArguments[$arg->getKey()]);
             }
+        } elseif ($arg instanceof IStackableArgument) {
+            if (!isset($this->stackableArguments[$arg->getKey()])) {
+                throw new \InvalidArgumentException("This argument doesn't exists");
+            }
+            $newArgs = array_values(array_diff($this->stackableArguments[$arg->getKey()], [$arg->toPrimitive()]));
+            if (empty($newArgs)) {
+                unset($this->stackableArguments[$arg->getKey()]);
+
+                return $this;
+            }
+
+            $this->stackableArguments[$arg->getKey()] = $newArgs;
         } else {
             unset($this->arguments[$arg->getKey()]);
         }
@@ -134,6 +156,7 @@ abstract class BaseRequest implements IRequest
             'reflectionProperties',
             'tries',
             'requestTypeOverride',
+            'stackableArguments',
         ];
 
         return $blacklist;
@@ -179,6 +202,8 @@ abstract class BaseRequest implements IRequest
         foreach ($this->mergeableArguments as $key => $value) {
             $query[$key] = $value->toPrimitive();
         }
+
+        $query = array_merge_recursive($query, $this->stackableArguments);
 
         $options                       = [
             RequestOptions::QUERY => $query,
