@@ -24,7 +24,7 @@ jobs:
         - sudo apt-get update
         - sudo apt-get install graphviz
       script:
-       - wget http://phpdox.de/releases/phpdox.phar && chmod +x phpdox.phar && mv phpdox.phar /usr/local/bin/phpdox
+       - wget http://phpdox.de/releases/phpdox.phar && chmod +x phpdox.phar && sudo mv phpdox.phar /usr/local/bin/phpdox
        - php vendor/bin/phploc src tests/src/Base --log-xml build/phploc.xml
        - phpdox
 
