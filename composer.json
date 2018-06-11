@@ -30,12 +30,13 @@
   },
   "autoload": {
     "psr-4": {
-      "ZEROSPAM\\Framework\\SDK\\": "src/"
+      "ZEROSPAM\\Framework\\SDK\\": "src/",
+      "ZEROSPAM\\Framework\\SDK\\Test\\Base\\": "tests/src/Base"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "ZEROSPAM\\Framework\\SDK\\Test\\": "tests/src/"
+      "ZEROSPAM\\Framework\\SDK\\Test\\Tests\\": "tests/src/Tests"
     }
   }
 }
