@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/zerospam/sdk-framework/compare/v2.0.0...v2.0.1) (2018-06-11)
+
+
+### Bug Fixes
+
+* **tests:** Make base of tests available to other libs ([8838ccd](https://github.com/zerospam/sdk-framework/commit/8838ccd))
+
 # [2.0.0](https://github.com/zerospam/sdk-framework/compare/v1.0.0...v2.0.0) (2018-06-08)
 
 
