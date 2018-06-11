@@ -1,3 +1,20 @@
+# [2.1.0](https://github.com/zerospam/sdk-framework/compare/v2.0.1...v2.1.0) (2018-06-11)
+
+
+### Bug Fixes
+
+* **Arguments:** Make argCollector Arrayable ([2e0adb4](https://github.com/zerospam/sdk-framework/commit/2e0adb4))
+
+
+### Features
+
+* **Arguments:** Add sub keyed stackable argument ([42a9150](https://github.com/zerospam/sdk-framework/commit/42a9150))
+
+
+### Performance Improvements
+
+* **Arguments:** Don't generate stack key if not needed ([8523c25](https://github.com/zerospam/sdk-framework/commit/8523c25))
+
 ## [2.0.1](https://github.com/zerospam/sdk-framework/compare/v2.0.0...v2.0.1) (2018-06-11)
 
 
