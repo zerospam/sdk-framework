@@ -13,5 +13,4 @@ use ZEROSPAM\Framework\SDK\Request\Arguments\IArgument;
 
 interface IStackableArgument extends IArgument
 {
-
 }

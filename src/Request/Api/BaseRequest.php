@@ -14,6 +14,7 @@ use ZEROSPAM\Framework\SDK\Request\Arguments\IArgument;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\IMergeableArgument;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\Worker\ArgMerger;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\IStackableArgument;
+use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\Worker\ArgCollector;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil;
@@ -38,7 +39,7 @@ abstract class BaseRequest implements IRequest
     private $mergeableArguments = [];
 
     /**
-     * @var IStackableArgument[][]
+     * @var ArgCollector[]
      */
     private $stackableArguments = [];
 
@@ -72,8 +73,13 @@ abstract class BaseRequest implements IRequest
             $this->mergeableArguments[$arg->getKey()]->addArgument($arg);
 
             return $this;
-        } elseif ($arg instanceof IStackableArgument) {
-            $this->stackableArguments[$arg->getKey()][] = $arg->toPrimitive();
+        }
+        if ($arg instanceof IStackableArgument) {
+            if (!isset($this->stackableArguments[$arg->getKey()])) {
+                $this->stackableArguments[$arg->getKey()] = new ArgCollector();
+            }
+
+            $this->stackableArguments[$arg->getKey()]->addArgument($arg);
 
             return $this;
         }
@@ -105,14 +111,11 @@ abstract class BaseRequest implements IRequest
             if (!isset($this->stackableArguments[$arg->getKey()])) {
                 throw new \InvalidArgumentException("This argument doesn't exists");
             }
-            $newArgs = array_values(array_diff($this->stackableArguments[$arg->getKey()], [$arg->toPrimitive()]));
-            if (empty($newArgs)) {
+            $this->stackableArguments[$arg->getKey()]->removeArgument($arg);
+
+            if ($this->stackableArguments[$arg->getKey()]->isEmpty()) {
                 unset($this->stackableArguments[$arg->getKey()]);
-
-                return $this;
             }
-
-            $this->stackableArguments[$arg->getKey()] = $newArgs;
         } else {
             unset($this->arguments[$arg->getKey()]);
         }
@@ -203,7 +206,9 @@ abstract class BaseRequest implements IRequest
             $query[$key] = $value->toPrimitive();
         }
 
-        $query = array_merge_recursive($query, $this->stackableArguments);
+        foreach ($this->stackableArguments as $key => $value) {
+            $query[$key] = $value->toPrimitive();
+        }
 
         $options                       = [
             RequestOptions::QUERY => $query,
