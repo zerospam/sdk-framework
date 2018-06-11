@@ -11,8 +11,8 @@ namespace ZEROSPAM\Framework\SDK\Request\Api;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\UriInterface;
 use ZEROSPAM\Framework\SDK\Request\Arguments\IArgument;
-use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\ArgMerger;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\IMergeableArgument;
+use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\Worker\ArgMerger;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\IStackableArgument;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
@@ -33,7 +33,7 @@ abstract class BaseRequest implements IRequest
     private $arguments = [];
 
     /**
-     * @var ArgMerger[]
+     * @var \ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\Worker\ArgMerger[]
      */
     private $mergeableArguments = [];
 
@@ -253,7 +253,7 @@ abstract class BaseRequest implements IRequest
     }
 
     /**
-     * @return ArgMerger[]
+     * @return \ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\Worker\ArgMerger[]
      */
     public function getMergeableArguments(): array
     {

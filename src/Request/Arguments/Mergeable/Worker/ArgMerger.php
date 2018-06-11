@@ -6,10 +6,18 @@
  * Time: 4:40 PM.
  */
 
-namespace ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable;
+namespace ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\Worker;
 
+use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\IMergeableArgument;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
+/**
+ * Class ArgMerger
+ *
+ * Takes care of merging the arguments into a single string
+ *
+ * @package ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\Worker
+ */
 class ArgMerger implements PrimalValued
 {
 
