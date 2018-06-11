@@ -1,58 +1,50 @@
+env:
+  global:
+    secure: kX9oozcv208UTHoSm3cwEr2/O4YzFIwlX9zlEAma5wjG2vzmFTjSuj6/656A0JTMbcgFnGXY+43nnD6KGCXXHS90HlrU5D+fc0u+f0LVSo6lEXuHVEBCaJXUwOJ2NAZGUeyp+3t9U7lIp1Yjj2cXHWEBsxA1SaqX2UQXRoHbUaB38T51X/qspA7t3crdADkRQsPRtyE5qBccFac5GBd7tLCczs4fak0vgYcQ719z2KLmR2RYSv5OrsjcLYaiLfxnmYVZhppg7wN+2P/1dPjQ3WJ4WJyAyHYpz89djHKaXdWJZzX8duVbqCHcNWQlqBsGGW1zHn7t6M3A3JRZR9SfBQ2zenbkxnuOMyBBPCHZ0elevYeN/bjD8cFZ1k7p3cXFgkEKIUDXj+x36ublrliyq+hVcqQpcE4xO9M8e1ul6WIAprmGEQyqSjsvMpdIyYcXxQctpoRjb80cXhYuSfj8T7CfI1gFQdvXFedetGiz4cohGP7b/056+5i0/+VYl7nzDom+/m1NgNU7HEzlQNM+/9nHTCRVt3yXhAnk5LynU1ba6qDqGg7O0y/fMcVtuH4WOxd1V/YH8ghIE79f9hkslT8D0NNEXfKf9AjaS8Bkgl4fXofk5jpOBdKkbga5OQfc72uXkGi4Pa5uDU7H4rWs1IU4zlWM2JpWmzZ2HpWn+Ic=
+
 language: php
-
 sudo: true
-
 php:
- - 7.2
- - 7.1
-
-
+- 7.2
+- 7.1
 cache:
   directories:
-    - $HOME/.composer/cache/files
-
+  - "$HOME/.composer/cache/files"
 stages:
-  - test
-  - name: deploy
-    if: branch = master
-
+- test
+- name: deploy
+  if: branch = master
 jobs:
   include:
-    - stage: deploy
-      install: true
-      before_install:
-        - sudo apt-get update
-        - sudo apt-get install graphviz
-      script:
-       - wget http://phpdox.de/releases/phpdox.phar && chmod +x phpdox.phar && sudo mv phpdox.phar /usr/local/bin/phpdox
-       - mkdir build/ && php vendor/bin/phploc src tests/src/Base --log-xml build/phploc.xml
-       - phpdox
-
-      after_success: true
-      deploy:
-        provider: pages
-        skip-cleanup: true
-        github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-        local-dir: build/docs/html
-        on:
-          branch: master
-    - script:
-      - npm install
-      - npm run semantic-release
-      after_success: skip
-      before_script: skip
-      language: node_js
-      node_js: 10
-      php: skip
-
-
-
+  - stage: deploy
+    install: true
+    before_install:
+    - sudo apt-get update
+    - sudo apt-get install graphviz
+    script:
+    - wget http://phpdox.de/releases/phpdox.phar && chmod +x phpdox.phar && sudo mv
+      phpdox.phar /usr/local/bin/phpdox
+    - mkdir build/ && php vendor/bin/phploc src tests/src/Base --log-xml build/phploc.xml
+    - phpdox
+    after_success: true
+    deploy:
+      provider: pages
+      skip-cleanup: true
+      github-token: "$GITHUB_TOKEN"
+      local-dir: build/docs/html
+      on:
+        branch: master
+  - script:
+    - npm install
+    - npm run semantic-release
+    after_success: skip
+    before_script: skip
+    language: node_js
+    node_js: 10
+    php: skip
 before_script:
-  - travis_retry composer install --prefer-dist
-
+- travis_retry composer install --prefer-dist
 script:
-  - ./vendor/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml
-
+- "./vendor/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml"
 after_success:
-  - php vendor/bin/php-coveralls -v
-
+- php vendor/bin/php-coveralls -v
