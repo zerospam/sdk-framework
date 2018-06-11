@@ -18,6 +18,7 @@ use Psr\Http\Message\ResponseInterface;
 use ZEROSPAM\Framework\SDK\Client\Exception\SDKException;
 use ZEROSPAM\Framework\SDK\Client\Exception\TooManyRetriesException;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
+use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
 use ZEROSPAM\Framework\SDK\Config\IOAuthConfiguration;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
@@ -56,7 +57,11 @@ class OAuthClient implements IOAuthClient
     /**
      * @var \ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware[][]
      */
-    private $middlewares;
+    private $postRequestMiddlewares = [];
+    /**
+     * @var IPreRequestMiddleware[]
+     */
+    private $preRequestMiddlewares = [];
 
     /**
      * OauthClient constructor.
@@ -87,8 +92,22 @@ class OAuthClient implements IOAuthClient
     {
         $middleware->setClient($this);
         foreach ($middleware::statusCode() as $statusCode) {
-            $this->middlewares[$statusCode][] = $middleware;
+            $this->postRequestMiddlewares[$statusCode][] = $middleware;
         }
+
+        return $this;
+    }
+
+    /**
+     * Register a pre request middleware
+     *
+     * @param IPreRequestMiddleware $middleware
+     *
+     * @return IOAuthClient
+     */
+    public function registerPreRequestMiddleware(IPreRequestMiddleware $middleware): IOAuthClient
+    {
+        $this->preRequestMiddlewares[get_class($middleware)] = $middleware;
 
         return $this;
     }
@@ -106,22 +125,36 @@ class OAuthClient implements IOAuthClient
     {
         $middlewareClass = get_class($middleware);
         foreach ($middleware::statusCode() as $statusCode) {
-            if (!isset($this->middlewares[$statusCode])) {
+            if (!isset($this->postRequestMiddlewares[$statusCode])) {
                 continue;
             }
             $result = array_filter(
-                $this->middlewares[$statusCode],
+                $this->postRequestMiddlewares[$statusCode],
                 function (IMiddleware $currMiddleware) use ($middlewareClass) {
                     return get_class($currMiddleware) != $middlewareClass;
                 }
             );
 
             if (empty($result)) {
-                unset($this->middlewares[$statusCode]);
+                unset($this->postRequestMiddlewares[$statusCode]);
             } else {
-                $this->middlewares[$statusCode] = $result;
+                $this->postRequestMiddlewares[$statusCode] = $result;
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * UnRegister a pre request middleware
+     *
+     * @param IPreRequestMiddleware $middleware
+     *
+     * @return IOAuthClient
+     */
+    public function unregisterPreRequestMiddleware(IPreRequestMiddleware $middleware): IOAuthClient
+    {
+        unset($this->preRequestMiddlewares[get_class($middleware)]);
 
         return $this;
     }
@@ -153,6 +186,9 @@ class OAuthClient implements IOAuthClient
      */
     public function processRequest(IRequest $request): IResponse
     {
+        foreach ($this->preRequestMiddlewares as $middleware) {
+            $middleware->handle($request);
+        }
         $request->incrementTries();
 
         $headers = $this->configuration->getProvider()->getHeaders($this->token);
@@ -168,8 +204,8 @@ class OAuthClient implements IOAuthClient
             $response   = $this->guzzleClient->request($request->httpType()->getValue(), $request->toUri(), $options);
             $parsedData = JSONParsing::responseToJson($response);
 
-            if (isset($this->middlewares[$response->getStatusCode()])) {
-                foreach ($this->middlewares[$response->getStatusCode()] as $middleware) {
+            if (isset($this->postRequestMiddlewares[$response->getStatusCode()])) {
+                foreach ($this->postRequestMiddlewares[$response->getStatusCode()] as $middleware) {
                     $parsedData = $middleware->handle($request, $response, $parsedData);
                 }
             }
@@ -180,12 +216,12 @@ class OAuthClient implements IOAuthClient
             $response = $e->getResponse();
             $this->processThrottleData($response);
 
-            if (!isset($this->middlewares[$response->getStatusCode()])) {
+            if (!isset($this->postRequestMiddlewares[$response->getStatusCode()])) {
                 throw new SDKException($e->getMessage(), $e->getCode(), $e);
             }
             $parsedData = JSONParsing::responseToJson($response);
 
-            foreach ($this->middlewares[$response->getStatusCode()] as $middleware) {
+            foreach ($this->postRequestMiddlewares[$response->getStatusCode()] as $middleware) {
                 $parsedData = $middleware->handle($request, $response, $parsedData);
             }
         } catch (RequestException $e) {
@@ -200,7 +236,7 @@ class OAuthClient implements IOAuthClient
         }
 
         /**
-         * @var BaseResponse
+         * @var $data BaseResponse
          */
         $data = $request->processResponse($parsedData);
 

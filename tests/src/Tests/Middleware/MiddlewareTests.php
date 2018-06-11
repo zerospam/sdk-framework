@@ -11,12 +11,13 @@ namespace ZEROSPAM\Framework\SDK\Test\Tests\Middleware;
 use GuzzleHttp\Psr7\Response;
 use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware;
+use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Framework\SDK\Test\Base\Util\AccessTokenGenerator;
 
-class AuthMiddlewareTest extends TestCase
+class MiddlewareTests extends TestCase
 {
     public function testAuthMiddlewareRefreshToken(): void
     {
@@ -64,5 +65,22 @@ class AuthMiddlewareTest extends TestCase
         $OAuthClient
             ->registerMiddleware(new AuthenticationMiddleware())
             ->processRequest(new TestRequest());
+    }
+
+    public function testPreRequestMiddleware(): void
+    {
+        $client  = $this->preSuccess([]);
+        $request = new TestRequest();
+
+        $mock = \Mockery::mock(IPreRequestMiddleware::class)
+                        ->shouldReceive('handle')
+                        ->once()
+                        ->andReturnUndefined();
+
+        $client->getOAuthTestClient()
+               ->registerPreRequestMiddleware($mock->getMock())
+               ->processRequest($request);
+
+        $this->assertInstanceOf(TestRequest::class, $request);
     }
 }

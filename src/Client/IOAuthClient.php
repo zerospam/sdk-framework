@@ -10,6 +10,7 @@ namespace ZEROSPAM\Framework\SDK\Client;
 
 use League\OAuth2\Client\Token\AccessToken;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
+use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 
@@ -62,4 +63,22 @@ interface IOAuthClient
      * @return IResponse
      */
     public function processRequest(IRequest $request): IResponse;
+
+    /**
+     * Register a pre request middleware
+     *
+     * @param IPreRequestMiddleware $middleware
+     *
+     * @return IOAuthClient
+     */
+    public function registerPreRequestMiddleware(IPreRequestMiddleware $middleware): IOAuthClient;
+
+    /**
+     * UnRegister a pre request middleware
+     *
+     * @param IPreRequestMiddleware $middleware
+     *
+     * @return IOAuthClient
+     */
+    public function unregisterPreRequestMiddleware(IPreRequestMiddleware $middleware): IOAuthClient;
 }
