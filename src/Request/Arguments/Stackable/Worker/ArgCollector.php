@@ -25,14 +25,20 @@ class ArgCollector implements Arrayable
      */
     private $stackKey;
 
-    /**
-     * ArgCollector constructor.
-     */
-    public function __construct()
-    {
-        $this->stackKey = uniqid('stack_key');
-    }
 
+    /**
+     * Get the unique stack key
+     *
+     * @return string
+     */
+    private function stackKey(): string
+    {
+        if ($this->stackKey) {
+            return $this->stackKey;
+        }
+
+        return $this->stackKey = uniqid('stack_key');
+    }
 
     /**
      * Add the argument.
@@ -43,14 +49,15 @@ class ArgCollector implements Arrayable
      */
     public function addArgument(IStackableArgument $argument)
     {
-        $key = $this->stackKey;
         if ($argument instanceof ISubKeyedStackableArgument) {
             $key = $argument->getSubKey();
+            if (isset($this->args[$key])) {
+                throw new \InvalidArgumentException("Can't override the subkey: $key");
+            }
+        } else {
+            $key = $this->stackKey();
         }
-        $primitive = $argument->toPrimitive();
-        if (isset($this->args[$key][$primitive])) {
-            throw new \InvalidArgumentException('This argument type is already present.');
-        }
+        $primitive                    = $argument->toPrimitive();
         $this->args[$key][$primitive] = $argument;
 
         return $this;
@@ -65,18 +72,18 @@ class ArgCollector implements Arrayable
      */
     public function removeArgument(IStackableArgument $argument)
     {
-
-        $key = $this->stackKey;
         if ($argument instanceof ISubKeyedStackableArgument) {
             $key = $argument->getSubKey();
+        } else {
+            $key = $this->stackKey();
         }
 
         unset($this->args[$key][$argument->toPrimitive()]);
         if (empty($this->args[$key])) {
             unset($this->args[$key]);
-
-            return $this;
         }
+
+        return $this;
     }
 
 
