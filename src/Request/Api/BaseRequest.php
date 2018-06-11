@@ -207,7 +207,7 @@ abstract class BaseRequest implements IRequest
         }
 
         foreach ($this->stackableArguments as $key => $value) {
-            $query[$key] = $value->toPrimitive();
+            $query[$key] = $value->toArray();
         }
 
         $options                       = [

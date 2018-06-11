@@ -10,8 +10,9 @@ namespace ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\Worker;
 
 use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\IStackableArgument;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\ISubKeyedStackableArgument;
+use ZEROSPAM\Framework\SDK\Utils\Contracts\Arrayable;
 
-class ArgCollector
+class ArgCollector implements Arrayable
 {
 
     /**
@@ -46,7 +47,11 @@ class ArgCollector
         if ($argument instanceof ISubKeyedStackableArgument) {
             $key = $argument->getSubKey();
         }
-        $this->args[$key][$argument->toPrimitive()] = $argument;
+        $primitive = $argument->toPrimitive();
+        if (isset($this->args[$key][$primitive])) {
+            throw new \InvalidArgumentException('This argument type is already present.');
+        }
+        $this->args[$key][$primitive] = $argument;
 
         return $this;
     }
@@ -74,12 +79,8 @@ class ArgCollector
         }
     }
 
-    /**
-     * Return a primitive value for this object.
-     *
-     * @return int|float|string|float|array
-     */
-    public function toPrimitive()
+
+    public function toArray(): array
     {
         $result = [];
         if (isset($this->args[$this->stackKey])) {
@@ -93,7 +94,7 @@ class ArgCollector
          * @var ISubKeyedStackableArgument[] $arg
          */
         foreach ($this->args as $subKey => $arg) {
-            $result[$subKey] = array_keys($arg);
+            $result[$subKey] = current($arg)->toPrimitive();
         }
 
         return $result;
