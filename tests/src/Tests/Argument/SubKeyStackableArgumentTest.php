@@ -9,26 +9,37 @@
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Argument;
 
 use GuzzleHttp\RequestOptions;
-use ZEROSPAM\Framework\SDK\Test\Base\Argument\IncludeStackableArg;
+use ZEROSPAM\Framework\SDK\Test\Base\Argument\SearchKeyedArg;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 
-class StackableArgumentTest extends TestCase
+class SubKeyStackableArgumentTest extends TestCase
 {
     /**
      * @test
      */
     public function add_argument_stack()
     {
-        $key     = (new IncludeStackableArg('t'))->getKey();
+        $key     = (new SearchKeyedArg('val', 't'))->getKey();
         $request = new TestRequest();
-        $request->addArgument(new IncludeStackableArg('test'))
-                ->addArgument(new IncludeStackableArg('superTest'));
+        $request->addArgument(new SearchKeyedArg('val', 'test'))
+                ->addArgument(new SearchKeyedArg('item', 'superTest'));
 
         $options = $request->requestOptions();
 
         $this->assertArrayHasKey($key, $options[RequestOptions::QUERY]);
-        $this->assertArraySubset(['test', 'superTest'], $options[RequestOptions::QUERY][$key]);
+        $this->assertArraySubset(['val' => 'test', 'item' => 'superTest'], $options[RequestOptions::QUERY][$key]);
+    }
+
+    /**
+     * @test
+     * @expectedException \InvalidArgumentException
+     */
+    public function testTwiceSameArgSubKeyFail()
+    {
+        $request = new TestRequest();
+        $request->addArgument(new SearchKeyedArg('val', 'test'))
+                ->addArgument(new SearchKeyedArg('val', 'superTest'));
     }
 
     /**
@@ -36,16 +47,16 @@ class StackableArgumentTest extends TestCase
      */
     public function remove_argument_stack()
     {
-        $key     = (new IncludeStackableArg('t'))->getKey();
+        $key     = (new SearchKeyedArg('val', 't'))->getKey();
         $request = new TestRequest();
-        $request->addArgument(new IncludeStackableArg('test'))
-                ->addArgument(new IncludeStackableArg('superTest'))
-                ->addArgument(new IncludeStackableArg('foo'))
-                ->removeArgument(new IncludeStackableArg('superTest'));
+        $request->addArgument(new SearchKeyedArg('val', 'test'))
+                ->addArgument(new SearchKeyedArg('item', 'superTest'))
+                ->addArgument(new SearchKeyedArg('item2', 'foo'))
+                ->removeArgument(new SearchKeyedArg('item', 'superTest'));
 
         $options = $request->requestOptions();
 
-        $this->assertArraySubset(['test', 'foo'], $options[RequestOptions::QUERY][$key]);
+        $this->assertArraySubset(['val' => 'test', 'item2' => 'foo'], $options[RequestOptions::QUERY][$key]);
     }
 
     /**
@@ -55,7 +66,7 @@ class StackableArgumentTest extends TestCase
     public function remove_not_present_arg()
     {
         $request = new TestRequest();
-        $request->removeArgument(new IncludeStackableArg('superTest'));
+        $request->removeArgument(new SearchKeyedArg('val', 'superTest'));
     }
 
     /**
@@ -63,14 +74,14 @@ class StackableArgumentTest extends TestCase
      */
     public function remove_all_argument_stack()
     {
-        $key     = (new IncludeStackableArg('t'))->getKey();
+        $key     = (new SearchKeyedArg('val', 't'))->getKey();
         $request = new TestRequest();
-        $request->addArgument(new IncludeStackableArg('test'))
-                ->addArgument(new IncludeStackableArg('superTest'))
-                ->addArgument(new IncludeStackableArg('foo'))
-                ->removeArgument(new IncludeStackableArg('superTest'))
-                ->removeArgument(new IncludeStackableArg('foo'))
-                ->removeArgument(new IncludeStackableArg('test'));
+        $request->addArgument(new SearchKeyedArg('val', 'test'))
+                ->addArgument(new SearchKeyedArg('val2', 'superTest'))
+                ->addArgument(new SearchKeyedArg('val3', 'foo'))
+                ->removeArgument(new SearchKeyedArg('val2', 'superTest'))
+                ->removeArgument(new SearchKeyedArg('val3', 'foo'))
+                ->removeArgument(new SearchKeyedArg('val', 'test'));
 
         $options = $request->requestOptions();
 
@@ -85,10 +96,10 @@ class StackableArgumentTest extends TestCase
         $client = $this->preSuccess(['test' => 'data']);
 
         $request = new TestRequest();
-        $request->addArgument(new IncludeStackableArg('test'));
-        $request->addArgument(new IncludeStackableArg('test2'));
+        $request->addArgument(new SearchKeyedArg('val', 'test'));
+        $request->addArgument(new SearchKeyedArg('val2', 'test2'));
         $client->getOAuthTestClient()
                ->processRequest($request);
-        $this->validateQuery($client, 'include[0]=test', 'include[1]=test2');
+        $this->validateQuery($client, 'search[val]=test', 'search[val2]=test2');
     }
 }
