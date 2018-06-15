@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/zerospam/sdk-framework/compare/v2.1.0...v2.2.0) (2018-06-11)
+
+
+### Features
+
+* **middleware:** Interceptor of Request ([38bc5e5](https://github.com/zerospam/sdk-framework/commit/38bc5e5))
+
 # [2.1.0](https://github.com/zerospam/sdk-framework/compare/v2.0.1...v2.1.0) (2018-06-11)
 
 
