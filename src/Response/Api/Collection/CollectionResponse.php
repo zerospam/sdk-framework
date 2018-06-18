@@ -31,7 +31,7 @@ abstract class CollectionResponse extends BaseResponse
      * CollectionResponse constructor.
      *
      * @param CollectionMetaData $metaData
-     * @param string[]           $data
+     * @param string[]           $data contains the json deserialized into an array of string (or matrix of string)
      */
     public function __construct(CollectionMetaData $metaData, array $data)
     {
