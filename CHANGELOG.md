@@ -1,3 +1,17 @@
+# [4.0.0](https://github.com/zerospam/sdk-framework/compare/v3.0.0...v4.0.0) (2018-06-20)
+
+
+### Features
+
+* **Collection:** Collections iterator ([acbc67f](https://github.com/zerospam/sdk-framework/commit/acbc67f))
+* **Collection:** Improves Collections ([7693d2c](https://github.com/zerospam/sdk-framework/commit/7693d2c))
+
+
+### BREAKING CHANGES
+
+* **Collection:** dataToResponses renamed to dataToResponse and return a IResponse instead of an
+Array
+
 # [3.0.0](https://github.com/zerospam/sdk-framework/compare/v2.3.0...v3.0.0) (2018-06-20)
 
 
