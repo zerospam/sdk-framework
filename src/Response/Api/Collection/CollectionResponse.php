@@ -8,6 +8,7 @@
 
 namespace ZEROSPAM\Framework\SDK\Response\Api\Collection;
 
+use Traversable;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 
@@ -19,7 +20,7 @@ use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
  *
  * @package ZEROSPAM\Framework\SDK\Response\Api\Collection
  */
-abstract class CollectionResponse extends BaseResponse
+abstract class CollectionResponse extends BaseResponse implements \IteratorAggregate
 {
 
     /**
@@ -56,5 +57,18 @@ abstract class CollectionResponse extends BaseResponse
     public function getMetaData(): CollectionMetaData
     {
         return $this->metaData;
+    }
+
+    /**
+     * Retrieve an external iterator
+     *
+     * @link  http://php.net/manual/en/iteratoraggregate.getiterator.php
+     * @return Traversable An instance of an object implementing <b>Iterator</b> or
+     * <b>Traversable</b>
+     * @since 5.0.0
+     */
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->data);
     }
 }
