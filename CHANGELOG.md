@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/zerospam/sdk-framework/compare/v2.3.0...v3.0.0) (2018-06-20)
+
+
+### Features
+
+* **Bindable:** Makes bindable a trait ([1594122](https://github.com/zerospam/sdk-framework/commit/1594122))
+
+
+### BREAKING CHANGES
+
+* **Bindable:** BindableRequest is not a trait IsBindable instead of a Class.
+
 # [2.3.0](https://github.com/zerospam/sdk-framework/compare/v2.2.0...v2.3.0) (2018-06-20)
 
 
