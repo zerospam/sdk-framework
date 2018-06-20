@@ -13,17 +13,12 @@ use ZEROSPAM\Framework\SDK\Utils\Str;
 /**
  * Class CollectionPagination
  *
- * @property-read int $total
- * @property-read int $count
- * @property-read int $perPage
- * @property-read int $currentPage
- * @property-read int $totalPages
  * @package ProvulusSDK\Client\Response\Collection
  */
 class CollectionMetaData
 {
 
-    private $metaDat = [];
+    private $metaData = [];
 
     /**
      * CollectionPagination constructor.
@@ -32,7 +27,7 @@ class CollectionMetaData
      */
     public function __construct(array $pagination)
     {
-        $this->metaDat = $pagination;
+        $this->metaData = $pagination;
     }
 
 
@@ -40,7 +35,7 @@ class CollectionMetaData
     {
         $name = Str::snake($name);
 
-        return isset($this->metaDat[$name]);
+        return isset($this->metaData[$name]);
     }
 
 
@@ -49,7 +44,7 @@ class CollectionMetaData
         if (isset($this->{$name})) {
             $name = Str::snake($name);
 
-            return $this->metaDat[$name];
+            return $this->metaData[$name];
         }
 
         return null;
