@@ -1,3 +1,16 @@
+# [2.3.0](https://github.com/zerospam/sdk-framework/compare/v2.2.0...v2.3.0) (2018-06-20)
+
+
+### Features
+
+* **collection:** Add collection response ([8793884](https://github.com/zerospam/sdk-framework/commit/8793884))
+* **Collection:** Make collection response usable ([2a80f05](https://github.com/zerospam/sdk-framework/commit/2a80f05))
+
+
+### Performance Improvements
+
+* **Collection:** Makes Collection response iterable ([ab0c21a](https://github.com/zerospam/sdk-framework/commit/ab0c21a))
+
 # [2.2.0](https://github.com/zerospam/sdk-framework/compare/v2.1.0...v2.2.0) (2018-06-11)
 
 
