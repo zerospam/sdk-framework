@@ -10,6 +10,7 @@ namespace ZEROSPAM\Framework\SDK\Test\Base\Data\Collection;
 
 use ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionMetaData;
 use ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse;
+use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
 
 class CollectionTestResponse extends CollectionResponse
@@ -25,12 +26,14 @@ class CollectionTestResponse extends CollectionResponse
     }
 
     /**
-     * Which class to use for building underlying responses
+     * Transform the basic data (string[]) into a response (IResponse)
      *
-     * @return string
+     * @param array $data
+     *
+     * @return IResponse
      */
-    protected static function responseClass(): string
+    protected static function dataToResponse(array $data)
     {
-        return TestResponse::class;
+        return new TestResponse($data);
     }
 }

@@ -69,6 +69,56 @@ JSON;
         $this->assertEquals(2, $response->getMetaData()->perPage);
     }
 
+    public function testCollectionResponseIterable()
+    {
+        $json
+            = <<<JSON
+{
+  "response": [
+    {
+      "author": "Koma",
+      "featured": false,
+      "id": "chatwork",
+      "name": "chatwork",
+      "version": "1.0.1",
+      "icons": {
+        "png": "https://cdn.franzinfra.com/recipes/dist/chatwork/src/icon.png",
+        "svg": "https://cdn.franzinfra.com/recipes/dist/chatwork/src/icon.svg"
+      }
+    },
+    {
+      "author": "Stefan Malzner <stefan@adlk.io>",
+      "featured": false,
+      "id": "ciscospark",
+      "name": "Cisco Spark",
+      "version": "1.0.0",
+      "icons": {
+        "png": "https://cdn.franzinfra.com/recipes/dist/ciscospark/src/icon.png",
+        "svg": "https://cdn.franzinfra.com/recipes/dist/ciscospark/src/icon.svg"
+      }
+    }
+  ],
+  "meta": {
+    "per_page": 2,
+    "page": 0,
+    "pages": 1,
+    "count": 2
+  }
+}
+JSON;
+
+        $client = $this->preSuccess($json);
+
+        $request = new CollectionTestRequest();
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $response = $request->getResponse();
+        /** @var TestResponse $testResponse */
+        foreach ($response as $testResponse) {
+            $this->assertInstanceOf(TestResponse::class, $testResponse);
+        }
+    }
+
     /**
      * @expectedException \InvalidArgumentException
      */

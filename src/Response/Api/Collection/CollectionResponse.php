@@ -9,13 +9,13 @@
 namespace ZEROSPAM\Framework\SDK\Response\Api\Collection;
 
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
+use ZEROSPAM\Framework\SDK\Response\Api\Collection\Iterator\ImmutableTransformerIterator;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 
 /**
  * Class CollectionResponse
  *
  * Represent a response that contains more Responses
- * @method IResponse[] data
  *
  * @package ZEROSPAM\Framework\SDK\Response\Api\Collection
  */
@@ -36,35 +36,18 @@ abstract class CollectionResponse extends BaseResponse implements \IteratorAggre
     public function __construct(CollectionMetaData $metaData, array $data)
     {
         $this->metaData = $metaData;
-        parent::__construct(static::dataToResponses($data));
+        parent::__construct($data);
     }
 
     /**
-     * Transform the basic data (string[]) into a response array (IResponse[])
+     * Transform the basic data (string[]) into a response (IResponse)
      *
      * @param array $data
      *
-     * @return IResponse[]
+     * @return IResponse
      */
-    protected static function dataToResponses(array $data): array
-    {
-        $class = static::responseClass();
+    abstract protected static function dataToResponse(array $data);
 
-        return array_map(
-            function (array $resData) use ($class) {
-                return new $class($resData);
-            },
-            $data
-        );
-    }
-
-
-    /**
-     * Which class to use for building underlying responses
-     *
-     * @return string
-     */
-    abstract protected static function responseClass(): string;
 
     /**
      * Meta data of the collection (pagination mostly)
@@ -85,7 +68,12 @@ abstract class CollectionResponse extends BaseResponse implements \IteratorAggre
      */
     public function getIterator()
     {
-        return new \ArrayIterator($this->data);
+        return new ImmutableTransformerIterator(
+            function (array $data) {
+                return static::dataToResponse($data);
+            },
+            $this->data
+        );
     }
 
 
@@ -143,7 +131,7 @@ abstract class CollectionResponse extends BaseResponse implements \IteratorAggre
      */
     public function offsetSet($offset, $value)
     {
-        throw new \InvalidArgumentException("Can't modify collection");
+        $this->getIterator()->offsetSet($offset, $value);
     }
 
     /**
@@ -160,6 +148,6 @@ abstract class CollectionResponse extends BaseResponse implements \IteratorAggre
      */
     public function offsetUnset($offset)
     {
-        throw new \InvalidArgumentException("Can't modify collection");
+        $this->getIterator()->offsetUnset($offset);
     }
 }
