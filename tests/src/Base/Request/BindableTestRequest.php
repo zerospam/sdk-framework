@@ -8,7 +8,8 @@
 
 namespace ZEROSPAM\Framework\SDK\Test\Base\Request;
 
-use ZEROSPAM\Framework\SDK\Request\Api\BindableRequest;
+use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
+use ZEROSPAM\Framework\SDK\Request\Api\IsBindable;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Test\Tests\Utils\Obj\BasicEnum;
@@ -20,8 +21,10 @@ use ZEROSPAM\Framework\SDK\Test\Tests\Utils\Obj\BasicEnum;
  *
  * @package ZEROSPAM\Framework\SDK\Test\Base\Request
  */
-class BindableTestRequest extends BindableRequest
+class BindableTestRequest extends BaseRequest
 {
+    use IsBindable;
+
     private $test;
 
     /**

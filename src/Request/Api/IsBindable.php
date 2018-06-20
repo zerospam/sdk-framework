@@ -12,13 +12,13 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 /**
- * Class BindableRequest
+ * Trait BindableRequest
  *
  * To be used when you need bindings in your api route url.
  *
  * @package ZEROSPAM\Framework\SDK\Request\Api
  */
-abstract class BindableRequest extends BaseRequest
+trait IsBindable
 {
     /**
      * @var array
