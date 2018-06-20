@@ -46,7 +46,25 @@ abstract class CollectionResponse extends BaseResponse implements \IteratorAggre
      *
      * @return IResponse[]
      */
-    abstract public static function dataToResponses(array $data): array;
+    protected static function dataToResponses(array $data): array
+    {
+        $class = static::responseClass();
+
+        return array_map(
+            function (array $resData) use ($class) {
+                return new $class($resData);
+            },
+            $data
+        );
+    }
+
+
+    /**
+     * Which class to use for building underlying responses
+     *
+     * @return string
+     */
+    abstract protected static function responseClass(): string;
 
     /**
      * Meta data of the collection (pagination mostly)
