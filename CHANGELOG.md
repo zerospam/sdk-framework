@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/zerospam/sdk-framework/compare/v4.0.0...v4.0.1) (2018-07-11)
+
+
+### Bug Fixes
+
+* **Tests:** Validation of request ([2b894a0](https://github.com/zerospam/sdk-framework/commit/2b894a0))
+
 # [4.0.0](https://github.com/zerospam/sdk-framework/compare/v3.0.0...v4.0.0) (2018-06-20)
 
 
