@@ -126,7 +126,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             $sent = \GuzzleHttp\json_decode($requestBody, true);
         }
 
-        $this->assertArraySubset($sent, $decode, 'Request contains all we want');
+        $this->assertArraySubset($sent, $decode, false, 'Request contains all we want');
     }
 
     /**
