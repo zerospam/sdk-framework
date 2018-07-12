@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Framework\SDK\Utils\Reflection;
 
 use Carbon\Carbon;
+use ZEROSPAM\Framework\SDK\Request\Api\WithNullableFields;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\Arrayable;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 use ZEROSPAM\Framework\SDK\Utils\Str;
@@ -54,10 +55,22 @@ final class ReflectionUtil
             ) {
                 $property->setAccessible(true);
 
+                $field = $property->getName();
                 $value = $property->getValue($object);
                 $value = self::transformValue($value);
 
-                $field = $property->getName();
+                if ($object instanceof WithNullableFields) {
+                    if (is_null($value) && !$object->isNullable($field)) {
+                        return $result;
+                    }
+
+                    if ($object->isNullable($field) && !$object->isValueChanged($field)) {
+                        return $result;
+                    }
+                } elseif (is_null($value)) {
+                    return $result;
+                }
+
 
                 $result[Str::snake($field)] = $value;
 
