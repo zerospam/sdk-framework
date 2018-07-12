@@ -160,6 +160,7 @@ abstract class BaseRequest implements IRequest
             'tries',
             'requestTypeOverride',
             'stackableArguments',
+            'nullableChanged',
         ];
 
         return $blacklist;
