@@ -1,3 +1,21 @@
+# [5.0.0](https://github.com/zerospam/sdk-framework/compare/v4.0.1...v5.0.0) (2018-07-12)
+
+
+### Bug Fixes
+
+* **Request:** Don't send nullableChanged ([af1a056](https://github.com/zerospam/sdk-framework/commit/af1a056))
+
+
+### Features
+
+* **Request:** Add support for nullable fields ([8a36959](https://github.com/zerospam/sdk-framework/commit/8a36959))
+* **Request:** Add support for NullableFields ([34c45bc](https://github.com/zerospam/sdk-framework/commit/34c45bc))
+
+
+### BREAKING CHANGES
+
+* **Request:** Null fields won't be sent to the API anymore if not set as nullable fields
+
 ## [4.0.1](https://github.com/zerospam/sdk-framework/compare/v4.0.0...v4.0.1) (2018-07-11)
 
 
