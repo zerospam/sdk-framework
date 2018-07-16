@@ -1,3 +1,11 @@
+# [5.1.0](https://github.com/zerospam/sdk-framework/compare/v5.0.0...v5.1.0) (2018-07-16)
+
+
+### Features
+
+* **Request:** Adds empty request ([48059fd](https://github.com/zerospam/sdk-framework/commit/48059fd))
+* **Request:** Improves the EmptyResponse ([dec801e](https://github.com/zerospam/sdk-framework/commit/dec801e))
+
 # [5.0.0](https://github.com/zerospam/sdk-framework/compare/v4.0.1...v5.0.0) (2018-07-12)
 
 
