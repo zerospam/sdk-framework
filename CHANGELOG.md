@@ -1,3 +1,15 @@
+# [5.2.0](https://github.com/zerospam/sdk-framework/compare/v5.1.0...v5.2.0) (2018-07-16)
+
+
+### Bug Fixes
+
+* **EmptyResponse:** Set the RateLimit only for BaseResponse ([02c99ca](https://github.com/zerospam/sdk-framework/commit/02c99ca))
+
+
+### Features
+
+* **Response:** Split Ratelimited from BaseResponse ([290a97d](https://github.com/zerospam/sdk-framework/commit/290a97d))
+
 # [5.1.0](https://github.com/zerospam/sdk-framework/compare/v5.0.0...v5.1.0) (2018-07-16)
 
 
