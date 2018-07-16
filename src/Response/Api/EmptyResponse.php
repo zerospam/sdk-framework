@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Framework\SDK\Response\Api;
 
 use ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException;
+use ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait;
 
 /**
  * Class EmptyResponse
@@ -17,8 +18,9 @@ use ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException;
  *
  * @package ZEROSPAM\Framework\SDK\Response\Api
  */
-final class EmptyResponse implements IResponse
+final class EmptyResponse implements IRateLimitedResponse
 {
+    use RateLimitedTrait;
 
     public function __isset($name)
     {

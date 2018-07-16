@@ -9,7 +9,7 @@
 namespace ZEROSPAM\Framework\SDK\Response\Api;
 
 use Carbon\Carbon;
-use ZEROSPAM\Framework\SDK\Response\RateLimit\RateLimitData;
+use ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 /**
@@ -20,8 +20,10 @@ use ZEROSPAM\Framework\SDK\Utils\Str;
  *
  * @package ZEROSPAM\Framework\SDK\Response\Api
  */
-abstract class BaseResponse implements IResponse
+abstract class BaseResponse implements IRateLimitedResponse
 {
+    use RateLimitedTrait;
+
     /**
      * @var object[]
      */
@@ -30,11 +32,6 @@ abstract class BaseResponse implements IResponse
      * @var array
      */
     protected $data;
-
-    /**
-     * @var RateLimitData
-     */
-    protected $rateLimit;
 
     /**
      * Dates to be transTyped from string to Carbon.
@@ -61,26 +58,6 @@ abstract class BaseResponse implements IResponse
     public function data(): array
     {
         return $this->data;
-    }
-
-    /**
-     * @return RateLimitData
-     */
-    public function getRateLimit(): RateLimitData
-    {
-        return $this->rateLimit;
-    }
-
-    /**
-     * @param RateLimitData $rateLimit
-     *
-     * @return $this
-     */
-    public function setRateLimit(RateLimitData $rateLimit): self
-    {
-        $this->rateLimit = $rateLimit;
-
-        return $this;
     }
 
     /**

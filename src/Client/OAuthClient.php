@@ -23,6 +23,7 @@ use ZEROSPAM\Framework\SDK\Config\IOAuthConfiguration;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
+use ZEROSPAM\Framework\SDK\Response\Api\IRateLimitedResponse;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Response\RateLimit\RateLimitData;
 use ZEROSPAM\Framework\SDK\Utils\JSON\JSONParsing;
@@ -240,7 +241,7 @@ class OAuthClient implements IOAuthClient
          */
         $data = $request->processResponse($parsedData);
 
-        if ($data instanceof BaseResponse) {
+        if ($data instanceof IRateLimitedResponse) {
             $this->processThrottleData($response);
             $data->setRateLimit($this->rateLimit);
         }
