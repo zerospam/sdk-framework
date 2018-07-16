@@ -44,7 +44,7 @@ class ClientTest extends TestCase
 
     public function testResponseDateBinding(): void
     {
-        $now = Carbon::now()->startOfMinute();
+        $now    = Carbon::now()->startOfMinute();
         $client = $this->preSuccess(['test_date' => $now->toIso8601String()]);
 
         $request = new TestRequest();
@@ -126,7 +126,7 @@ class ClientTest extends TestCase
         $client->getOAuthTestClient()
                ->processRequest($request);
 
-        $response = $request->getResponse();
+        $response  = $request->getResponse();
         $rateLimit = $response->getRateLimit();
         $this->assertEquals(10, $rateLimit->getRemaining());
         $this->assertEquals(60, $rateLimit->getMaxPerMinute());
@@ -135,7 +135,7 @@ class ClientTest extends TestCase
     public function testRateLimitingBlocked(): void
     {
         $resetTime = Carbon::now()->addHour()->startOfMinute();
-        $client = $this->prepareQueue(
+        $client    = $this->prepareQueue(
             [
                 new Response(
                     200,
@@ -152,7 +152,7 @@ class ClientTest extends TestCase
         $client->getOAuthTestClient()
                ->processRequest($request);
 
-        $response = $request->getResponse();
+        $response  = $request->getResponse();
         $rateLimit = $response->getRateLimit();
         $this->assertEquals(0, $rateLimit->getRemaining());
         $this->assertEquals(60, $rateLimit->getMaxPerMinute());
@@ -199,5 +199,24 @@ class ClientTest extends TestCase
     public function testEmptyResponseIssetFalse(): void
     {
         $this->assertFalse(isset((new EmptyResponse())->id));
+    }
+
+    /**
+     */
+    public function testEmptyResponseWithRequest(): void
+    {
+        $client = $this->preSuccess([]);
+
+        $request = \Mockery::mock(TestRequest::class)
+                           ->makePartial()
+                           ->shouldReceive('processResponse')
+                           ->andReturn(new EmptyResponse())
+                           ->getMock();
+
+        $client->getOAuthTestClient()
+               ->processRequest($request);
+
+        $response = $request->getResponse();
+        $this->assertInstanceOf(EmptyResponse::class, $response);
     }
 }

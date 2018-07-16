@@ -240,8 +240,10 @@ class OAuthClient implements IOAuthClient
          */
         $data = $request->processResponse($parsedData);
 
-        $this->processThrottleData($response);
-        $data->setRateLimit($this->rateLimit);
+        if ($data instanceof BaseResponse) {
+            $this->processThrottleData($response);
+            $data->setRateLimit($this->rateLimit);
+        }
 
         $request->setResponse($data);
 
