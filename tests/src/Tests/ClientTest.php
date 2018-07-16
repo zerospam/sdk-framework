@@ -11,6 +11,7 @@ namespace ZEROSPAM\Framework\SDK\Test\Tests;
 use Carbon\Carbon;
 use GuzzleHttp\Psr7\Response;
 use ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware;
+use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 
@@ -156,5 +157,47 @@ class ClientTest extends TestCase
         $this->assertEquals(0, $rateLimit->getRemaining());
         $this->assertEquals(60, $rateLimit->getMaxPerMinute());
         $this->assertEquals($resetTime, $rateLimit->getEndOfThrottle());
+    }
+
+    /**
+     * @expectedException  \ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException
+     */
+    public function testEmptyResponseNoGet(): void
+    {
+        (new EmptyResponse())->id;
+    }
+
+
+    /**
+     * @expectedException  \ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException
+     */
+    public function testEmptyResponseNoGetMethod(): void
+    {
+        (new EmptyResponse())->get('test');
+    }
+
+
+    /**
+     * @expectedException  \ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException
+     */
+    public function testEmptyResponseNoGetRawMethod(): void
+    {
+        (new EmptyResponse())->getRawValue('test');
+    }
+
+    /**
+     * @expectedException  \ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException
+     */
+    public function testEmptyResponseNoSet(): void
+    {
+        $emptyResponse     = new EmptyResponse();
+        $emptyResponse->id = 'test';
+    }
+
+    /**
+     */
+    public function testEmptyResponseIssetFalse(): void
+    {
+        $this->assertFalse(isset((new EmptyResponse())->id));
     }
 }
