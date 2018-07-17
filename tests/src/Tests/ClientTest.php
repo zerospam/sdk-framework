@@ -12,7 +12,9 @@ use Carbon\Carbon;
 use GuzzleHttp\Psr7\Response;
 use ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\TestDataResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 
 class ClientTest extends TestCase
@@ -218,5 +220,13 @@ class ClientTest extends TestCase
 
         $response = $request->getResponse();
         $this->assertInstanceOf(EmptyResponse::class, $response);
+    }
+
+    public function testDataOverride(): void
+    {
+        $testResponse = new TestDataResponse(['test' => 5]);
+
+        $this->assertInstanceOf(TestResponse::class, $testResponse->data);
+        $this->assertEquals(5, $testResponse->data->test->test);
     }
 }
