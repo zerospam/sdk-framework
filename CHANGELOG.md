@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/zerospam/sdk-framework/compare/v5.2.0...v5.2.1) (2018-07-20)
+
+
+### Bug Fixes
+
+* **Middleware:** Change middleware client accessibility ([2fc1d40](https://github.com/zerospam/sdk-framework/commit/2fc1d40))
+
 # [5.2.0](https://github.com/zerospam/sdk-framework/compare/v5.1.0...v5.2.0) (2018-07-16)
 
 
