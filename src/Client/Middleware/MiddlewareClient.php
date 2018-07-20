@@ -22,7 +22,7 @@ trait MiddlewareClient
     /**
      * @var IOAuthClient
      */
-    private $client;
+    protected $client;
 
     /**
      * Set the OAuth Client.
