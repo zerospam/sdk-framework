@@ -1,3 +1,10 @@
+## [5.2.2](https://github.com/zerospam/sdk-framework/compare/v5.2.1...v5.2.2) (2018-08-06)
+
+
+### Bug Fixes
+
+* **deps:** Fix problem with Carbon deps and laravel ([e8cd656](https://github.com/zerospam/sdk-framework/commit/e8cd656))
+
 ## [5.2.1](https://github.com/zerospam/sdk-framework/compare/v5.2.0...v5.2.1) (2018-07-20)
 
 
