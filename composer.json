@@ -15,7 +15,7 @@
   ],
   "require": {
     "php": ">= 7.1",
-    "nesbot/carbon": "^1.29",
+    "nesbot/carbon": "^1.25",
     "guzzlehttp/guzzle": "^6.3",
     "marc-mabe/php-enum": "^3.0",
     "league/oauth2-client": "^2.3"
