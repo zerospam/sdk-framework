@@ -1,3 +1,10 @@
+## [5.3.2](https://github.com/zerospam/sdk-framework/compare/v5.3.1...v5.3.2) (2018-08-14)
+
+
+### Bug Fixes
+
+* **Enums:** Adjusted return type ([4c5bd8f](https://github.com/zerospam/sdk-framework/commit/4c5bd8f))
+
 ## [5.3.1](https://github.com/zerospam/sdk-framework/compare/v5.3.0...v5.3.1) (2018-08-14)
 
 
