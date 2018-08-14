@@ -8,8 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Utils\Contracts\Enums;
 
-use MabeEnum\Enum;
-
 /**
  * Interface IEnumInsensitive
  *
@@ -22,7 +20,7 @@ interface IEnumInsensitive
      *
      * @param $value
      *
-     * @return Enum
+     * @return self
      */
     public static function byValueInsensitive(string $value);
 
@@ -31,7 +29,7 @@ interface IEnumInsensitive
      *
      * @param string $name
      *
-     * @return Enum
+     * @return self
      */
     public static function byNameInsensitive(string $name);
 
