@@ -1,3 +1,10 @@
+# [5.3.0](https://github.com/zerospam/sdk-framework/compare/v5.2.2...v5.3.0) (2018-08-14)
+
+
+### Features
+
+* **Enums:** Added Enums Insensitive contract ([095f6e3](https://github.com/zerospam/sdk-framework/commit/095f6e3))
+
 ## [5.2.2](https://github.com/zerospam/sdk-framework/compare/v5.2.1...v5.2.2) (2018-08-06)
 
 
