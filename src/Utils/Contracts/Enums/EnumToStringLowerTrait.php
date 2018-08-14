@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Utils\Contracts\Enums;
 
-use MabeEnum\Enum;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 /**
@@ -33,7 +32,7 @@ trait EnumToStringLowerTrait
      *
      * @param string $name
      *
-     * @return Enum
+     * @return self
      */
     public static function byNameInsensitive(string $name)
     {
@@ -45,7 +44,7 @@ trait EnumToStringLowerTrait
      *
      * @param $value
      *
-     * @return Enum
+     * @return self
      */
     public static function byValueInsensitive(string $value)
     {
