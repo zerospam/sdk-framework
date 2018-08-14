@@ -35,7 +35,7 @@ trait EnumToStringLowerTrait
      *
      * @return Enum
      */
-    public static function byNameInsensitive(string $name): Enum
+    public static function byNameInsensitive(string $name)
     {
         return self::byName(Str::upper($name));
     }
@@ -47,7 +47,7 @@ trait EnumToStringLowerTrait
      *
      * @return Enum
      */
-    public static function byValueInsensitive(string $value): Enum
+    public static function byValueInsensitive(string $value)
     {
         return self::byValue(Str::lower($value));
     }

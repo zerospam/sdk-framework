@@ -24,7 +24,7 @@ interface IEnumInsensitive
      *
      * @return Enum
      */
-    public static function byValueInsensitive(string $value): Enum;
+    public static function byValueInsensitive(string $value);
 
     /**
      * Retrieve enumeration instance by name, case insensitive
@@ -33,7 +33,7 @@ interface IEnumInsensitive
      *
      * @return Enum
      */
-    public static function byNameInsensitive(string $name): Enum;
+    public static function byNameInsensitive(string $name);
 
     /**
      * String representing the different values of enumeration
