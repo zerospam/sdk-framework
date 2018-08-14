@@ -1,3 +1,10 @@
+## [5.3.1](https://github.com/zerospam/sdk-framework/compare/v5.3.0...v5.3.1) (2018-08-14)
+
+
+### Bug Fixes
+
+* **Enums:** Removed return type enforcement ([dfab545](https://github.com/zerospam/sdk-framework/commit/dfab545))
+
 # [5.3.0](https://github.com/zerospam/sdk-framework/compare/v5.2.2...v5.3.0) (2018-08-14)
 
 
