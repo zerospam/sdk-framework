@@ -21,7 +21,7 @@ interface IRefreshTokenMiddleware
      *
      * @return $this
      */
-    public function setClient(IOAuthClient $client): IMiddleware;
+    public function setClient(IOAuthClient $client): self;
 
     /**
      * Take care of refreshing the token

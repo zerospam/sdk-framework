@@ -10,8 +10,8 @@ namespace ZEROSPAM\Framework\SDK\Client\Middleware\Error;
 
 use Psr\Http\Message\ResponseInterface;
 use ZEROSPAM\Framework\SDK\Client\Exception\TooManyRetriesException;
+use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
-use ZEROSPAM\Framework\SDK\Client\Middleware\MiddlewareClient;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 
 /**
@@ -23,9 +23,27 @@ use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
  */
 class AuthenticationMiddleware implements IMiddleware
 {
-    use MiddlewareClient;
 
     const MAX_TRIES = 3;
+    /**
+     * @var IOAuthClient
+     */
+    protected $client;
+
+    /**
+     * Set the OAuth Client.
+     *
+     * @param IOAuthClient $client
+     *
+     * @return $this
+     */
+    public function setClient(IOAuthClient $client): IMiddleware
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
 
     /**
      * Which status error code does this middleware manage.
