@@ -1,3 +1,10 @@
+## [5.4.2](https://github.com/zerospam/sdk-framework/compare/v5.4.1...v5.4.2) (2018-09-11)
+
+
+### Performance Improvements
+
+* **RefreshToken:** Add number of tries into callbacks ([c644b40](https://github.com/zerospam/sdk-framework/commit/c644b40))
+
 ## [5.4.1](https://github.com/zerospam/sdk-framework/compare/v5.4.0...v5.4.1) (2018-09-11)
 
 
