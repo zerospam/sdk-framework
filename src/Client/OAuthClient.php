@@ -190,7 +190,7 @@ class OAuthClient implements IOAuthClient
     /**
      * UnRegister a refreshToken middleware
      *
-     * @param IPreRequestMiddleware $middleware
+     * @param IRefreshTokenMiddleware $middleware
      *
      * @return IOAuthClient
      */
