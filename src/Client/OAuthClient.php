@@ -19,7 +19,9 @@ use ZEROSPAM\Framework\SDK\Client\Exception\SDKException;
 use ZEROSPAM\Framework\SDK\Client\Exception\TooManyRetriesException;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
+use ZEROSPAM\Framework\SDK\Client\Middleware\IRefreshTokenMiddleware;
 use ZEROSPAM\Framework\SDK\Config\IOAuthConfiguration;
+use ZEROSPAM\Framework\SDK\Exception\Middleware\NoMiddlewareSetException;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
@@ -63,6 +65,11 @@ class OAuthClient implements IOAuthClient
      * @var IPreRequestMiddleware[]
      */
     private $preRequestMiddlewares = [];
+
+    /**
+     * @var IRefreshTokenMiddleware[]
+     */
+    private $refreshTokenMiddlewares = [];
 
     /**
      * OauthClient constructor.
@@ -109,6 +116,21 @@ class OAuthClient implements IOAuthClient
     public function registerPreRequestMiddleware(IPreRequestMiddleware $middleware): IOAuthClient
     {
         $this->preRequestMiddlewares[get_class($middleware)] = $middleware;
+
+        return $this;
+    }
+
+    /**
+     * Register a middleware to take care of refresh token
+     *
+     * @param IRefreshTokenMiddleware $middleware
+     *
+     * @return IOAuthClient
+     */
+    public function registerRefreshTokenMiddleware(IRefreshTokenMiddleware $middleware): IOAuthClient
+    {
+        $middleware->setClient($this);
+        $this->refreshTokenMiddlewares[get_class($middleware)] = $middleware;
 
         return $this;
     }
@@ -161,11 +183,35 @@ class OAuthClient implements IOAuthClient
     }
 
     /**
+     * UnRegister a refreshToken middleware
+     *
+     * @param IPreRequestMiddleware $middleware
+     *
+     * @return IOAuthClient
+     */
+    public function unregisterRefreshTokenMiddleware(IRefreshTokenMiddleware $middleware): IOAuthClient
+    {
+        unset($this->refreshTokenMiddlewares[get_class($middleware)]);
+
+        return $this;
+    }
+
+    /**
      * Refresh token.
+     *
+     * @throws NoMiddlewareSetException
      */
     public function refreshToken(): AccessToken
     {
-        return $this->token = $this->configuration->refreshAccessToken($this->token);
+        if (empty($this->refreshTokenMiddlewares)) {
+            throw new NoMiddlewareSetException('No refresh token middleware present.');
+        }
+        $token = $this->token;
+        foreach ($this->refreshTokenMiddlewares as $middleware) {
+            $token = $middleware->handleRefreshToken($token);
+        }
+
+        return $this->token = $token;
     }
 
     /**
@@ -177,6 +223,27 @@ class OAuthClient implements IOAuthClient
     {
         return $this->token;
     }
+
+    /**
+     * Set the AccessToken
+     *
+     * @param AccessToken $token
+     */
+    public function setToken(AccessToken $token): void
+    {
+        $this->token = $token;
+    }
+
+    /**
+     * Get linked configuration
+     *
+     * @return IOAuthConfiguration
+     */
+    public function getConfiguration(): IOAuthConfiguration
+    {
+        return $this->configuration;
+    }
+
 
     /**
      * Process the given request and return an array containing the results.

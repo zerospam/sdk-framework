@@ -9,9 +9,11 @@
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Middleware;
 
 use GuzzleHttp\Psr7\Response;
+use League\OAuth2\Client\Token\AccessToken;
 use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
+use ZEROSPAM\Framework\SDK\Client\Middleware\IRefreshTokenMiddleware;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
@@ -28,7 +30,7 @@ class MiddlewareTests extends TestCase
         );
 
         $OAuthClient = $testClient->getOAuthTestClient();
-        $middleware = new AuthenticationMiddleware();
+        $middleware  = new AuthenticationMiddleware();
 
         $OAuthClient
             ->registerMiddleware($middleware);
@@ -82,5 +84,28 @@ class MiddlewareTests extends TestCase
                ->processRequest($request);
 
         $this->assertInstanceOf(TestRequest::class, $request);
+    }
+
+    public function testRefreshTokenMiddleware(): void
+    {
+        $client          = $this->preSuccess([]);
+        $OAuthTestClient = $client->getOAuthTestClient();
+
+        $token = new AccessToken(['access_token' => '45564', 'refresh_token' => "test"]);
+        $mock  = \Mockery::mock('alias:' . IRefreshTokenMiddleware::class)
+                         ->shouldReceive('handleRefreshToken')
+                         ->once()
+                         ->andReturn($token)
+                         ->getMock()
+                         ->shouldReceive('setClient')
+                         ->once()
+                         ->andReturnSelf();
+
+
+        $OAuthTestClient
+            ->registerRefreshTokenMiddleware($mock->getMock())
+            ->refreshToken();
+
+        $this->assertSame($token, $OAuthTestClient->getToken());
     }
 }
