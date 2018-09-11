@@ -31,7 +31,7 @@ trait MiddlewareClient
      *
      * @return $this
      */
-    public function setClient(IOAuthClient $client): IMiddleware
+    public function setClient(IOAuthClient $client)
     {
         $this->client = $client;
 
