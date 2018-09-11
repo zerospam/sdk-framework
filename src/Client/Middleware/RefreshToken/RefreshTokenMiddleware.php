@@ -9,13 +9,30 @@
 namespace ZEROSPAM\Framework\SDK\Client\Middleware\RefreshToken;
 
 use League\OAuth2\Client\Token\AccessToken;
+use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IRefreshTokenMiddleware;
-use ZEROSPAM\Framework\SDK\Client\Middleware\MiddlewareClient;
 
 class RefreshTokenMiddleware implements IRefreshTokenMiddleware
 {
 
-    use MiddlewareClient;
+    /**
+     * @var IOAuthClient
+     */
+    protected $client;
+
+    /**
+     * Set the OAuth Client.
+     *
+     * @param IOAuthClient $client
+     *
+     * @return $this
+     */
+    public function setClient(IOAuthClient $client): IRefreshTokenMiddleware
+    {
+        $this->client = $client;
+
+        return $this;
+    }
 
     /**
      * Take care of refreshing the token

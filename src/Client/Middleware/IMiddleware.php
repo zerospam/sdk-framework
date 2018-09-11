@@ -28,7 +28,7 @@ interface IMiddleware
      *
      * @return $this
      */
-    public function setClient(IOAuthClient $client): IMiddleware;
+    public function setClient(IOAuthClient $client): self;
 
     /**
      * Which status error code does this middleware manage.
