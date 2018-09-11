@@ -39,9 +39,11 @@ class RefreshTokenMiddleware implements IRefreshTokenMiddleware
      *
      * @param AccessToken $previousToken
      *
+     * @param int         $tries
+     *
      * @return AccessToken
      */
-    public function handleRefreshToken(AccessToken $previousToken): AccessToken
+    public function handleRefreshToken(AccessToken $previousToken, int $tries): AccessToken
     {
         return $this->client->getConfiguration()->refreshToken($previousToken->getRefreshToken());
     }

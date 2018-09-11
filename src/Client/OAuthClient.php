@@ -72,6 +72,11 @@ class OAuthClient implements IOAuthClient
     private $refreshTokenMiddlewares = [];
 
     /**
+     * @var IRequest
+     */
+    private $lastRequest;
+
+    /**
      * OauthClient constructor.
      *
      * @param IOAuthConfiguration  $configuration
@@ -208,7 +213,7 @@ class OAuthClient implements IOAuthClient
         }
         $token = $this->token;
         foreach ($this->refreshTokenMiddlewares as $middleware) {
-            $token = $middleware->handleRefreshToken($token);
+            $token = $middleware->handleRefreshToken($token, $this->lastRequest->tries());
         }
 
         return $this->token = $token;
@@ -254,6 +259,7 @@ class OAuthClient implements IOAuthClient
      */
     public function processRequest(IRequest $request): IResponse
     {
+        $this->lastRequest = $request;
         foreach ($this->preRequestMiddlewares as $middleware) {
             $middleware->handle($request);
         }

@@ -57,7 +57,7 @@ class AuthenticationMiddleware implements IMiddleware
 
     public function handle(IRequest $request, ResponseInterface $httpResponse, array $parsedData): array
     {
-        if ($request->tries() >= self::MAX_TRIES) {
+        if ($request->tries() > self::MAX_TRIES) {
             throw new TooManyRetriesException(sprintf('Tried to re-auth more than %d times.', self::MAX_TRIES));
         }
         $this->client->refreshToken();
