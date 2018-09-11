@@ -1,3 +1,11 @@
+## [5.4.1](https://github.com/zerospam/sdk-framework/compare/v5.4.0...v5.4.1) (2018-09-11)
+
+
+### Bug Fixes
+
+* **Middleware:** Fixes return value of MiddlewareClient Trait ([9c948d8](https://github.com/zerospam/sdk-framework/commit/9c948d8))
+* **Middleware:** Remove Middleware client trait ([11abebf](https://github.com/zerospam/sdk-framework/commit/11abebf))
+
 # [5.4.0](https://github.com/zerospam/sdk-framework/compare/v5.3.2...v5.4.0) (2018-09-11)
 
 
