@@ -1,3 +1,10 @@
+## [5.4.3](https://github.com/zerospam/sdk-framework/compare/v5.4.2...v5.4.3) (2018-09-18)
+
+
+### Bug Fixes
+
+* **StackableArg:** Fix how the stackable argument are generated ([a7b47f3](https://github.com/zerospam/sdk-framework/commit/a7b47f3))
+
 ## [5.4.2](https://github.com/zerospam/sdk-framework/compare/v5.4.1...v5.4.2) (2018-09-11)
 
 
