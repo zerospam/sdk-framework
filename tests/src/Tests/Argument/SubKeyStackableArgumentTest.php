@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Argument;
 
-use GuzzleHttp\RequestOptions;
 use ZEROSPAM\Framework\SDK\Test\Base\Argument\SearchKeyedArg;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
@@ -20,15 +19,14 @@ class SubKeyStackableArgumentTest extends TestCase
      */
     public function add_argument_stack()
     {
-        $key     = (new SearchKeyedArg('val', 't'))->getKey();
         $request = new TestRequest();
         $request->addArgument(new SearchKeyedArg('val', 'test'))
                 ->addArgument(new SearchKeyedArg('item', 'superTest'));
 
-        $options = $request->requestOptions();
 
-        $this->assertArrayHasKey($key, $options[RequestOptions::QUERY]);
-        $this->assertArraySubset(['val' => 'test', 'item' => 'superTest'], $options[RequestOptions::QUERY][$key]);
+        $uri = $request->toUri();
+
+        $this->assertEquals('search%5Bval%5D=test&search%5Bitem%5D=superTest', $uri->getQuery());
     }
 
     /**
@@ -54,9 +52,10 @@ class SubKeyStackableArgumentTest extends TestCase
                 ->addArgument(new SearchKeyedArg('item2', 'foo'))
                 ->removeArgument(new SearchKeyedArg('item', 'superTest'));
 
-        $options = $request->requestOptions();
 
-        $this->assertArraySubset(['val' => 'test', 'item2' => 'foo'], $options[RequestOptions::QUERY][$key]);
+        $uri = $request->toUri();
+
+        $this->assertEquals('search%5Bval%5D=test&search%5Bitem2%5D=foo', $uri->getQuery());
     }
 
     /**
@@ -83,9 +82,9 @@ class SubKeyStackableArgumentTest extends TestCase
                 ->removeArgument(new SearchKeyedArg('val3', 'foo'))
                 ->removeArgument(new SearchKeyedArg('val', 'test'));
 
-        $options = $request->requestOptions();
+        $uri = $request->toUri();
 
-        $this->assertArrayNotHasKey($key, $options[RequestOptions::QUERY]);
+        $this->assertEmpty($uri->getQuery());
     }
 
     /**

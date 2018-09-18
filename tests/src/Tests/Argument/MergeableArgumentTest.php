@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Argument;
 
-use GuzzleHttp\RequestOptions;
 use ZEROSPAM\Framework\SDK\Test\Base\Argument\TestMergeableArg;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
@@ -20,14 +19,13 @@ class MergeableArgumentTest extends TestCase
      */
     public function add_argument_merge()
     {
-        $key = (new TestMergeableArg('t'))->getKey();
         $request = new TestRequest();
         $request->addArgument(new TestMergeableArg('test'))
                 ->addArgument(new TestMergeableArg('superTest'));
 
-        $options = $request->requestOptions();
+        $uri = $request->toUri();
 
-        $this->assertEquals('test;superTest', $options[RequestOptions::QUERY][$key]);
+        $this->assertContains('mergeArg=test%3BsuperTest', $uri->getQuery());
     }
 
     /**
@@ -35,16 +33,16 @@ class MergeableArgumentTest extends TestCase
      */
     public function remove_argument_merge()
     {
-        $key = (new TestMergeableArg('t'))->getKey();
         $request = new TestRequest();
         $request->addArgument(new TestMergeableArg('test'))
                 ->addArgument(new TestMergeableArg('superTest'))
                 ->addArgument(new TestMergeableArg('foo'))
                 ->removeArgument(new TestMergeableArg('superTest'));
 
-        $options = $request->requestOptions();
 
-        $this->assertEquals('test;foo', $options[RequestOptions::QUERY][$key]);
+        $uri = $request->toUri();
+
+        $this->assertContains('mergeArg=test%3Bfoo', $uri->getQuery());
     }
 
     /**

@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Argument;
 
-use GuzzleHttp\RequestOptions;
 use ZEROSPAM\Framework\SDK\Test\Base\Argument\IncludeStackableArg;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
@@ -20,15 +19,14 @@ class StackableArgumentTest extends TestCase
      */
     public function add_argument_stack()
     {
-        $key     = (new IncludeStackableArg('t'))->getKey();
         $request = new TestRequest();
         $request->addArgument(new IncludeStackableArg('test'))
                 ->addArgument(new IncludeStackableArg('superTest'));
 
-        $options = $request->requestOptions();
 
-        $this->assertArrayHasKey($key, $options[RequestOptions::QUERY]);
-        $this->assertArraySubset(['test', 'superTest'], $options[RequestOptions::QUERY][$key]);
+        $uri = $request->toUri();
+
+        $this->assertContains('include%5B%5D=test&include%5B%5D=superTest', $uri->getQuery());
     }
 
     /**
@@ -43,9 +41,10 @@ class StackableArgumentTest extends TestCase
                 ->addArgument(new IncludeStackableArg('foo'))
                 ->removeArgument(new IncludeStackableArg('superTest'));
 
-        $options = $request->requestOptions();
 
-        $this->assertArraySubset(['test', 'foo'], $options[RequestOptions::QUERY][$key]);
+        $uri = $request->toUri();
+
+        $this->assertContains('include%5B%5D=test&include%5B%5D=foo', $uri->getQuery());
     }
 
     /**
@@ -63,7 +62,6 @@ class StackableArgumentTest extends TestCase
      */
     public function remove_all_argument_stack()
     {
-        $key     = (new IncludeStackableArg('t'))->getKey();
         $request = new TestRequest();
         $request->addArgument(new IncludeStackableArg('test'))
                 ->addArgument(new IncludeStackableArg('superTest'))
@@ -72,9 +70,10 @@ class StackableArgumentTest extends TestCase
                 ->removeArgument(new IncludeStackableArg('foo'))
                 ->removeArgument(new IncludeStackableArg('test'));
 
-        $options = $request->requestOptions();
+        $uri = $request->toUri();
 
-        $this->assertArrayNotHasKey($key, $options[RequestOptions::QUERY]);
+        $this->assertNotContains('include%5B%5D=test&include%5B%5D=superTest&include%5B%5D=foo', $uri->getQuery());
+        $this->assertEmpty($uri->getQuery());
     }
 
     /**
@@ -89,6 +88,6 @@ class StackableArgumentTest extends TestCase
         $request->addArgument(new IncludeStackableArg('test2'));
         $client->getOAuthTestClient()
                ->processRequest($request);
-        $this->validateQuery($client, 'include[0]=test', 'include[1]=test2');
+        $this->validateQuery($client, 'include[]=test', 'include[]=test2');
     }
 }

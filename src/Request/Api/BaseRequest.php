@@ -173,7 +173,9 @@ abstract class BaseRequest implements IRequest
      */
     public function toUri(): UriInterface
     {
-        return \GuzzleHttp\Psr7\uri_for($this->routeUrl());
+        $fullUrl = $this->generateUrl();
+
+        return \GuzzleHttp\Psr7\uri_for($fullUrl);
     }
 
     /**
@@ -195,27 +197,9 @@ abstract class BaseRequest implements IRequest
      */
     public function requestOptions(): array
     {
-        $query = [];
-        /**
-         * @var IArgument
-         */
-        foreach ($this->arguments as $key => $value) {
-            $query[$key] = $value->toPrimitive();
-        }
-
-        foreach ($this->mergeableArguments as $key => $value) {
-            $query[$key] = $value->toPrimitive();
-        }
-
-        foreach ($this->stackableArguments as $key => $value) {
-            $query[$key] = $value->toArray();
-        }
-
-        $options                       = [
-            RequestOptions::QUERY => $query,
+        $options = [
+            RequestOptions::JSON => $this->toArray(),
         ];
-        $requestContent                = $this->toArray();
-        $options[RequestOptions::JSON] = $requestContent;
 
         return $options;
     }
@@ -264,5 +248,39 @@ abstract class BaseRequest implements IRequest
     public function getMergeableArguments(): array
     {
         return $this->mergeableArguments;
+    }
+
+    /**
+     * Generate the URL
+     *
+     * Takes care of removing the "include[0]" and replace by "include[]"
+     *
+     * @return string
+     */
+    private function generateUrl(): string
+    {
+        static $re = '/\%5B\d+\%5D/m';
+        static $subst = '%5B%5D';
+
+        $query = [];
+        /**
+         * @var IArgument
+         */
+        foreach ($this->arguments as $key => $value) {
+            $query[$key] = $value->toPrimitive();
+        }
+
+        foreach ($this->mergeableArguments as $key => $value) {
+            $query[$key] = $value->toPrimitive();
+        }
+
+        foreach ($this->stackableArguments as $key => $value) {
+            $query[$key] = $value->toArray();
+        }
+        $queryArg = http_build_query($query, null, '&', PHP_QUERY_RFC3986);
+
+        $fullUrl = $this->routeUrl() . '?' . preg_replace($re, $subst, $queryArg);
+
+        return $fullUrl;
     }
 }
