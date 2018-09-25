@@ -1,3 +1,12 @@
+## [5.5.1](https://github.com/zerospam/sdk-framework/compare/v5.5.0...v5.5.1) (2018-09-25)
+
+
+### Bug Fixes
+
+* **Arguments:** Fixed url generation when using array with enums as values ([43907c1](https://github.com/zerospam/sdk-framework/commit/43907c1))
+* **Arguments:** improved function name and documentation ([42aace4](https://github.com/zerospam/sdk-framework/commit/42aace4))
+* **Arguments:** improved type hinting ([9d70c39](https://github.com/zerospam/sdk-framework/commit/9d70c39))
+
 # [5.5.0](https://github.com/zerospam/sdk-framework/compare/v5.4.3...v5.5.0) (2018-09-25)
 
 
