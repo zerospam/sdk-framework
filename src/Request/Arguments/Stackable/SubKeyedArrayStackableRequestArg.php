@@ -45,7 +45,7 @@ class SubKeyedArrayStackableRequestArg extends RequestArg implements IStackableA
      */
     public function toPrimitive(): array
     {
-        return array_map_r(function ($data) {
+        return array_map_recursive(function ($data) {
             return $data instanceof PrimalValued
                 ? $data->toPrimitive()
                 : $data;
