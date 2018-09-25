@@ -14,6 +14,8 @@ use ZEROSPAM\Framework\SDK\Request\Arguments\IArgument;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\IMergeableArgument;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\Worker\ArgMerger;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\IStackableArgument;
+use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\IStackableArrayArgument;
+use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\Worker\ArgArrayCollector;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\Worker\ArgCollector;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
@@ -42,6 +44,9 @@ abstract class BaseRequest implements IRequest
      * @var ArgCollector[]
      */
     private $stackableArguments = [];
+
+    /** @var ArgArrayCollector[] */
+    private $stackableArrayArguments = [];
 
     /**
      * @var \ZEROSPAM\Framework\SDK\Response\Api\IResponse
@@ -74,7 +79,16 @@ abstract class BaseRequest implements IRequest
 
             return $this;
         }
-        if ($arg instanceof IStackableArgument) {
+
+        if ($arg instanceof IStackableArrayArgument) {
+            if (!isset($this->stackableArrayArguments[$arg->getKey()])) {
+                $this->stackableArrayArguments[$arg->getKey()] = new ArgArrayCollector();
+            }
+
+            $this->stackableArrayArguments[$arg->getKey()]->addArgument($arg);
+
+            return $this;
+        } elseif ($arg instanceof IStackableArgument) {
             if (!isset($this->stackableArguments[$arg->getKey()])) {
                 $this->stackableArguments[$arg->getKey()] = new ArgCollector();
             }
@@ -185,7 +199,8 @@ abstract class BaseRequest implements IRequest
      */
     final public function requestType(): RequestType
     {
-        return $this->requestTypeOverride ?: $this->httpType();
+        return $this->requestTypeOverride
+            ?: $this->httpType();
     }
 
     /**
@@ -277,6 +292,11 @@ abstract class BaseRequest implements IRequest
         foreach ($this->stackableArguments as $key => $value) {
             $query[$key] = $value->toArray();
         }
+
+        foreach ($this->stackableArrayArguments as $key => $value) {
+            $query[$key] = $value->toArray();
+        }
+
         $queryArg = http_build_query($query, null, '&', PHP_QUERY_RFC3986);
 
         $fullUrl = $this->routeUrl() . '?' . preg_replace($re, $subst, $queryArg);

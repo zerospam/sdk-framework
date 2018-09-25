@@ -18,12 +18,12 @@ class ArgCollector implements Arrayable
     /**
      * @var IStackableArgument[][]
      */
-    private $args = [];
+    protected $args = [];
 
     /**
      * @var string
      */
-    private $stackKey;
+    protected $stackKey;
 
 
     /**
@@ -31,7 +31,7 @@ class ArgCollector implements Arrayable
      *
      * @return string
      */
-    private function stackKey(): string
+    protected function stackKey(): string
     {
         if ($this->stackKey) {
             return $this->stackKey;
