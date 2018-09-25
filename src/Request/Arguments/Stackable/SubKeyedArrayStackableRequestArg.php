@@ -10,6 +10,7 @@ namespace ZEROSPAM\Framework\SDK\Request\Arguments\Stackable;
 
 
 use ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg;
+use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
 /**
  * Class SubKeyedArrayStackableRequestArg
@@ -44,6 +45,10 @@ class SubKeyedArrayStackableRequestArg extends RequestArg implements IStackableA
      */
     public function toPrimitive()
     {
-        return $this->value;
+        return array_map_r(function ($data) {
+            return $data instanceof PrimalValued
+                ? $data->toPrimitive()
+                : $data;
+        }, $this->value);
     }
 }
