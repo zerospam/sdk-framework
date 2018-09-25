@@ -72,4 +72,14 @@ class RequestArg implements IArgument
 
         return $value;
     }
+
+    /**
+     * Possible Subkey of the argument
+     *
+     * @return string
+     */
+    public function getSubKey(): string
+    {
+        return $this->toPrimitive();
+    }
 }
