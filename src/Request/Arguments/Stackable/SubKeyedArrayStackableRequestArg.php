@@ -41,9 +41,9 @@ class SubKeyedArrayStackableRequestArg extends RequestArg implements IStackableA
     }
 
     /**
-     * @return float|int|mixed|string
+     * @return array
      */
-    public function toPrimitive()
+    public function toPrimitive(): array
     {
         return array_map_r(function ($data) {
             return $data instanceof PrimalValued

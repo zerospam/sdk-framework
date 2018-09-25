@@ -14,7 +14,7 @@ if (!function_exists('array_map_r')) {
      *
      * @return array
      */
-    function array_map_r($callback, $input)
+    function array_map_r(Closure $callback, $input): array
     {
         $output = [];
         foreach ($input as $key => $data) {
