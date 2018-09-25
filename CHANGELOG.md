@@ -1,3 +1,15 @@
+# [5.5.0](https://github.com/zerospam/sdk-framework/compare/v5.4.3...v5.5.0) (2018-09-25)
+
+
+### Features
+
+* **Arguments:** Added Array Stackable argument ([0efa70c](https://github.com/zerospam/sdk-framework/commit/0efa70c))
+
+
+### Performance Improvements
+
+* **Arguments:** Refactor the way the arguments works ([b209b48](https://github.com/zerospam/sdk-framework/commit/b209b48))
+
 ## [5.4.3](https://github.com/zerospam/sdk-framework/compare/v5.4.2...v5.4.3) (2018-09-18)
 
 
