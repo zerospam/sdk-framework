@@ -20,7 +20,6 @@ use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\SubKeyedStackableRequestA
 class SearchKeyedArg extends SubKeyedStackableRequestArg
 {
 
-
     public function __construct(string $subKey, string $value)
     {
         parent::__construct('search', $subKey, $value);

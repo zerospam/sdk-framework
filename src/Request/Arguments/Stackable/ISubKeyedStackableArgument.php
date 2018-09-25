@@ -10,10 +10,5 @@ namespace ZEROSPAM\Framework\SDK\Request\Arguments\Stackable;
 
 interface ISubKeyedStackableArgument extends IStackableArgument
 {
-    /**
-     * Possible Subkey of the argument
-     *
-     * @return string
-     */
-    public function getSubKey(): string;
+
 }

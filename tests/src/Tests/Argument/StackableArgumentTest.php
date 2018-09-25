@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Argument;
 
 use ZEROSPAM\Framework\SDK\Test\Base\Argument\IncludeStackableArg;
+use ZEROSPAM\Framework\SDK\Test\Base\Argument\SearchArgumentArray;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 
@@ -34,7 +35,6 @@ class StackableArgumentTest extends TestCase
      */
     public function remove_argument_stack()
     {
-        $key     = (new IncludeStackableArg('t'))->getKey();
         $request = new TestRequest();
         $request->addArgument(new IncludeStackableArg('test'))
                 ->addArgument(new IncludeStackableArg('superTest'))
@@ -89,5 +89,38 @@ class StackableArgumentTest extends TestCase
         $client->getOAuthTestClient()
                ->processRequest($request);
         $this->validateQuery($client, 'include[]=test', 'include[]=test2');
+    }
+
+    /**
+     *
+     */
+    public function testArrayStackableInUrl(): void
+    {
+        $client = $this->preSuccess([]);
+
+        $request = new TestRequest();
+        $request->addArgument(new SearchArgumentArray('statusids', [1, 2]));
+        $client->getOAuthTestClient()
+               ->processRequest($request);
+        $this->validateQuery($client, 'search[statusids][]=1', 'search[statusids][]=2');
+    }
+
+    /**
+     *
+     */
+    public function removeArrayStackable(): void
+    {
+        $client = $this->preSuccess([]);
+
+        $request = new TestRequest();
+        $request->addArgument(new SearchArgumentArray('statusids', [1]))
+                ->removeArgument(new SearchArgumentArray('statusids', [1]));
+
+        $client->getOAuthTestClient()
+               ->processRequest($request);
+
+        $uri = $request->toUri();
+
+        $this->assertNotContains('search[statusids][]=1', $uri->getQuery());
     }
 }

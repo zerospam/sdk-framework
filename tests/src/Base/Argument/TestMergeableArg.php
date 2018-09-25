@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Framework\SDK\Test\Base\Argument;
 
 use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\IMergeableArgument;
+use ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg;
 
 /**
  * Class TestMergeableArg
@@ -17,7 +18,7 @@ use ZEROSPAM\Framework\SDK\Request\Arguments\Mergeable\IMergeableArgument;
  *
  * @package ZEROSPAM\Framework\SDK\Test\Base\Argument
  */
-class TestMergeableArg implements IMergeableArgument
+class TestMergeableArg extends RequestArg implements IMergeableArgument
 {
     /**
      * @var string
@@ -31,17 +32,7 @@ class TestMergeableArg implements IMergeableArgument
      */
     public function __construct(string $obj)
     {
-        $this->obj = $obj;
-    }
-
-    /**
-     * Key for the argument.
-     *
-     * @return string
-     */
-    public function getKey(): string
-    {
-        return 'mergeArg';
+        parent::__construct('mergeArg', $obj);
     }
 
     /**
@@ -52,15 +43,5 @@ class TestMergeableArg implements IMergeableArgument
     public static function glue()
     {
         return ';';
-    }
-
-    /**
-     * Return a primitive value for this object.
-     *
-     * @return int|float|string|float
-     */
-    public function toPrimitive()
-    {
-        return $this->obj;
     }
 }

@@ -22,15 +22,16 @@ class RequestArg implements IArgument
     /**
      * @var string
      */
-    private $key;
+    protected $key;
+
     /** @var string */
-    private $value;
+    protected $value;
 
     /**
      * RequestArg constructor.
      *
-     * @param string $key
-     * @param string $value
+     * @param string       $key
+     * @param string|array $value
      */
     public function __construct($key, $value)
     {
@@ -70,5 +71,15 @@ class RequestArg implements IArgument
         }
 
         return $value;
+    }
+
+    /**
+     * Possible Subkey of the argument
+     *
+     * @return string
+     */
+    public function getSubKey(): string
+    {
+        return $this->toPrimitive();
     }
 }

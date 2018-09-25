@@ -18,12 +18,12 @@ class ArgCollector implements Arrayable
     /**
      * @var IStackableArgument[][]
      */
-    private $args = [];
+    protected $args = [];
 
     /**
      * @var string
      */
-    private $stackKey;
+    protected $stackKey;
 
 
     /**
@@ -31,7 +31,7 @@ class ArgCollector implements Arrayable
      *
      * @return string
      */
-    private function stackKey(): string
+    protected function stackKey(): string
     {
         if ($this->stackKey) {
             return $this->stackKey;
@@ -41,11 +41,9 @@ class ArgCollector implements Arrayable
     }
 
     /**
-     * Add the argument.
-     *
      * @param IStackableArgument $argument
      *
-     * @return $this
+     * @return $this|ArgCollector
      */
     public function addArgument(IStackableArgument $argument)
     {
@@ -57,18 +55,16 @@ class ArgCollector implements Arrayable
         } else {
             $key = $this->stackKey();
         }
-        $primitive                    = $argument->toPrimitive();
-        $this->args[$key][$primitive] = $argument;
+
+        $this->args[$key][$argument->getSubKey()] = $argument;
 
         return $this;
     }
 
     /**
-     * Remove the argument.
-     *
      * @param IStackableArgument $argument
      *
-     * @return $this
+     * @return $this|ArgCollector
      */
     public function removeArgument(IStackableArgument $argument)
     {
@@ -78,7 +74,7 @@ class ArgCollector implements Arrayable
             $key = $this->stackKey();
         }
 
-        unset($this->args[$key][$argument->toPrimitive()]);
+        unset($this->args[$key][$argument->getSubKey()]);
         if (empty($this->args[$key])) {
             unset($this->args[$key]);
         }

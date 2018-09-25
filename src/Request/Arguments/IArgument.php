@@ -25,4 +25,11 @@ interface IArgument extends PrimalValued
      * @return string
      */
     public function getKey(): string;
+
+    /**
+     * Possible Subkey of the argument
+     *
+     * @return string
+     */
+    public function getSubKey(): string;
 }

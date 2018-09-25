@@ -42,7 +42,6 @@ abstract class BaseRequest implements IRequest
      * @var ArgCollector[]
      */
     private $stackableArguments = [];
-
     /**
      * @var \ZEROSPAM\Framework\SDK\Response\Api\IResponse
      */
@@ -74,6 +73,7 @@ abstract class BaseRequest implements IRequest
 
             return $this;
         }
+
         if ($arg instanceof IStackableArgument) {
             if (!isset($this->stackableArguments[$arg->getKey()])) {
                 $this->stackableArguments[$arg->getKey()] = new ArgCollector();
@@ -185,7 +185,8 @@ abstract class BaseRequest implements IRequest
      */
     final public function requestType(): RequestType
     {
-        return $this->requestTypeOverride ?: $this->httpType();
+        return $this->requestTypeOverride
+            ?: $this->httpType();
     }
 
     /**
@@ -277,6 +278,7 @@ abstract class BaseRequest implements IRequest
         foreach ($this->stackableArguments as $key => $value) {
             $query[$key] = $value->toArray();
         }
+
         $queryArg = http_build_query($query, null, '&', PHP_QUERY_RFC3986);
 
         $fullUrl = $this->routeUrl() . '?' . preg_replace($re, $subst, $queryArg);
