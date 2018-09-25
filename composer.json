@@ -32,7 +32,10 @@
     "psr-4": {
       "ZEROSPAM\\Framework\\SDK\\": "src/",
       "ZEROSPAM\\Framework\\SDK\\Test\\Base\\": "tests/src/Base"
-    }
+    },
+    "files": [
+      "src/Utils/Helpers/array.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {

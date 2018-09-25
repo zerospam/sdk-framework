@@ -12,6 +12,7 @@ use ZEROSPAM\Framework\SDK\Test\Base\Argument\IncludeStackableArg;
 use ZEROSPAM\Framework\SDK\Test\Base\Argument\SearchArgumentArray;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Framework\SDK\Test\Tests\Utils\Obj\BasicEnum;
 
 class StackableArgumentTest extends TestCase
 {
@@ -103,6 +104,20 @@ class StackableArgumentTest extends TestCase
         $client->getOAuthTestClient()
                ->processRequest($request);
         $this->validateQuery($client, 'search[statusids][]=1', 'search[statusids][]=2');
+    }
+
+    /**
+     *
+     */
+    public function testArrayStackableWithEnums(): void
+    {
+        $client = $this->preSuccess([]);
+
+        $request = new TestRequest();
+        $request->addArgument(new SearchArgumentArray('statusids', [BasicEnum::OTHER(), BasicEnum::TEST()]));
+        $client->getOAuthTestClient()
+               ->processRequest($request);
+        $this->validateQuery($client, 'search[statusids][]=other', 'search[statusids][]=test');
     }
 
     /**
