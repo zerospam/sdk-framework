@@ -1,3 +1,10 @@
+## [5.5.2](https://github.com/zerospam/sdk-framework/compare/v5.5.1...v5.5.2) (2018-09-26)
+
+
+### Performance Improvements
+
+* **Response:** Makes response arrayable ([c4198b5](https://github.com/zerospam/sdk-framework/commit/c4198b5))
+
 ## [5.5.1](https://github.com/zerospam/sdk-framework/compare/v5.5.0...v5.5.1) (2018-09-25)
 
 
