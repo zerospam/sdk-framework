@@ -23,8 +23,13 @@ use ZEROSPAM\Framework\SDK\Test\Base\Container\Transaction;
  */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
+
+
     public function tearDown()
     {
+        if ($container = m::getContainer()) {
+            $this->addToAssertionCount($container->mockery_getExpectationCount());
+        }
         m::close();
     }
 
