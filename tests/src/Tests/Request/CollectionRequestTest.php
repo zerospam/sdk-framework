@@ -9,7 +9,7 @@
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Request;
 
 use ZEROSPAM\Framework\SDK\Test\Base\Data\Collection\CollectionTestRequest;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\Response\TestResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 
 class CollectionRequestTest extends TestCase

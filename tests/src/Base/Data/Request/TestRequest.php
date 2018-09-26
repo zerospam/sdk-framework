@@ -6,11 +6,12 @@
  * Time: 14:18.
  */
 
-namespace ZEROSPAM\Framework\SDK\Test\Base\Data;
+namespace ZEROSPAM\Framework\SDK\Test\Base\Data\Request;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\Response\TestResponse;
 
 /**
  * Class TestRequest.

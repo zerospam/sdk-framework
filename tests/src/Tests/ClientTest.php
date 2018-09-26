@@ -12,9 +12,9 @@ use Carbon\Carbon;
 use GuzzleHttp\Psr7\Response;
 use ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestDataResponse;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\Request\TestRequest;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\Response\TestDataResponse;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\Response\TestResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 
 class ClientTest extends TestCase

@@ -11,7 +11,7 @@ namespace ZEROSPAM\Framework\SDK\Test\Base\Data\Collection;
 use ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionMetaData;
 use ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\Response\TestResponse;
 
 class CollectionTestResponse extends CollectionResponse
 {
