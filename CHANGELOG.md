@@ -1,3 +1,10 @@
+## [5.6.1](https://github.com/zerospam/sdk-framework/compare/v5.6.0...v5.6.1) (2018-09-26)
+
+
+### Bug Fixes
+
+* **ArrayableData:** Can't have it return self ([bd1cab9](https://github.com/zerospam/sdk-framework/commit/bd1cab9))
+
 # [5.6.0](https://github.com/zerospam/sdk-framework/compare/v5.5.2...v5.6.0) (2018-09-26)
 
 
