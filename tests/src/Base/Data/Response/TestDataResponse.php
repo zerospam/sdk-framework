@@ -6,7 +6,7 @@
  * Time: 11:02
  */
 
-namespace ZEROSPAM\Framework\SDK\Test\Base\Data;
+namespace ZEROSPAM\Framework\SDK\Test\Base\Data\Response;
 
 /**
  * Class TestDataResponse

@@ -14,8 +14,8 @@ use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IRefreshTokenMiddleware;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\Request\TestRequest;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\Response\TestResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Framework\SDK\Test\Base\Util\AccessTokenGenerator;
 

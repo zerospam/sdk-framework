@@ -9,7 +9,7 @@
 namespace ZEROSPAM\Framework\SDK\Test\Tests\Argument;
 
 use ZEROSPAM\Framework\SDK\Test\Base\Argument\SearchKeyedArg;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\Request\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 
 class SubKeyStackableArgumentTest extends TestCase

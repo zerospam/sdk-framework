@@ -10,7 +10,7 @@ namespace ZEROSPAM\Framework\SDK\Test\Tests\Argument;
 
 use PHPUnit\Framework\TestCase;
 use ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\Request\TestRequest;
 
 class RequestArgTest extends TestCase
 {

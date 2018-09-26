@@ -10,7 +10,7 @@ namespace ZEROSPAM\Framework\SDK\Test\Tests\Argument;
 
 use ZEROSPAM\Framework\SDK\Test\Base\Argument\IncludeStackableArg;
 use ZEROSPAM\Framework\SDK\Test\Base\Argument\SearchArgumentArray;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestRequest;
+use ZEROSPAM\Framework\SDK\Test\Base\Data\Request\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Framework\SDK\Test\Tests\Utils\Obj\BasicEnum;
 
