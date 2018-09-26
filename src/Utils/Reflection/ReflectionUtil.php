@@ -10,7 +10,7 @@ namespace ZEROSPAM\Framework\SDK\Utils\Reflection;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Request\Api\WithNullableFields;
-use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
+use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\Arrayable;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 use ZEROSPAM\Framework\SDK\Utils\Str;
@@ -150,10 +150,10 @@ final class ReflectionUtil
     /**
      * Populate the response data into a dataObject that have the corresponding setters.
      *
-     * @param BaseResponse $response
+     * @param IResponse    $response
      * @param              $dataObject
      */
-    public static function populateResponseData(BaseResponse $response, &$dataObject): void
+    public static function populateResponseData(IResponse $response, &$dataObject): void
     {
         foreach (array_keys($response->data()) as $key) {
             $method = 'set';
