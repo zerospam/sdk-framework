@@ -1,3 +1,10 @@
+## [5.6.2](https://github.com/zerospam/sdk-framework/compare/v5.6.1...v5.6.2) (2018-09-26)
+
+
+### Bug Fixes
+
+* **Response:** Populate data object ([bf95012](https://github.com/zerospam/sdk-framework/commit/bf95012))
+
 ## [5.6.1](https://github.com/zerospam/sdk-framework/compare/v5.6.0...v5.6.1) (2018-09-26)
 
 
