@@ -10,6 +10,7 @@ namespace ZEROSPAM\Framework\SDK\Response\Api;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait;
+use ZEROSPAM\Framework\SDK\Utils\Contracts\Arrayable;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 /**
@@ -20,7 +21,7 @@ use ZEROSPAM\Framework\SDK\Utils\Str;
  *
  * @package ZEROSPAM\Framework\SDK\Response\Api
  */
-abstract class BaseResponse implements IRateLimitedResponse
+abstract class BaseResponse implements IRateLimitedResponse, Arrayable
 {
     use RateLimitedTrait;
 
@@ -138,5 +139,15 @@ abstract class BaseResponse implements IRateLimitedResponse
     public function __get($name)
     {
         return $this->get($name);
+    }
+
+    /**
+     * Return the object as Array.
+     *
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return $this->data;
     }
 }
