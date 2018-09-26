@@ -34,9 +34,9 @@ abstract class ArrayableData implements DataObject, WithNullableFields
      *
      * @param IResponse $response
      *
-     * @return ArrayableData
+     * @return static
      */
-    public static function fromResponse(IResponse $response): self
+    public static function fromResponse(IResponse $response)
     {
         $instance = new static();
         $response->populateDataObject($instance);
