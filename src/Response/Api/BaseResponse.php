@@ -149,6 +149,6 @@ abstract class BaseResponse implements IRateLimitedResponse
      */
     public function populateDataObject(DataObject &$dataObject): void
     {
-        ReflectionUtil::populateResponseData($this, $instance);
+        ReflectionUtil::populateResponseData($this, $dataObject);
     }
 }
