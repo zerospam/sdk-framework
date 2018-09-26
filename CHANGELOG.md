@@ -1,3 +1,17 @@
+# [5.6.0](https://github.com/zerospam/sdk-framework/compare/v5.5.2...v5.6.0) (2018-09-26)
+
+
+### Bug Fixes
+
+* **Reflection:** Use the interface instead of object in signature ([59a76f4](https://github.com/zerospam/sdk-framework/commit/59a76f4))
+* **Tests:** Take the Mockery counter into account for assertions ([e5aa486](https://github.com/zerospam/sdk-framework/commit/e5aa486))
+
+
+### Features
+
+* **DataObject:** Adds dataObject ([6fb8758](https://github.com/zerospam/sdk-framework/commit/6fb8758))
+* **Reflection:** Take a response and populate data object ([6c64d6d](https://github.com/zerospam/sdk-framework/commit/6c64d6d))
+
 ## [5.5.2](https://github.com/zerospam/sdk-framework/compare/v5.5.1...v5.5.2) (2018-09-26)
 
 
