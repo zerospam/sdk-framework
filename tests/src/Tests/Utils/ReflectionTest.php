@@ -62,6 +62,5 @@ class ReflectionTest extends TestCase
         ReflectionUtil::populateResponseData($response, $dataObj);
 
         $dataObj->shouldNotHaveReceived('setTest');
-
     }
 }

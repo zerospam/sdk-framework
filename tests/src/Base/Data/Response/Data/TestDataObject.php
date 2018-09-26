@@ -9,8 +9,9 @@
 namespace ZEROSPAM\Framework\SDK\Test\Base\Data\Response\Data;
 
 use Carbon\Carbon;
+use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
 
-class TestDataObject
+class TestDataObject extends ArrayableData
 {
 
     /**

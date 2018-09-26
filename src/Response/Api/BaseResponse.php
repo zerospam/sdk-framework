@@ -10,7 +10,8 @@ namespace ZEROSPAM\Framework\SDK\Response\Api;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait;
-use ZEROSPAM\Framework\SDK\Utils\Contracts\Arrayable;
+use ZEROSPAM\Framework\SDK\Utils\Contracts\DataObject;
+use ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 
 /**
@@ -21,7 +22,7 @@ use ZEROSPAM\Framework\SDK\Utils\Str;
  *
  * @package ZEROSPAM\Framework\SDK\Response\Api
  */
-abstract class BaseResponse implements IRateLimitedResponse, Arrayable
+abstract class BaseResponse implements IRateLimitedResponse
 {
     use RateLimitedTrait;
 
@@ -142,12 +143,12 @@ abstract class BaseResponse implements IRateLimitedResponse, Arrayable
     }
 
     /**
-     * Return the object as Array.
+     * Populate the data object with the data present in the response
      *
-     * @return array
+     * @param DataObject $dataObject
      */
-    public function toArray(): array
+    public function populateDataObject(DataObject &$dataObject): void
     {
-        return $this->data;
+        ReflectionUtil::populateResponseData($this, $instance);
     }
 }

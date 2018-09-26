@@ -10,6 +10,7 @@ namespace ZEROSPAM\Framework\SDK\Response\Api;
 
 use ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException;
 use ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait;
+use ZEROSPAM\Framework\SDK\Utils\Contracts\DataObject;
 
 /**
  * Class EmptyResponse
@@ -83,5 +84,10 @@ final class EmptyResponse implements IRateLimitedResponse
     public function getRawValue($key)
     {
         throw new NoActionEmptyResponseException('Empty response has no data');
+    }
+
+    public function populateDataObject(DataObject &$dataObject): void
+    {
+        // TODO: Implement populateDataObject() method.
     }
 }

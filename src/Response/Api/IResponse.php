@@ -8,6 +8,8 @@
 
 namespace ZEROSPAM\Framework\SDK\Response\Api;
 
+use ZEROSPAM\Framework\SDK\Utils\Contracts\DataObject;
+
 /**
  * Interface IResponse
  *
@@ -41,4 +43,11 @@ interface IResponse
      * @return mixed
      */
     public function getRawValue($key);
+
+    /**
+     * Populate the data object with the data present in the response
+     *
+     * @param DataObject $dataObject
+     */
+    public function populateDataObject(DataObject &$dataObject): void;
 }
