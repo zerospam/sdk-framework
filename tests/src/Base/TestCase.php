@@ -123,8 +123,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function validateRequest(TestClient $config, $requestBody): void
     {
-        $trans  = $this->lastTransaction($config);
-        $decode = \GuzzleHttp\json_decode($trans->request()->getBody()->getContents(), true);
+        $trans    = $this->lastTransaction($config);
+        $contents = $trans->request()->getBody()->getContents();
+        $decode   = [];
+        if (!empty($contents)) {
+            $decode = \GuzzleHttp\json_decode($contents, true);
+        }
+
         if (is_array($requestBody)) {
             $sent = $requestBody;
         } else {
