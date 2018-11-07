@@ -1,3 +1,10 @@
+## [5.6.3](https://github.com/zerospam/sdk-framework/compare/v5.6.2...v5.6.3) (2018-11-07)
+
+
+### Bug Fixes
+
+* **Client:** Don't set JSON option when empty ([1f0b5bf](https://github.com/zerospam/sdk-framework/commit/1f0b5bf))
+
 ## [5.6.2](https://github.com/zerospam/sdk-framework/compare/v5.6.1...v5.6.2) (2018-09-26)
 
 
