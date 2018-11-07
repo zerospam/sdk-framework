@@ -1,3 +1,10 @@
+## [5.6.4](https://github.com/zerospam/sdk-framework/compare/v5.6.3...v5.6.4) (2018-11-07)
+
+
+### Bug Fixes
+
+* **EmptyRequest:** Don't have a body for GET requests ([80a6915](https://github.com/zerospam/sdk-framework/commit/80a6915))
+
 ## [5.6.3](https://github.com/zerospam/sdk-framework/compare/v5.6.2...v5.6.3) (2018-11-07)
 
 
