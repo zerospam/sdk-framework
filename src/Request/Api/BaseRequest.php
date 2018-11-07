@@ -198,6 +198,12 @@ abstract class BaseRequest implements IRequest
      */
     public function requestOptions(): array
     {
+        /**
+         * Don't set any JSON if it's a get request
+         */
+        if ($this->requestType()->is(RequestType::HTTP_GET())) {
+            return [];
+        }
         $options = [
             RequestOptions::JSON => $this->toArray(),
         ];

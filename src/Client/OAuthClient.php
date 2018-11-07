@@ -274,10 +274,6 @@ class OAuthClient implements IOAuthClient
             $options[RequestOptions::HEADERS] = $headers;
         }
 
-        if (isset($options[RequestOptions::JSON]) && empty($options[RequestOptions::JSON])) {
-            unset($options[RequestOptions::JSON]);
-        }
-
         try {
             $response   = $this->guzzleClient->request($request->httpType()->getValue(), $request->toUri(), $options);
             $parsedData = JSONParsing::responseToJson($response);

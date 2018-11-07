@@ -142,9 +142,12 @@ final class ReflectionUtil
             return $properties;
         }
 
-        return array_filter($properties, function (\ReflectionProperty $property) use ($blacklist) {
-            return !in_array($property->name, $blacklist);
-        });
+        return array_filter(
+            $properties,
+            function (\ReflectionProperty $property) use ($blacklist) {
+                return !$property->isStatic() && !in_array($property->name, $blacklist);
+            }
+        );
     }
 
     /**
