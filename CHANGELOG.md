@@ -1,3 +1,10 @@
+# [5.7.0](https://github.com/zerospam/sdk-framework/compare/v5.6.4...v5.7.0) (2018-12-04)
+
+
+### Features
+
+* **Configuration:** Add default middlewares ([9c1434a](https://github.com/zerospam/sdk-framework/commit/9c1434a))
+
 ## [5.6.4](https://github.com/zerospam/sdk-framework/compare/v5.6.3...v5.6.4) (2018-11-07)
 
 
