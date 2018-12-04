@@ -10,6 +10,8 @@ namespace ZEROSPAM\Framework\SDK\Config;
 
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
+use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
+use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
 use ZEROSPAM\Framework\SDK\Client\OAuthClient;
 
 /**
@@ -69,4 +71,14 @@ interface IOAuthConfiguration
      * @return string
      */
     public function getEndPoint(): string;
+
+    /**
+     * @return IMiddleware[]
+     */
+    public function defaultMiddlewares(): array;
+
+    /**
+     * @return IPreRequestMiddleware[]
+     */
+    public function defaultPreRequestMiddlewares(): array;
 }

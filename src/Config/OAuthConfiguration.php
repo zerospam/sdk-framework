@@ -12,6 +12,8 @@ use League\OAuth2\Client\Grant\AuthorizationCode;
 use League\OAuth2\Client\Grant\RefreshToken;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
+use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
+use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
 
 /**
  * Class OAuthConfiguration
@@ -54,10 +56,10 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
      */
     public function __construct(string $clientId, string $clientSecret, string $redirectUrl, string $endPoint)
     {
-        $this->clientId = $clientId;
+        $this->clientId     = $clientId;
         $this->clientSecret = $clientSecret;
-        $this->redirectUrl = $redirectUrl;
-        $this->endPoint = $endPoint;
+        $this->redirectUrl  = $redirectUrl;
+        $this->endPoint     = $endPoint;
     }
 
     /**
@@ -66,6 +68,22 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
      * @return string
      */
     abstract protected function providerClass(): string;
+
+    /**
+     * @return IMiddleware[]
+     */
+    public function defaultMiddlewares(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return IPreRequestMiddleware[]
+     */
+    public function defaultPreRequestMiddlewares(): array
+    {
+        return [];
+    }
 
     /**
      * Get a OAuthProvider.

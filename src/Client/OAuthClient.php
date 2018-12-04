@@ -92,6 +92,12 @@ class OAuthClient implements IOAuthClient
         if ($this->guzzleClient == null) {
             $this->guzzleClient = new Client(['base_uri' => $this->configuration->getEndPoint()]);
         }
+        foreach ($this->configuration->defaultMiddlewares() as $middleware) {
+            $this->registerMiddleware($middleware);
+        }
+        foreach ($this->configuration->defaultPreRequestMiddlewares() as $middleware) {
+            $this->registerPreRequestMiddleware($middleware);
+        }
     }
 
     /**
