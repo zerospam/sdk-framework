@@ -1,3 +1,10 @@
+# [5.8.0](https://github.com/zerospam/sdk-framework/compare/v5.7.0...v5.8.0) (2018-12-05)
+
+
+### Features
+
+* **Response:** Save raw data in response ([b8fa2d7](https://github.com/zerospam/sdk-framework/commit/b8fa2d7))
+
 # [5.7.0](https://github.com/zerospam/sdk-framework/compare/v5.6.4...v5.7.0) (2018-12-04)
 
 
