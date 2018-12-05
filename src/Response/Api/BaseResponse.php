@@ -36,6 +36,13 @@ abstract class BaseResponse implements IRateLimitedResponse
     protected $data;
 
     /**
+     * Data unprocessed
+     *
+     * @var array
+     */
+    protected $rawData;
+
+    /**
      * Dates to be transTyped from string to Carbon.
      *
      * @var string[]
@@ -50,6 +57,26 @@ abstract class BaseResponse implements IRateLimitedResponse
     public function __construct(array $data)
     {
         $this->data = $data;
+    }
+
+    /**
+     * Used internally
+     *
+     * @param array $data
+     */
+    public function setRawData(array $data)
+    {
+        $this->rawData = $data;
+    }
+
+    /**
+     * Used internally
+     *
+     * @return array
+     */
+    public function getRawData(): array
+    {
+        return $this->rawData;
     }
 
     /**

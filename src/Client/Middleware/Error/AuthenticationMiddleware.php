@@ -13,6 +13,7 @@ use ZEROSPAM\Framework\SDK\Client\Exception\TooManyRetriesException;
 use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
+use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 
 /**
  * Class AuthenticationMiddleware
@@ -62,6 +63,10 @@ class AuthenticationMiddleware implements IMiddleware
         }
         $this->client->refreshToken();
         $response = $this->client->processRequest($request);
+
+        if ($response instanceof BaseResponse) {
+            return $response->getRawData();
+        }
 
         return $response->data();
     }
