@@ -52,4 +52,5 @@ class EnumInsensitiveTest extends TestCase
             $enums
         );
     }
+
 }
