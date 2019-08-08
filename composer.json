@@ -5,8 +5,21 @@
   "authors": [
     {
       "name": "Antoine Aflalo",
-      "email": "antoine.aflalo@zerospam.ca",
-      "homepage": "https://www.zerospam.ca"
+      "email": "dev.api@zerospam.ca",
+      "homepage": "https://www.zerospam.ca",
+      "role": "Project founder"
+    },
+    {
+      "name": "Philippe Bourdeau",
+      "email": "dev.api@zerospam.ca",
+      "homepage": "https://www.zerospam.ca",
+      "role": "Team Lead"
+    },
+    {
+      "name": "Yan Coutu",
+      "email": "dev.api@zerospam.ca",
+      "homepage": "https://www.zerospam.ca",
+      "role": "Developer"
     }
   ],
   "keywords": [
