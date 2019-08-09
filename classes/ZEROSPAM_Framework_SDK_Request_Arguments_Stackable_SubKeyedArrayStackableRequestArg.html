@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\SubKeyedArrayStackableRequestArg</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#ZEROSPAM_Framework_SDK_Request_Arguments_Stackable">ZEROSPAM\Framework\SDK\Request\Arguments\Stackable</a>
+          </li>
+          <li class="separator">SubKeyedArrayStackableRequestArg</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/src/Request/Arguments/Stackable/SubKeyedArrayStackableRequestArg.php.html#line22">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\</small>SubKeyedArrayStackableRequestArg</h1>
+        <h4>Class SubKeyedArrayStackableRequestArg</h4>
+        <p>Implementation for arguments using Freshbooks specific format: ex. ?search[statusids][]=1&amp;search[statusids][]=2</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class SubKeyedArrayStackableRequestArg
+                extends <a title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_RequestArg.html">RequestArg</a>
+                implements
+                <a title="ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\IStackableArrayArgument" href="../interfaces/ZEROSPAM_Framework_SDK_Request_Arguments_Stackable_IStackableArrayArgument.html">IStackableArrayArgument</a>
+            {<br/><ul class="none"><li>// members</li><li>private <span title="ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\null|string">null|string</span> <a href="#members">$subKey</a>;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg">RequestArg</span></li><li>protected  <a href="#members">$key</a>;
+                        </li><li>protected  <a href="#members">$value</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public void <a title="ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\SubKeyedArrayStackableRequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_Stackable_SubKeyedArrayStackableRequestArg/__construct.html">__construct</a>()
+                    </li><li>public string <a title="ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\SubKeyedArrayStackableRequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_Stackable_SubKeyedArrayStackableRequestArg/getSubKey.html">getSubKey</a>()
+                    </li><li>public array <a title="ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\SubKeyedArrayStackableRequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_Stackable_SubKeyedArrayStackableRequestArg/toPrimitive.html">toPrimitive</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg">RequestArg</span></li><li>public void <a title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_RequestArg/__construct.html">__construct</a>()
+                        </li><li>public string <a title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_RequestArg/getKey.html">getKey</a>()
+                        </li><li>public void <a title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_RequestArg/toPrimitive.html">toPrimitive</a>()
+                        </li><li>public string <a title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_RequestArg/getSubKey.html">getSubKey</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_RequestArg.html">ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg</a>
+            </li>
+          </ul>
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\IStackableArrayArgument" href="../interfaces/ZEROSPAM_Framework_SDK_Request_Arguments_Stackable_IStackableArrayArgument.html">ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\IStackableArrayArgument</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="subKey"><strong>$subKey</strong>
+                —
+                <a title="ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\null|string" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_Stackable_null|string.html">ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\null|string</a></li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="key"><strong>$key</strong>
+                —
+                string</li>
+            <li id="value"><strong>$value</strong>
+                —
+                string</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\SubKeyedArrayStackableRequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_Stackable_SubKeyedArrayStackableRequestArg/__construct.html">__construct()</a>
+            </li>
+            <li id="getSubKey">
+              <a title="ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\SubKeyedArrayStackableRequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_Stackable_SubKeyedArrayStackableRequestArg/getSubKey.html">getSubKey()</a>
+            </li>
+            <li id="toPrimitive">
+              <a title="ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\SubKeyedArrayStackableRequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_Stackable_SubKeyedArrayStackableRequestArg/toPrimitive.html">toPrimitive()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_RequestArg.html">ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="getKey"><a title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_RequestArg/getKey.html">getKey()</a>
+                — Key for the argument.</li>
+            <li id="getSubKey"><a title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_RequestArg/getSubKey.html">getSubKey()</a>
+                — Possible Subkey of the argument</li>
+            <li id="toPrimitive">
+              <a title="ZEROSPAM\Framework\SDK\Request\Arguments\RequestArg" href="../classes/ZEROSPAM_Framework_SDK_Request_Arguments_RequestArg/toPrimitive.html">toPrimitive()</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2018-09-25T19:41:43+00:00 (commit #<span title="42aace4080add22798c01695e4cf8efbb94d9db8">42aace4</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Arguments): improved function name and documentation</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-25T19:39:33+00:00 (commit #<span title="9d70c39260ecd2d7ad548f70ba65df1fc1627892">9d70c39</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Arguments): improved type hinting</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-25T18:57:32+00:00 (commit #<span title="43907c13dfdcb390870429c1d49be4a8282603fd">43907c1</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Arguments): Fixed url generation when using array with enums as values</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-25T14:35:41+00:00 (commit #<span title="0efa70cdc6e43b33f34769b963f9a6e50f4220b1">0efa70c</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Arguments): Added Array Stackable argument
+
+Needed that to match IN filters of freshbooks queries
+They using non standard query params with the following format:
+?search[statusids][]=1&amp;search[statusids][]=2</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

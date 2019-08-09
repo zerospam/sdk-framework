@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - ZEROSPAM\Framework\SDK\Client\IOAuthClient</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../interfaces.html">Interfaces</a>
+          </li>
+          <li class="separator">
+            <a href="../interfaces.html#ZEROSPAM_Framework_SDK_Client">ZEROSPAM\Framework\SDK\Client</a>
+          </li>
+          <li class="separator">IOAuthClient</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#violations">Violations</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/src/Client/IOAuthClient.php.html#line26">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>ZEROSPAM\Framework\SDK\Client\</small>IOAuthClient</h1>
+        <h4>Interface IOAuthClient</h4>
+        <p>Client to make request to a server that use OAuth2 authentication</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">interface IOAuthClient
+            {<br/><ul class="none"><li>// methods</li><li>public <span title="IOAuthClient">IOAuthClient</span> <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/registerMiddleware.html">registerMiddleware</a>()
+                    </li><li>public <span title="IOAuthClient">IOAuthClient</span> <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/unregisterMiddleware.html">unregisterMiddleware</a>()
+                    </li><li>public <span title="AccessToken">AccessToken</span> <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/refreshToken.html">refreshToken</a>()
+                    </li><li>public <span title="AccessToken">AccessToken</span> <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/getToken.html">getToken</a>()
+                    </li><li>public <span title="IResponse">IResponse</span> <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/processRequest.html">processRequest</a>()
+                    </li><li>public <span title="IOAuthClient">IOAuthClient</span> <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/registerPreRequestMiddleware.html">registerPreRequestMiddleware</a>()
+                    </li><li>public <span title="IOAuthClient">IOAuthClient</span> <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/unregisterPreRequestMiddleware.html">unregisterPreRequestMiddleware</a>()
+                    </li><li>public void <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/setToken.html">setToken</a>()
+                    </li><li>public <span title="IOAuthConfiguration">IOAuthConfiguration</span> <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/getConfiguration.html">getConfiguration</a>()
+                    </li><li>public <span title="IOAuthClient">IOAuthClient</span> <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/registerRefreshTokenMiddleware.html">registerRefreshTokenMiddleware</a>()
+                    </li><li>public <span title="IOAuthClient">IOAuthClient</span> <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/unregisterRefreshTokenMiddleware.html">unregisterRefreshTokenMiddleware</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="getConfiguration"><a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/getConfiguration.html">getConfiguration()</a>
+                — Get linked configuration</li>
+            <li id="getToken"><a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/getToken.html">getToken()</a>
+                — Currently used access token.</li>
+            <li id="processRequest"><a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/processRequest.html">processRequest()</a>
+                — Process the given request and return an array containing the results.</li>
+            <li id="refreshToken"><a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/refreshToken.html">refreshToken()</a>
+                — Refresh token.</li>
+            <li id="registerMiddleware"><a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/registerMiddleware.html">registerMiddleware()</a>
+                — Register the given middleware.</li>
+            <li id="registerPreRequestMiddleware"><a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/registerPreRequestMiddleware.html">registerPreRequestMiddleware()</a>
+                — Register a pre request middleware</li>
+            <li id="registerRefreshTokenMiddleware"><a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/registerRefreshTokenMiddleware.html">registerRefreshTokenMiddleware()</a>
+                — Register a middleware to take care of refresh token</li>
+            <li id="setToken"><a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/setToken.html">setToken()</a>
+                — Set the AccessToken</li>
+            <li id="unregisterMiddleware"><a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/unregisterMiddleware.html">unregisterMiddleware()</a>
+                — Unregister the middleware.</li>
+            <li id="unregisterPreRequestMiddleware"><a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/unregisterPreRequestMiddleware.html">unregisterPreRequestMiddleware()</a>
+                — UnRegister a pre request middleware</li>
+            <li id="unregisterRefreshTokenMiddleware"><a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../interfaces/ZEROSPAM_Framework_SDK_Client_IOAuthClient/unregisterRefreshTokenMiddleware.html">unregisterRefreshTokenMiddleware()</a>
+                — UnRegister a refreshToken middleware</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

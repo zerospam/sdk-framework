@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - ZEROSPAM\Framework\SDK\Request\Api\BaseRequest</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#ZEROSPAM_Framework_SDK_Request_Api">ZEROSPAM\Framework\SDK\Request\Api</a>
+          </li>
+          <li class="separator">BaseRequest</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/src/Request/Api/BaseRequest.php.html#line29">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>ZEROSPAM\Framework\SDK\Request\Api\</small>BaseRequest</h1>
+        <h4>Class BaseRequest</h4>
+        <p>Represent a base request that will be sent to the API Server</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class BaseRequest
+                implements
+                <a title="ZEROSPAM\Framework\SDK\Request\Api\IRequest" href="../interfaces/ZEROSPAM_Framework_SDK_Request_Api_IRequest.html">IRequest</a>
+            {<br/><ul class="none"><li>// members</li><li>private array <a href="#members">$arguments</a> =
+                        ;
+                    </li><li>private array <a href="#members">$mergeableArguments</a> =
+                        ;
+                    </li><li>private array <a href="#members">$stackableArguments</a> =
+                        ;
+                    </li><li>private <span title="\ZEROSPAM\Framework\SDK\Response\Api\IResponse">IResponse</span> <a href="#members">$response</a>;
+                    </li><li>private integer <a href="#members">$tries</a> =
+                        0;
+                    </li><li>private <span title="ZEROSPAM\Framework\SDK\Request\Type\RequestType">RequestType</span> <a href="#members">$requestTypeOverride</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public <span title="IRequest">IRequest</span> <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/addArgument.html">addArgument</a>()
+                    </li><li>public <span title="IRequest">IRequest</span> <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/removeArgument.html">removeArgument</a>()
+                    </li><li>public array <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/getArguments.html">getArguments</a>()
+                    </li><li>public array <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/toArray.html">toArray</a>()
+                    </li><li>protected array <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/blacklistedProperties.html">blacklistedProperties</a>()
+                    </li><li>public <span title="UriInterface">UriInterface</span> <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/toUri.html">toUri</a>()
+                    </li><li>public final <span title="RequestType">RequestType</span> <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/requestType.html">requestType</a>()
+                    </li><li>public array <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/requestOptions.html">requestOptions</a>()
+                    </li><li>public <span title="IResponse">IResponse</span> <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/getResponse.html">getResponse</a>()
+                    </li><li>public void <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/setResponse.html">setResponse</a>()
+                    </li><li>public int <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/tries.html">tries</a>()
+                    </li><li>public int <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/incrementTries.html">incrementTries</a>()
+                    </li><li>public array <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/getMergeableArguments.html">getMergeableArguments</a>()
+                    </li><li>private string <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/generateUrl.html">generateUrl</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="ZEROSPAM\Framework\SDK\Request\Api\IRequest" href="../interfaces/ZEROSPAM_Framework_SDK_Request_Api_IRequest.html">ZEROSPAM\Framework\SDK\Request\Api\IRequest</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="arguments"><strong>$arguments</strong>
+                —
+                array</li>
+            <li id="mergeableArguments"><strong>$mergeableArguments</strong>
+                —
+                array</li>
+            <li id="requestTypeOverride"><strong>$requestTypeOverride</strong>
+                —
+                <a title="ZEROSPAM\Framework\SDK\Request\Type\RequestType" href="../classes/ZEROSPAM_Framework_SDK_Request_Type_RequestType.html">ZEROSPAM\Framework\SDK\Request\Type\RequestType</a></li>
+            <li id="response"><strong>$response</strong>
+                —
+                <a title="\ZEROSPAM\Framework\SDK\Response\Api\IResponse" href="../classes/_ZEROSPAM_Framework_SDK_Response_Api_IResponse.html">\ZEROSPAM\Framework\SDK\Response\Api\IResponse</a></li>
+            <li id="stackableArguments"><strong>$stackableArguments</strong>
+                —
+                array</li>
+            <li id="tries"><strong>$tries</strong>
+                —
+                int</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="generateUrl"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/generateUrl.html">generateUrl()</a>
+                — Generate the URL</li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="blacklistedProperties"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/blacklistedProperties.html">blacklistedProperties()</a>
+                — List of properties to not serialize.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="addArgument"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/addArgument.html">addArgument()</a>
+                — Add a request argument.</li>
+            <li id="getArguments"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/getArguments.html">getArguments()</a>
+                — Get all the request arguments.</li>
+            <li id="getMergeableArguments">
+              <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/getMergeableArguments.html">getMergeableArguments()</a>
+            </li>
+            <li id="getResponse"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/getResponse.html">getResponse()</a>
+                — Getter for response.</li>
+            <li id="incrementTries"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/incrementTries.html">incrementTries()</a>
+                — Increment the number of tries and returns it.</li>
+            <li id="removeArgument"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/removeArgument.html">removeArgument()</a>
+                — Remove a request argument.</li>
+            <li id="requestOptions"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/requestOptions.html">requestOptions()</a>
+                — Options for this request to be used by the client.</li>
+            <li id="requestType"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/requestType.html">requestType()</a>
+                — Request type to use for the request.</li>
+            <li id="setResponse">
+              <a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/setResponse.html">setResponse()</a>
+            </li>
+            <li id="toArray"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/toArray.html">toArray()</a>
+                — Get the data used for the route.</li>
+            <li id="toUri"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/toUri.html">toUri()</a>
+                — Return the URI of the request.</li>
+            <li id="tries"><a title="ZEROSPAM\Framework\SDK\Request\Api\BaseRequest" href="../classes/ZEROSPAM_Framework_SDK_Request_Api_BaseRequest/tries.html">tries()</a>
+                — Number of tries of the request.</li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2018-11-07T16:53:28+00:00 (commit #<span title="80a69153898e0ed5a7824a25e41f298c07d5893e">80a6915</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(EmptyRequest): Don't have a body for GET requests
+
+Don't serialize STATIC properties of requests.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-25T17:35:19+00:00 (commit #<span title="b209b480f163c75a288976bc3f7ce625d60e4c00">b209b48</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">perf(Arguments): Refactor the way the arguments works
+
+To be sure we can work with SubKeyedArg that are having array as value.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-25T14:35:41+00:00 (commit #<span title="0efa70cdc6e43b33f34769b963f9a6e50f4220b1">0efa70c</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Arguments): Added Array Stackable argument
+
+Needed that to match IN filters of freshbooks queries
+They using non standard query params with the following format:
+?search[statusids][]=1&amp;search[statusids][]=2</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-18T14:42:14+00:00 (commit #<span title="a7b47f38052456e46218c96dae26d995cb99b1bb">a7b47f3</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(StackableArg): Fix how the stackable argument are generated
+
+Example:
+Include =&gt; ['test', 'test2'] -&gt; include[0]=test&amp;include[1]=test2
+
+Now:
+Include =&gt; ['test', 'test2'] -&gt; include[]=test&amp;include[]=test2</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-16T14:26:38+00:00 (commit #<span title="290a97d90b0dded239213cb021e56922b5a11436">290a97d</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Response): Split Ratelimited from BaseResponse
+
+New type of response can now be easily build.</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

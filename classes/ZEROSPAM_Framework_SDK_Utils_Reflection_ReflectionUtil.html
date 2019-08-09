@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#ZEROSPAM_Framework_SDK_Utils_Reflection">ZEROSPAM\Framework\SDK\Utils\Reflection</a>
+          </li>
+          <li class="separator">ReflectionUtil</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/src/Utils/Reflection/ReflectionUtil.php.html#line25">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>ZEROSPAM\Framework\SDK\Utils\Reflection\</small>ReflectionUtil</h1>
+        <h4>Class ReflectionUtil</h4>
+        <p>Helper for gathering all the properties of an object</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class ReflectionUtil
+            {<br/><ul class="none"><li>// methods</li><li>private void <a title="ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil" href="../classes/ZEROSPAM_Framework_SDK_Utils_Reflection_ReflectionUtil/__construct.html">__construct</a>()
+                    </li><li>public static array <a title="ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil" href="../classes/ZEROSPAM_Framework_SDK_Utils_Reflection_ReflectionUtil/objToSnakeArray.html">objToSnakeArray</a>()
+                    </li><li>private static array|float|int|null|string <a title="ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil" href="../classes/ZEROSPAM_Framework_SDK_Utils_Reflection_ReflectionUtil/transformValue.html">transformValue</a>()
+                    </li><li>public static array <a title="ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil" href="../classes/ZEROSPAM_Framework_SDK_Utils_Reflection_ReflectionUtil/getAllProperties.html">getAllProperties</a>()
+                    </li><li>public static void <a title="ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil" href="../classes/ZEROSPAM_Framework_SDK_Utils_Reflection_ReflectionUtil/populateResponseData.html">populateResponseData</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="__construct">
+              <a title="ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil" href="../classes/ZEROSPAM_Framework_SDK_Utils_Reflection_ReflectionUtil/__construct.html">__construct()</a>
+            </li>
+            <li id="transformValue"><a title="ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil" href="../classes/ZEROSPAM_Framework_SDK_Utils_Reflection_ReflectionUtil/transformValue.html">transformValue()</a>
+                — Transform the value.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="getAllProperties"><a title="ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil" href="../classes/ZEROSPAM_Framework_SDK_Utils_Reflection_ReflectionUtil/getAllProperties.html">getAllProperties()</a>
+                — Get all the properties not blacklisted.</li>
+            <li id="objToSnakeArray"><a title="ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil" href="../classes/ZEROSPAM_Framework_SDK_Utils_Reflection_ReflectionUtil/objToSnakeArray.html">objToSnakeArray()</a>
+                — Take an object and return an array using all it's properties.</li>
+            <li id="populateResponseData"><a title="ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil" href="../classes/ZEROSPAM_Framework_SDK_Utils_Reflection_ReflectionUtil/populateResponseData.html">populateResponseData()</a>
+                — Populate the response data into a dataObject that have the corresponding setters.</li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2018-11-07T16:53:28+00:00 (commit #<span title="80a69153898e0ed5a7824a25e41f298c07d5893e">80a6915</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(EmptyRequest): Don't have a body for GET requests
+
+Don't serialize STATIC properties of requests.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-26T17:10:20+00:00 (commit #<span title="59a76f44d0744837cda0d9a761c6962e2c70d16c">59a76f4</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Reflection): Use the interface instead of object in signature</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-26T16:13:39+00:00 (commit #<span title="6c64d6dd7924b88973a7e936518312dbca97e1b4">6c64d6d</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Reflection): Take a response and populate data object
+
+Useful when having to juggle between the a response and another request</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-16T14:26:38+00:00 (commit #<span title="290a97d90b0dded239213cb021e56922b5a11436">290a97d</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Response): Split Ratelimited from BaseResponse
+
+New type of response can now be easily build.</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

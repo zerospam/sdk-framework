@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - ZEROSPAM\Framework\SDK\Client\Middleware\RefreshToken\RefreshTokenMiddleware</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#ZEROSPAM_Framework_SDK_Client_Middleware_RefreshToken">ZEROSPAM\Framework\SDK\Client\Middleware\RefreshToken</a>
+          </li>
+          <li class="separator">RefreshTokenMiddleware</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/src/Client/Middleware/RefreshToken/RefreshTokenMiddleware.php.html#line15">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>ZEROSPAM\Framework\SDK\Client\Middleware\RefreshToken\</small>RefreshTokenMiddleware</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class RefreshTokenMiddleware
+                implements
+                <a title="ZEROSPAM\Framework\SDK\Client\Middleware\IRefreshTokenMiddleware" href="../interfaces/ZEROSPAM_Framework_SDK_Client_Middleware_IRefreshTokenMiddleware.html">IRefreshTokenMiddleware</a>
+            {<br/><ul class="none"><li>// members</li><li>protected <span title="ZEROSPAM\Framework\SDK\Client\IOAuthClient">IOAuthClient</span> <a href="#members">$client</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public <span title="IRefreshTokenMiddleware">IRefreshTokenMiddleware</span> <a title="ZEROSPAM\Framework\SDK\Client\Middleware\RefreshToken\RefreshTokenMiddleware" href="../classes/ZEROSPAM_Framework_SDK_Client_Middleware_RefreshToken_RefreshTokenMiddleware/setClient.html">setClient</a>()
+                    </li><li>public <span title="AccessToken">AccessToken</span> <a title="ZEROSPAM\Framework\SDK\Client\Middleware\RefreshToken\RefreshTokenMiddleware" href="../classes/ZEROSPAM_Framework_SDK_Client_Middleware_RefreshToken_RefreshTokenMiddleware/handleRefreshToken.html">handleRefreshToken</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="ZEROSPAM\Framework\SDK\Client\Middleware\IRefreshTokenMiddleware" href="../interfaces/ZEROSPAM_Framework_SDK_Client_Middleware_IRefreshTokenMiddleware.html">ZEROSPAM\Framework\SDK\Client\Middleware\IRefreshTokenMiddleware</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="client"><strong>$client</strong>
+                —
+                <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../classes/ZEROSPAM_Framework_SDK_Client_IOAuthClient.html">ZEROSPAM\Framework\SDK\Client\IOAuthClient</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="handleRefreshToken"><a title="ZEROSPAM\Framework\SDK\Client\Middleware\RefreshToken\RefreshTokenMiddleware" href="../classes/ZEROSPAM_Framework_SDK_Client_Middleware_RefreshToken_RefreshTokenMiddleware/handleRefreshToken.html">handleRefreshToken()</a>
+                — Take care of refreshing the token</li>
+            <li id="setClient"><a title="ZEROSPAM\Framework\SDK\Client\Middleware\RefreshToken\RefreshTokenMiddleware" href="../classes/ZEROSPAM_Framework_SDK_Client_Middleware_RefreshToken_RefreshTokenMiddleware/setClient.html">setClient()</a>
+                — Set the OAuth Client.</li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2018-09-11T20:07:51+00:00 (commit #<span title="c644b40970e20545f6b6c7498dc591b5d2068027">c644b40</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">perf(RefreshToken): Add number of tries into callbacks
+
+Used to know how many time the refreshToken has been called.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-11T19:29:42+00:00 (commit #<span title="11abebf7224d25cc52e4c526c2e560d6b9ae4072">11abebf</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Middleware): Remove Middleware client trait
+
+Impossible to reuse for different use cases</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-11T16:03:27+00:00 (commit #<span title="e14474048bd40023eff5416379808e749c64a223">e144740</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(RefreshToken): Add refreshToken middleware
+
+New feature to control the refreshing of a token.
+
+Also provides a default token refresher.</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

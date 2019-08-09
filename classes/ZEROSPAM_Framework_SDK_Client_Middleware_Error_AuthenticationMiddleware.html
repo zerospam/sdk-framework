@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#ZEROSPAM_Framework_SDK_Client_Middleware_Error">ZEROSPAM\Framework\SDK\Client\Middleware\Error</a>
+          </li>
+          <li class="separator">AuthenticationMiddleware</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/src/Client/Middleware/Error/AuthenticationMiddleware.php.html#line25">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>ZEROSPAM\Framework\SDK\Client\Middleware\Error\</small>AuthenticationMiddleware</h1>
+        <h4>Class AuthenticationMiddleware</h4>
+        <p>Catch a Authentication failure and try to refresh the access_token</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class AuthenticationMiddleware
+                implements
+                <a title="ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware" href="../interfaces/ZEROSPAM_Framework_SDK_Client_Middleware_IMiddleware.html">IMiddleware</a>
+            {<br/><ul class="none"><li>// constants</li><li>const MAX_TRIES = 3;</li></ul><ul class="none"><li>// members</li><li>protected <span title="ZEROSPAM\Framework\SDK\Client\IOAuthClient">IOAuthClient</span> <a href="#members">$client</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public <span title="IMiddleware">IMiddleware</span> <a title="ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware" href="../classes/ZEROSPAM_Framework_SDK_Client_Middleware_Error_AuthenticationMiddleware/setClient.html">setClient</a>()
+                    </li><li>public static array <a title="ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware" href="../classes/ZEROSPAM_Framework_SDK_Client_Middleware_Error_AuthenticationMiddleware/statusCode.html">statusCode</a>()
+                    </li><li>public array <a title="ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware" href="../classes/ZEROSPAM_Framework_SDK_Client_Middleware_Error_AuthenticationMiddleware/handle.html">handle</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware" href="../interfaces/ZEROSPAM_Framework_SDK_Client_Middleware_IMiddleware.html">ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="MAX_TRIES">MAX_TRIES</td>
+              <td>3</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="client"><strong>$client</strong>
+                —
+                <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../classes/ZEROSPAM_Framework_SDK_Client_IOAuthClient.html">ZEROSPAM\Framework\SDK\Client\IOAuthClient</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="handle">
+              <a title="ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware" href="../classes/ZEROSPAM_Framework_SDK_Client_Middleware_Error_AuthenticationMiddleware/handle.html">handle()</a>
+            </li>
+            <li id="setClient"><a title="ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware" href="../classes/ZEROSPAM_Framework_SDK_Client_Middleware_Error_AuthenticationMiddleware/setClient.html">setClient()</a>
+                — Set the OAuth Client.</li>
+            <li id="statusCode"><a title="ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware" href="../classes/ZEROSPAM_Framework_SDK_Client_Middleware_Error_AuthenticationMiddleware/statusCode.html">statusCode()</a>
+                — Which status error code does this middleware manage.</li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2018-12-05T15:02:50+00:00 (commit #<span title="b8fa2d7455caf8bc5584c2bb1189d91978cd4aba">b8fa2d7</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Response): Save raw data in response</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-11T20:07:51+00:00 (commit #<span title="c644b40970e20545f6b6c7498dc591b5d2068027">c644b40</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">perf(RefreshToken): Add number of tries into callbacks
+
+Used to know how many time the refreshToken has been called.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-11T19:29:42+00:00 (commit #<span title="11abebf7224d25cc52e4c526c2e560d6b9ae4072">11abebf</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Middleware): Remove Middleware client trait
+
+Impossible to reuse for different use cases</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-16T14:26:38+00:00 (commit #<span title="290a97d90b0dded239213cb021e56922b5a11436">290a97d</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Response): Split Ratelimited from BaseResponse
+
+New type of response can now be easily build.</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

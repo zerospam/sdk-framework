@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#ZEROSPAM_Framework_SDK_Response_Api_Collection">ZEROSPAM\Framework\SDK\Response\Api\Collection</a>
+          </li>
+          <li class="separator">CollectionResponse</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/src/Response/Api/Collection/CollectionResponse.php.html#line22">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>ZEROSPAM\Framework\SDK\Response\Api\Collection\</small>CollectionResponse</h1>
+        <h4>Class CollectionResponse</h4>
+        <p>Represent a response that contains more Responses</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class CollectionResponse
+                extends <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse.html">BaseResponse</a>
+                implements
+                <a title="IteratorAggregate" href="../interfaces/IteratorAggregate.html">IteratorAggregate</a>,<a title="ArrayAccess" href="../interfaces/ArrayAccess.html">ArrayAccess</a>
+            {<br/><ul class="none"><li>// members</li><li>private <span title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionMetaData">CollectionMetaData</span> <a href="#members">$metaData</a>;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse">BaseResponse</span></li><li>protected  <a href="#members">$data</a>;
+                        </li><li>protected  <a href="#members">$rawData</a>;
+                        </li><li>protected array <a href="#members">$dates</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public void <a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/__construct.html">__construct</a>()
+                    </li><li>protected abstract static IResponse <a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/dataToResponse.html">dataToResponse</a>()
+                    </li><li>public <span title="CollectionMetaData">CollectionMetaData</span> <a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/getMetaData.html">getMetaData</a>()
+                    </li><li>public ArrayIterator <a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/getIterator.html">getIterator</a>()
+                    </li><li>public boolean <a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/offsetExists.html">offsetExists</a>()
+                    </li><li>public mixed <a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/offsetGet.html">offsetGet</a>()
+                    </li><li>public void <a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/offsetSet.html">offsetSet</a>()
+                    </li><li>public void <a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/offsetUnset.html">offsetUnset</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse">BaseResponse</span></li><li>public void <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/__construct.html">__construct</a>()
+                        </li><li>public void <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/setRawData.html">setRawData</a>()
+                        </li><li>public array <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/getRawData.html">getRawData</a>()
+                        </li><li>public array <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/data.html">data</a>()
+                        </li><li>public mixed <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/getRawValue.html">getRawValue</a>()
+                        </li><li>public mixed|null <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/get.html">get</a>()
+                        </li><li>public void <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/__isset.html">__isset</a>()
+                        </li><li>public void <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/__get.html">__get</a>()
+                        </li><li>public void <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/populateDataObject.html">populateDataObject</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait">RateLimitedTrait</span></li><li>public RateLimitData <a title="ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait" href="../traits/ZEROSPAM_Framework_SDK_Response_Api_Helper_RateLimitedTrait/getRateLimit.html">getRateLimit</a>()
+                        </li><li>public $this <a title="ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait" href="../traits/ZEROSPAM_Framework_SDK_Response_Api_Helper_RateLimitedTrait/setRateLimit.html">setRateLimit</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse.html">ZEROSPAM\Framework\SDK\Response\Api\BaseResponse</a>
+            </li>
+          </ul>
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="IteratorAggregate" href="../interfaces/IteratorAggregate.html">IteratorAggregate</a>
+            </li>
+            <li>
+              <a title="ArrayAccess" href="../interfaces/ArrayAccess.html">ArrayAccess</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="metaData"><strong>$metaData</strong>
+                —
+                <a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionMetaData" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionMetaData.html">ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionMetaData</a></li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="data"><strong>$data</strong>
+                —
+                array</li>
+            <li id="dates"><strong>$dates</strong>
+                —
+                array<br/><span class="indent">Dates to be transTyped from string to Carbon.</span></li>
+            <li id="rateLimit"><strong>$rateLimit</strong>
+                —
+                <a title="ZEROSPAM\Framework\SDK\Response\RateLimit\RateLimitData" href="../classes/ZEROSPAM_Framework_SDK_Response_RateLimit_RateLimitData.html">ZEROSPAM\Framework\SDK\Response\RateLimit\RateLimitData</a></li>
+            <li id="rawData"><strong>$rawData</strong>
+                —
+                array<br/><span class="indent">Data unprocessed</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="dataToResponse"><a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/dataToResponse.html">dataToResponse()</a>
+                — Transform the basic data (string[]) into a response (IResponse)</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/__construct.html">__construct()</a>
+                — CollectionResponse constructor.</li>
+            <li id="getIterator"><a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/getIterator.html">getIterator()</a>
+                — Retrieve an external iterator</li>
+            <li id="getMetaData"><a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/getMetaData.html">getMetaData()</a>
+                — Meta data of the collection (pagination mostly)</li>
+            <li id="offsetExists"><a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/offsetExists.html">offsetExists()</a>
+                — Whether a offset exists</li>
+            <li id="offsetGet"><a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/offsetGet.html">offsetGet()</a>
+                — Offset to retrieve</li>
+            <li id="offsetSet"><a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/offsetSet.html">offsetSet()</a>
+                — Offset to set</li>
+            <li id="offsetUnset"><a title="ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_Collection_CollectionResponse/offsetUnset.html">offsetUnset()</a>
+                — Offset to unset</li>
+          </ul>
+          <h3>Inherited from <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse.html">ZEROSPAM\Framework\SDK\Response\Api\BaseResponse</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="__get">
+              <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/__get.html">__get()</a>
+            </li>
+            <li id="__isset">
+              <a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/__isset.html">__isset()</a>
+            </li>
+            <li id="data"><a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/data.html">data()</a>
+                — Data contained in the response.</li>
+            <li id="get"><a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/get.html">get()</a>
+                — Get a specific field.</li>
+            <li id="getRawData"><a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/getRawData.html">getRawData()</a>
+                — Used internally</li>
+            <li id="getRawValue"><a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/getRawValue.html">getRawValue()</a>
+                — Return value in response array of the response.</li>
+            <li id="populateDataObject"><a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/populateDataObject.html">populateDataObject()</a>
+                — Populate the data object with the data present in the response</li>
+            <li id="setRawData"><a title="ZEROSPAM\Framework\SDK\Response\Api\BaseResponse" href="../classes/ZEROSPAM_Framework_SDK_Response_Api_BaseResponse/setRawData.html">setRawData()</a>
+                — Used internally</li>
+          </ul>
+          <h3>Inherited from <a title="ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait" href="../traits/ZEROSPAM_Framework_SDK_Response_Api_Helper_RateLimitedTrait.html">ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="getRateLimit">
+              <a title="ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait" href="../traits/ZEROSPAM_Framework_SDK_Response_Api_Helper_RateLimitedTrait/getRateLimit.html">getRateLimit()</a>
+            </li>
+            <li id="setRateLimit">
+              <a title="ZEROSPAM\Framework\SDK\Response\Api\Helper\RateLimitedTrait" href="../traits/ZEROSPAM_Framework_SDK_Response_Api_Helper_RateLimitedTrait/setRateLimit.html">setRateLimit()</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2018-07-16T14:26:38+00:00 (commit #<span title="290a97d90b0dded239213cb021e56922b5a11436">290a97d</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Response): Split Ratelimited from BaseResponse
+
+New type of response can now be easily build.</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>
