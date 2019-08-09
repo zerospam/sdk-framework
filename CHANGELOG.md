@@ -1,3 +1,18 @@
+# [5.9.0](https://github.com/zerospam/sdk-framework/compare/v5.8.0...v5.9.0) (2019-08-09)
+
+
+### Bug Fixes
+
+* **dependencies:** Upgrade semantic-release ([ef07834](https://github.com/zerospam/sdk-framework/commit/ef07834))
+* **Empty:** semantic-release test ([7a67772](https://github.com/zerospam/sdk-framework/commit/7a67772))
+
+
+### Features
+
+* **CI:** Trying to figure out CI ([46c4893](https://github.com/zerospam/sdk-framework/commit/46c4893))
+* **Dependencies:** try to force new release ([ee46d31](https://github.com/zerospam/sdk-framework/commit/ee46d31))
+* **Dependencies:** Upgrade carbon and enum libraries ([20676f8](https://github.com/zerospam/sdk-framework/commit/20676f8))
+
 # [5.8.0](https://github.com/zerospam/sdk-framework/compare/v5.7.0...v5.8.0) (2018-12-05)
 
 
