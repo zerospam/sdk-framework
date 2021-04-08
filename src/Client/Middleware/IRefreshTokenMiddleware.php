@@ -9,7 +9,7 @@
 namespace ZEROSPAM\Framework\SDK\Client\Middleware;
 
 use League\OAuth2\Client\Token\AccessToken;
-use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
+use ZEROSPAM\Framework\SDK\Client\OAuth\IOAuthClient;
 
 interface IRefreshTokenMiddleware
 {

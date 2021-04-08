@@ -10,10 +10,10 @@ namespace ZEROSPAM\Framework\SDK\Test\Tests\Middleware;
 
 use GuzzleHttp\Psr7\Response;
 use League\OAuth2\Client\Token\AccessToken;
-use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IRefreshTokenMiddleware;
+use ZEROSPAM\Framework\SDK\Client\OAuth\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\Request\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\Response\TestResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
