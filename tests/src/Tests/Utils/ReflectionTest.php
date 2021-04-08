@@ -26,7 +26,10 @@ class ReflectionTest extends TestCase
     public function reflection_class_to_array()
     {
         $test = new BasicObj('bar');
-        $this->assertArraySubset(['foo' => 'bar'], ReflectionUtil::objToSnakeArray($test));
+
+        $toArray = ReflectionUtil::objToSnakeArray($test);
+        $this->assertArrayHasKey('foo', $toArray);
+        $this->assertEquals('bar', $toArray['foo']);
     }
 
     /**

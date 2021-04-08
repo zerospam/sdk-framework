@@ -25,7 +25,7 @@ class MergeableArgumentTest extends TestCase
 
         $uri = $request->toUri();
 
-        $this->assertContains('mergeArg=test%3BsuperTest', $uri->getQuery());
+        $this->assertStringContainsString('mergeArg=test%3BsuperTest', $uri->getQuery());
     }
 
     /**
@@ -42,7 +42,7 @@ class MergeableArgumentTest extends TestCase
 
         $uri = $request->toUri();
 
-        $this->assertContains('mergeArg=test%3Bfoo', $uri->getQuery());
+        $this->assertStringContainsString('mergeArg=test%3Bfoo', $uri->getQuery());
     }
 
     /**
