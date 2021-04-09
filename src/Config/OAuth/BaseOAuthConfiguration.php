@@ -6,14 +6,14 @@
  * Time: 09:43.
  */
 
-namespace ZEROSPAM\Framework\SDK\Config;
+namespace ZEROSPAM\Framework\SDK\Config\OAuth;
 
 use League\OAuth2\Client\Grant\AuthorizationCode;
 use League\OAuth2\Client\Grant\RefreshToken;
 use League\OAuth2\Client\Provider\AbstractProvider;
+use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Token\AccessToken;
-use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
-use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
+use ZEROSPAM\Framework\SDK\Config\BaseConfiguration;
 
 /**
  * Class OAuthConfiguration
@@ -25,7 +25,7 @@ use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
  * @see     AbstractProvider
  * @package ZEROSPAM\Framework\SDK\Config
  */
-abstract class OAuthConfiguration implements IOAuthConfiguration
+abstract class BaseOAuthConfiguration extends BaseConfiguration implements IOAuthConfiguration
 {
     /**
      * @var string
@@ -41,10 +41,6 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
      * @var string
      */
     private $redirectUrl;
-    /**
-     * @var string
-     */
-    private $endPoint;
 
     /**
      * OAuthConfiguration constructor.
@@ -54,12 +50,17 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
      * @param string $redirectUrl
      * @param string $endPoint
      */
-    public function __construct(string $clientId, string $clientSecret, string $redirectUrl, string $endPoint)
+    public function __construct(
+        string $clientId,
+        string $clientSecret,
+        string $redirectUrl,
+        string $endPoint)
     {
         $this->clientId     = $clientId;
         $this->clientSecret = $clientSecret;
         $this->redirectUrl  = $redirectUrl;
-        $this->endPoint     = $endPoint;
+
+        parent::__construct($endPoint);
     }
 
     /**
@@ -68,22 +69,6 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
      * @return string
      */
     abstract protected function providerClass(): string;
-
-    /**
-     * @return IMiddleware[]
-     */
-    public function defaultMiddlewares(): array
-    {
-        return [];
-    }
-
-    /**
-     * @return IPreRequestMiddleware[]
-     */
-    public function defaultPreRequestMiddlewares(): array
-    {
-        return [];
-    }
 
     /**
      * Get a OAuthProvider.
@@ -112,21 +97,12 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
     }
 
     /**
-     * End point for Requests.
-     *
-     * @return string
-     */
-    public function getEndPoint(): string
-    {
-        return $this->endPoint;
-    }
-
-    /**
      * Get access token for given code.
      *
      * @param string $code
      *
      * @return AccessToken
+     * @throws IdentityProviderException
      */
     public function getAccessToken(string $code): AccessToken
     {
@@ -144,6 +120,7 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
      * @param AccessToken $token
      *
      * @return AccessToken
+     * @throws IdentityProviderException
      */
     public function refreshAccessToken(AccessToken $token): AccessToken
     {
@@ -156,6 +133,7 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
      * @param string $refreshToken
      *
      * @return AccessToken
+     * @throws IdentityProviderException
      */
     public function refreshToken(string $refreshToken): AccessToken
     {
@@ -165,5 +143,18 @@ abstract class OAuthConfiguration implements IOAuthConfiguration
                 'refresh_token' => $refreshToken,
             ]
         );
+    }
+
+    /**
+     * @param string|null $token
+     * @return array
+     */
+    public function defaultHeaders(string $token = null): array
+    {
+        if (is_null($token)) {
+            return [];
+        }
+
+        return $this->getProvider()->getHeaders($token);
     }
 }

@@ -9,8 +9,8 @@
 namespace ZEROSPAM\Framework\SDK\Client\Middleware\Error;
 
 use Psr\Http\Message\ResponseInterface;
+use ZEROSPAM\Framework\SDK\Client\BaseClient;
 use ZEROSPAM\Framework\SDK\Client\Exception\TooManyRetriesException;
-use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
@@ -24,21 +24,16 @@ use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
  */
 class AuthenticationMiddleware implements IMiddleware
 {
-
     const MAX_TRIES = 3;
-    /**
-     * @var IOAuthClient
-     */
-    protected $client;
+    protected BaseClient $client;
 
     /**
-     * Set the OAuth Client.
      *
-     * @param IOAuthClient $client
+     * @param BaseClient $client
      *
      * @return $this
      */
-    public function setClient(IOAuthClient $client): IMiddleware
+    public function setClient(BaseClient $client): IMiddleware
     {
         $this->client = $client;
 

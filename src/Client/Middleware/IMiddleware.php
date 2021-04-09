@@ -9,7 +9,7 @@
 namespace ZEROSPAM\Framework\SDK\Client\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
-use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
+use ZEROSPAM\Framework\SDK\Client\BaseClient;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 
 /**
@@ -24,11 +24,11 @@ interface IMiddleware
     /**
      * Set the OAuth Client.
      *
-     * @param IOAuthClient $client
+     * @param BaseClient $client
      *
      * @return $this
      */
-    public function setClient(IOAuthClient $client): self;
+    public function setClient(BaseClient $client): self;
 
     /**
      * Which status error code does this middleware manage.

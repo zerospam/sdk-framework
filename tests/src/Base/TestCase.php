@@ -8,6 +8,7 @@
 
 namespace ZEROSPAM\Framework\SDK\Test\Base;
 
+use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Response;
 use Mockery as m;
@@ -23,9 +24,9 @@ use ZEROSPAM\Framework\SDK\Test\Base\Container\Transaction;
  */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
+    use ArraySubsetAsserts;
 
-
-    public function tearDown()
+    public function tearDown(): void
     {
         if ($container = m::getContainer()) {
             $this->addToAssertionCount($container->mockery_getExpectationCount());
@@ -136,7 +137,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             $sent = \GuzzleHttp\json_decode($requestBody, true);
         }
 
-        $this->assertArraySubset($sent, $decode, false, 'Request contains all we want');
+        self::assertArraySubset($sent, $decode, false, 'Request contains all we want');
     }
 
     /**

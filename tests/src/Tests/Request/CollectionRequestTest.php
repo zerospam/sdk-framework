@@ -120,10 +120,11 @@ JSON;
     }
 
     /**
-     * @expectedException \InvalidArgumentException
      */
     public function testModifyCollectionResponse()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $json
             = <<<JSON
 {
@@ -172,10 +173,12 @@ JSON;
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     *
      */
     public function testDeleteCollectionResponse()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $json
             = <<<JSON
 {

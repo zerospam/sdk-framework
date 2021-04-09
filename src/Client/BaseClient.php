@@ -1,27 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aaflalo
- * Date: 18-06-01
- * Time: 09:42.
- */
 
 namespace ZEROSPAM\Framework\SDK\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\RequestOptions;
-use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 use ZEROSPAM\Framework\SDK\Client\Exception\SDKException;
 use ZEROSPAM\Framework\SDK\Client\Exception\TooManyRetriesException;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
-use ZEROSPAM\Framework\SDK\Client\Middleware\IRefreshTokenMiddleware;
-use ZEROSPAM\Framework\SDK\Config\IOAuthConfiguration;
-use ZEROSPAM\Framework\SDK\Exception\Middleware\NoMiddlewareSetException;
+use ZEROSPAM\Framework\SDK\Client\OAuth\OAuthClient;
+use ZEROSPAM\Framework\SDK\Config\BaseConfiguration;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
@@ -30,67 +23,35 @@ use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Framework\SDK\Response\RateLimit\RateLimitData;
 use ZEROSPAM\Framework\SDK\Utils\JSON\JSONParsing;
 
-/**
- * Class OAuthClient
- *
- * Client for OAuth server interaction
- *
- * @package ZEROSPAM\Framework\SDK\Client
- */
-class OAuthClient implements IOAuthClient
+abstract class BaseClient implements IClient
 {
+    protected BaseConfiguration $configuration;
+    protected RateLimitData $rateLimit;
+    protected ?ClientInterface $guzzleClient;
+    protected IRequest $lastRequest;
     /**
-     * @var IOAuthConfiguration
+     * @var IMiddleware[][]
      */
-    private $configuration;
-
-    /**
-     * @var RateLimitData
-     */
-    private $rateLimit;
-    /**
-     * @var ClientInterface
-     */
-    private $guzzleClient;
-    /**
-     * @var AccessToken
-     */
-    private $token;
-
-    /**
-     * @var \ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware[][]
-     */
-    private $postRequestMiddlewares = [];
+    protected array $postRequestMiddlewares = [];
     /**
      * @var IPreRequestMiddleware[]
      */
-    private $preRequestMiddlewares = [];
+    protected array $preRequestMiddlewares = [];
 
-    /**
-     * @var IRefreshTokenMiddleware[]
-     */
-    private $refreshTokenMiddlewares = [];
-
-    /**
-     * @var IRequest
-     */
-    private $lastRequest;
 
     /**
      * OauthClient constructor.
      *
-     * @param IOAuthConfiguration  $configuration
-     * @param AccessToken          $token
+     * @param BaseConfiguration $configuration
      * @param ClientInterface|null $guzzleClient Only set if you want to override the default client
      */
-    public function __construct(IOAuthConfiguration $configuration, AccessToken $token, ClientInterface $guzzleClient = null)
+    public function __construct(BaseConfiguration $configuration, ClientInterface $guzzleClient = null)
     {
         $this->configuration = $configuration;
         $this->rateLimit     = new RateLimitData();
-        $this->token         = $token;
         $this->guzzleClient  = $guzzleClient;
         if ($this->guzzleClient == null) {
-            $this->guzzleClient = new Client(['base_uri' => $this->configuration->getEndPoint()]);
+            $this->guzzleClient = new Client(['base_uri' => $this->configuration->getBaseUri()]);
         }
         foreach ($this->configuration->defaultMiddlewares() as $middleware) {
             $this->registerMiddleware($middleware);
@@ -103,11 +64,11 @@ class OAuthClient implements IOAuthClient
     /**
      * Register the given middleware.
      *
-     * @param \ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware $middleware
+     * @param IMiddleware $middleware
      *
-     * @return IOAuthClient
+     * @return self
      */
-    public function registerMiddleware(IMiddleware $middleware): IOAuthClient
+    public function registerMiddleware(IMiddleware $middleware): self
     {
         $middleware->setClient($this);
         foreach ($middleware::statusCode() as $statusCode) {
@@ -122,9 +83,9 @@ class OAuthClient implements IOAuthClient
      *
      * @param IPreRequestMiddleware $middleware
      *
-     * @return IOAuthClient
+     * @return self
      */
-    public function registerPreRequestMiddleware(IPreRequestMiddleware $middleware): IOAuthClient
+    public function registerPreRequestMiddleware(IPreRequestMiddleware $middleware): self
     {
         $this->preRequestMiddlewares[get_class($middleware)] = $middleware;
 
@@ -132,30 +93,13 @@ class OAuthClient implements IOAuthClient
     }
 
     /**
-     * Register a middleware to take care of refresh token
-     *
-     * @param IRefreshTokenMiddleware $middleware
-     *
-     * @return IOAuthClient
-     */
-    public function registerRefreshTokenMiddleware(IRefreshTokenMiddleware $middleware): IOAuthClient
-    {
-        $middleware->setClient($this);
-        $this->refreshTokenMiddlewares[get_class($middleware)] = $middleware;
-
-        return $this;
-    }
-
-    /**
      * Unregister the middleware.
      *
-     * In fact, all middleware having the same class
+     * @param IMiddleware $middleware
      *
-     * @param \ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware $middleware
-     *
-     * @return IOAuthClient
+     * @return self
      */
-    public function unregisterMiddleware(IMiddleware $middleware): IOAuthClient
+    public function unregisterMiddleware(IMiddleware $middleware): self
     {
         $middlewareClass = get_class($middleware);
         foreach ($middleware::statusCode() as $statusCode) {
@@ -184,9 +128,9 @@ class OAuthClient implements IOAuthClient
      *
      * @param IPreRequestMiddleware $middleware
      *
-     * @return IOAuthClient
+     * @return self
      */
-    public function unregisterPreRequestMiddleware(IPreRequestMiddleware $middleware): IOAuthClient
+    public function unregisterPreRequestMiddleware(IPreRequestMiddleware $middleware): IClient
     {
         unset($this->preRequestMiddlewares[get_class($middleware)]);
 
@@ -194,63 +138,11 @@ class OAuthClient implements IOAuthClient
     }
 
     /**
-     * UnRegister a refreshToken middleware
-     *
-     * @param IRefreshTokenMiddleware $middleware
-     *
-     * @return IOAuthClient
-     */
-    public function unregisterRefreshTokenMiddleware(IRefreshTokenMiddleware $middleware): IOAuthClient
-    {
-        unset($this->refreshTokenMiddlewares[get_class($middleware)]);
-
-        return $this;
-    }
-
-    /**
-     * Refresh token.
-     *
-     * @throws NoMiddlewareSetException
-     */
-    public function refreshToken(): AccessToken
-    {
-        if (empty($this->refreshTokenMiddlewares)) {
-            throw new NoMiddlewareSetException('No refresh token middleware present.');
-        }
-        $token = $this->token;
-        foreach ($this->refreshTokenMiddlewares as $middleware) {
-            $token = $middleware->handleRefreshToken($token, $this->lastRequest->tries());
-        }
-
-        return $this->token = $token;
-    }
-
-    /**
-     * Currently used access token.
-     *
-     * @return AccessToken
-     */
-    public function getToken(): AccessToken
-    {
-        return $this->token;
-    }
-
-    /**
-     * Set the AccessToken
-     *
-     * @param AccessToken $token
-     */
-    public function setToken(AccessToken $token): void
-    {
-        $this->token = $token;
-    }
-
-    /**
      * Get linked configuration
      *
-     * @return IOAuthConfiguration
+     * @return BaseConfiguration
      */
-    public function getConfiguration(): IOAuthConfiguration
+    public function getConfiguration(): BaseConfiguration
     {
         return $this->configuration;
     }
@@ -271,13 +163,15 @@ class OAuthClient implements IOAuthClient
         }
         $request->incrementTries();
 
-        $headers = $this->configuration->getProvider()->getHeaders($this->token);
-
+        /**
+         * TODO:: fix smelly code : token is only used in child class @see OAuthClient
+         */
+        $configurationHeaders = $this->configuration->defaultHeaders($this->token ?? null);
         $options = $request->requestOptions();
         if (isset($options[RequestOptions::HEADERS])) {
-            $options[RequestOptions::HEADERS] = array_merge($options[RequestOptions::HEADERS], $headers);
+            $options[RequestOptions::HEADERS] = array_merge($options[RequestOptions::HEADERS], $configurationHeaders);
         } else {
-            $options[RequestOptions::HEADERS] = $headers;
+            $options[RequestOptions::HEADERS] = $configurationHeaders;
         }
 
         try {
@@ -311,7 +205,7 @@ class OAuthClient implements IOAuthClient
             }
 
             throw new TooManyRetriesException($e->getMessage(), $e->getCode(), $e);
-        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+        } catch (GuzzleException $e) {
             throw new SDKException($e->getMessage(), $e->getCode(), $e);
         }
 
