@@ -11,6 +11,11 @@ stages:
   if: branch = master
 jobs:
   include:
+  - stage: test
+    before_install:
+      - sudo apt-get update
+    script:
+      - vendor/bin/phpunit --configuration phpunit.xml
   - stage: deploy
     install: true
     before_install:
