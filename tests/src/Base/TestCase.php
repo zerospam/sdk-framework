@@ -197,7 +197,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         $url = (string)$trans->request()->getUri();
         foreach ($contains as $contain) {
-            $this->assertContains((string)$contain, $url, 'Url need to contain: ' . $contain);
+            $this->assertStringContainsString((string)$contain, $url, 'Url need to contain: ' . $contain);
         }
     }
 
@@ -205,16 +205,15 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * Make sure url contains at least specified parts in contains.
      *
      * @param TestClient    $config
-     * @param array|\string $elements
+     * @param array|string $elements
      */
     protected function validateUrl(TestClient $config, $elements): void
     {
         $trans = $this->lastTransaction($config);
-
         $url = urldecode((string)$trans->request()->getUri());
 
         if (is_string($elements)) {
-            $this->assertContains($elements, $url);
+            $this->assertStringContainsString($elements, $url);
 
             return;
         }
