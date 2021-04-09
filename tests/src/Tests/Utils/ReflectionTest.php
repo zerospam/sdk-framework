@@ -27,9 +27,9 @@ class ReflectionTest extends TestCase
     {
         $test = new BasicObj('bar');
 
-        $toArray = ReflectionUtil::objToSnakeArray($test);
-        $this->assertArrayHasKey('foo', $toArray);
-        $this->assertEquals('bar', $toArray['foo']);
+        $array = ReflectionUtil::objToSnakeArray($test);
+        $this->assertArrayHasKey('foo', $array);
+        $this->assertEquals('bar', $array['foo']);
     }
 
     /**
@@ -38,7 +38,9 @@ class ReflectionTest extends TestCase
     public function reflection_class_to_array_with_enum()
     {
         $test = new BasicObjEnum(BasicEnum::TEST());
-        $this->assertArraySubset(['enum' => 'test'], ReflectionUtil::objToSnakeArray($test));
+        $array = ReflectionUtil::objToSnakeArray($test);
+        $this->assertArrayHasKey('enum',$array);
+        $this->assertEquals('test', $array['enum']);
     }
 
     /**
@@ -48,7 +50,8 @@ class ReflectionTest extends TestCase
     {
         $test  = new BasicObjArrayEnum([BasicEnum::TEST()]);
         $array = ReflectionUtil::objToSnakeArray($test);
-        $this->assertArraySubset(['enum_array' => ['test']], $array);
+        $this->assertArrayHasKey('enum_array',$array);
+        $this->assertEquals(['test'], $array['enum_array']);
     }
 
     public function testDataPopulateFromResponse(): void

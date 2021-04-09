@@ -10,6 +10,7 @@ namespace ZEROSPAM\Framework\SDK\Test\Tests\Middleware;
 
 use GuzzleHttp\Psr7\Response;
 use League\OAuth2\Client\Token\AccessToken;
+use ZEROSPAM\Framework\SDK\Client\Exception\TooManyRetriesException;
 use ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IRefreshTokenMiddleware;
@@ -50,10 +51,11 @@ class MiddlewareTests extends TestCase
     }
 
     /**
-     * @expectedException \ZEROSPAM\Framework\SDK\Client\Exception\TooManyRetriesException
      */
     public function testAuthMiddlewareGiveUpAfterTooManyRetries(): void
     {
+        $this->expectException(TooManyRetriesException::class);
+
         $testClient = $this->prepareQueue(
             [
                 new Response(401),

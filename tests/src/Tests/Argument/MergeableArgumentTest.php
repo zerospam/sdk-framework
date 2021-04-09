@@ -47,10 +47,11 @@ class MergeableArgumentTest extends TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function remove_not_present_arg()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $request = new TestRequest();
         $request->removeArgument(new TestMergeableArg('superTest'));
     }

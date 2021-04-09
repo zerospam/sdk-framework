@@ -44,13 +44,8 @@ class EnumInsensitiveTest extends TestCase
     public function getEnumsByNameInsensitive()
     {
         $enums = BasicEnum::getEnumsByNameInsensitive(['test', 'other']);
-        $this->assertArraySubset(
-            [
-                BasicEnum::TEST(),
-                BasicEnum::OTHER()
-            ],
-            $enums
-        );
+        $this->assertContains(BasicEnum::TEST(), $enums);
+        $this->assertContains(BasicEnum::OTHER(), $enums);
     }
 
 }

@@ -10,7 +10,9 @@ namespace ZEROSPAM\Framework\SDK\Test\Tests;
 
 use Carbon\Carbon;
 use GuzzleHttp\Psr7\Response;
+use ZEROSPAM\Framework\SDK\Client\Exception\SDKException;
 use ZEROSPAM\Framework\SDK\Client\Middleware\Error\AuthenticationMiddleware;
+use ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\Request\TestRequest;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\Response\TestDataResponse;
@@ -20,10 +22,11 @@ use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 class ClientTest extends TestCase
 {
     /**
-     * @expectedException \ZEROSPAM\Framework\SDK\Client\Exception\SDKException
      */
     public function testRegisterUnregisterMiddleware(): void
     {
+        $this->expectException(SDKException::class);
+
         $client = $this->preFailure([], 401);
         $client->getOAuthTestClient()
                ->registerMiddleware(new AuthenticationMiddleware())
@@ -70,21 +73,6 @@ class ClientTest extends TestCase
         $this->assertEquals('data', $response->getRawValue('test'));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testResponseAttributeBypassBindingUnavailable(): void
-    {
-        $client = $this->preSuccess([]);
-
-        $request = new TestRequest();
-        $client->getOAuthTestClient()
-               ->processRequest($request);
-
-        $response = $request->getResponse();
-        $this->assertEquals('data', $response->getRawValue('test'));
-    }
-
     public function testResponseAddedField(): void
     {
         $client = $this->preSuccess(['added' => 'field']);
@@ -96,6 +84,22 @@ class ClientTest extends TestCase
         $response = $request->getResponse();
         $this->assertThat(isset($response->added), $this->isTrue());
         $this->assertEquals('field', $response->get('added'));
+    }
+
+    /**
+     */
+    public function testResponseAttributeBypassBindingUnavailable(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        $client = $this->preSuccess([]);
+
+        $request = new TestRequest();
+        $client->getOAuthTestClient()
+            ->processRequest($request);
+
+        $response = $request->getResponse();
+        $this->assertEquals('data', $response->getRawValue('test'));
     }
 
     public function testResponseDateBindingNull(): void
@@ -162,36 +166,40 @@ class ClientTest extends TestCase
     }
 
     /**
-     * @expectedException  \ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException
      */
     public function testEmptyResponseNoGet(): void
     {
+        $this->expectException(NoActionEmptyResponseException::class);
+
         (new EmptyResponse())->id;
     }
 
 
     /**
-     * @expectedException  \ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException
      */
     public function testEmptyResponseNoGetMethod(): void
     {
+        $this->expectException(NoActionEmptyResponseException::class);
+
         (new EmptyResponse())->get('test');
     }
 
 
     /**
-     * @expectedException  \ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException
      */
     public function testEmptyResponseNoGetRawMethod(): void
     {
+        $this->expectException(NoActionEmptyResponseException::class);
+
         (new EmptyResponse())->getRawValue('test');
     }
 
     /**
-     * @expectedException  \ZEROSPAM\Framework\SDK\Exception\Response\NoActionEmptyResponseException
      */
     public function testEmptyResponseNoSet(): void
     {
+        $this->expectException(NoActionEmptyResponseException::class);
+
         $emptyResponse     = new EmptyResponse();
         $emptyResponse->id = 'test';
     }
