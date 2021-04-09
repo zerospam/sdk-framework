@@ -18,7 +18,7 @@ class RequestUrlTest extends TestCase
         $this->validateUrl($client, 'test');
     }
 
-    public function testvalidateRequestUrl()
+    public function testValidateRequestUrl()
     {
         $client = $this->preSuccess(['test' => 'data']);
         $request = new TestRequest();
