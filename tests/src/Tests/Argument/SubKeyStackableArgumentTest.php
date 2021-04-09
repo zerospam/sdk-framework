@@ -30,11 +30,11 @@ class SubKeyStackableArgumentTest extends TestCase
     }
 
     /**
-     * @test
-     * @expectedException \InvalidArgumentException
      */
     public function testTwiceSameArgSubKeyFail()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $request = new TestRequest();
         $request->addArgument(new SearchKeyedArg('val', 'test'))
                 ->addArgument(new SearchKeyedArg('val', 'superTest'));
@@ -60,10 +60,11 @@ class SubKeyStackableArgumentTest extends TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function remove_not_present_arg()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $request = new TestRequest();
         $request->removeArgument(new SearchKeyedArg('val', 'superTest'));
     }

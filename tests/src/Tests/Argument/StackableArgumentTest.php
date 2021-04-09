@@ -28,7 +28,7 @@ class StackableArgumentTest extends TestCase
 
         $uri = $request->toUri();
 
-        $this->assertContains('include%5B%5D=test&include%5B%5D=superTest', $uri->getQuery());
+        $this->assertStringContainsString('include%5B%5D=test&include%5B%5D=superTest', $uri->getQuery());
     }
 
     /**
@@ -45,15 +45,16 @@ class StackableArgumentTest extends TestCase
 
         $uri = $request->toUri();
 
-        $this->assertContains('include%5B%5D=test&include%5B%5D=foo', $uri->getQuery());
+        $this->assertStringContainsString('include%5B%5D=test&include%5B%5D=foo', $uri->getQuery());
     }
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function remove_not_present_arg()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $request = new TestRequest();
         $request->removeArgument(new IncludeStackableArg('superTest'));
     }
@@ -73,7 +74,7 @@ class StackableArgumentTest extends TestCase
 
         $uri = $request->toUri();
 
-        $this->assertNotContains('include%5B%5D=test&include%5B%5D=superTest&include%5B%5D=foo', $uri->getQuery());
+        $this->assertStringNotContainsString('include%5B%5D=test&include%5B%5D=superTest&include%5B%5D=foo', $uri->getQuery());
         $this->assertEmpty($uri->getQuery());
     }
 

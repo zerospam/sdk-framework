@@ -8,7 +8,7 @@
 
 namespace ZEROSPAM\Framework\SDK\Test\Base\Data\Config;
 
-use ZEROSPAM\Framework\SDK\Config\OAuthConfiguration;
+use ZEROSPAM\Framework\SDK\Config\OAuth\BaseOAuthConfiguration;
 use ZEROSPAM\Framework\SDK\Test\Base\Data\Provider\TestProvider;
 
 /**
@@ -18,7 +18,7 @@ use ZEROSPAM\Framework\SDK\Test\Base\Data\Provider\TestProvider;
  *
  * @package ZEROSPAM\Framework\SDK\Test\Base\Data\Config
  */
-class MockOAuthConfiguration extends OAuthConfiguration
+class MockBaseOAuthConfiguration extends BaseOAuthConfiguration
 {
     /**
      * Class to use for the provider.

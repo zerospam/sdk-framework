@@ -16,19 +16,19 @@ class RequestArgTest extends TestCase
 {
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      **/
     public function argument_failure_not_string()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new RequestArg(new \stdClass(), 'test');
     }
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      **/
     public function argument_failure_null()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new RequestArg(null, 'test');
     }
 

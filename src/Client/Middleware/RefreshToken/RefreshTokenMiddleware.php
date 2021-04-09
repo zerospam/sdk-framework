@@ -9,8 +9,8 @@
 namespace ZEROSPAM\Framework\SDK\Client\Middleware\RefreshToken;
 
 use League\OAuth2\Client\Token\AccessToken;
-use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IRefreshTokenMiddleware;
+use ZEROSPAM\Framework\SDK\Client\OAuth\IOAuthClient;
 
 class RefreshTokenMiddleware implements IRefreshTokenMiddleware
 {
