@@ -6,13 +6,12 @@
  * Time: 09:50.
  */
 
-namespace ZEROSPAM\Framework\SDK\Config;
+namespace ZEROSPAM\Framework\SDK\Config\OAuth;
 
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
-use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
-use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
-use ZEROSPAM\Framework\SDK\Client\OAuthClient;
+use ZEROSPAM\Framework\SDK\Client\OAuth\OAuthClient;
+use ZEROSPAM\Framework\SDK\Config\IBaseConfiguration;
 
 /**
  * Interface IOAuthConfiguration
@@ -22,7 +21,7 @@ use ZEROSPAM\Framework\SDK\Client\OAuthClient;
  * @see     OAuthClient
  * @package ZEROSPAM\Framework\SDK\Config
  */
-interface IOAuthConfiguration
+interface IOAuthConfiguration extends IBaseConfiguration
 {
     /**
      * Get the redirect URL.
@@ -64,21 +63,4 @@ interface IOAuthConfiguration
      * @return AbstractProvider
      */
     public function getProvider(): AbstractProvider;
-
-    /**
-     * End point for Requests.
-     *
-     * @return string
-     */
-    public function getEndPoint(): string;
-
-    /**
-     * @return IMiddleware[]
-     */
-    public function defaultMiddlewares(): array;
-
-    /**
-     * @return IPreRequestMiddleware[]
-     */
-    public function defaultPreRequestMiddlewares(): array;
 }

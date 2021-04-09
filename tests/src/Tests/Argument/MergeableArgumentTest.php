@@ -25,7 +25,7 @@ class MergeableArgumentTest extends TestCase
 
         $uri = $request->toUri();
 
-        $this->assertContains('mergeArg=test%3BsuperTest', $uri->getQuery());
+        $this->assertStringContainsString('mergeArg=test%3BsuperTest', $uri->getQuery());
     }
 
     /**
@@ -42,15 +42,16 @@ class MergeableArgumentTest extends TestCase
 
         $uri = $request->toUri();
 
-        $this->assertContains('mergeArg=test%3Bfoo', $uri->getQuery());
+        $this->assertStringContainsString('mergeArg=test%3Bfoo', $uri->getQuery());
     }
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function remove_not_present_arg()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $request = new TestRequest();
         $request->removeArgument(new TestMergeableArg('superTest'));
     }

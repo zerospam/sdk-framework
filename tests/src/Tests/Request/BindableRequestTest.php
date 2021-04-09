@@ -64,30 +64,33 @@ class BindableRequestTest extends TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function bindable_failure_exception_object()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $bindableRequest = new BindableMultiTestRequest();
         $bindableRequest->setNiceId(new \stdClass());
     }
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function bindable_failure_exception_array()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $bindableRequest = new BindableMultiTestRequest();
         $bindableRequest->setNiceId([]);
     }
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function bindable_failure_override()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $bindableRequest = new BindableMultiTestRequest();
         $bindableRequest->setNiceId(1)->setNiceId(5);
     }
